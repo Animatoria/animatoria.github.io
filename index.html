@@ -1,23 +1,32 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
 
-<div class="home">
+ <head>
+  <meta charset="utf-8">
+  <title>
+   Rotating Cards
+  </title>
+  <link rel = 'stylesheet' href='style.css' type='text/css'>
+ </head>
 
-  <h1 class="page-heading">Posts</h1>
+ <body>
+  <div class='body'>
+    <header>
+      <div class='header'>
+        <input class='addNewCard' type='button' value='Add new card'>
+        <input class='clearLocalStorage' type='button' value='Clear local storage'>
+        <p class='currentDate'></p>
+        <input class='mainDateButton' type='button' value='Choose date'>
+        <input class='mainTheme' type='text'>
+      </div>
+    </header>
+    <div class='rubberBody'>
+      
+    </div>
+  </div>
+  <script src='stoned.js'></script>
+  <script src='editable.js'></script>
+  <script src='main.js'></script>
+ </body>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
-</div>
+</html>

@@ -1,0 +1,58 @@
+    label {
+      
+    }
+    body {
+      margin: 0;
+      width: 100%;
+    }
+    div.body {
+      display: block;
+      margin: auto;
+      width: 90%;
+    }
+    textarea {
+      font-size: 33px;
+      display: block;
+    }
+    div.card {
+      margin: 2px;
+      display: inline-block;
+    }
+    div.header {
+      margin: 0;
+    }
+    div.rubberBody {
+      margin: 20px 0 0 0;
+      background-color: #fdd;
+    }
+    div.card {
+      background-color: #ddf;
+    }
+    div.storedDate {
+      height: 30px;
+      background-color: #ddf;
+      width: 30%;
+      border: 1px solid black;
+    }
+    div.storedTheme {
+      height: 30px;
+      background-color: #ddf;
+      width: 30%;
+      border: 1px solid black;
+    }
+    input.deleteButton {
+      display: inline-block;
+    }
+    input.addNewCard {
+      
+    }
+    header {
+      top : 0px;
+      width: 90%;
+      position: fixed;
+      background-color: #fdd;
+    }
+    p {
+      display: inline-block;
+      margin: 0;  
+    }

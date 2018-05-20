@@ -15,6 +15,7 @@
 
     var rubberBodyElement = document.querySelector('.rubberBody');
     rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
+    setCardWidth();
 
     var currentDate = new Date();
     var currentDateToLocaleDateString = currentDate.toLocaleDateString();

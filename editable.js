@@ -2,8 +2,6 @@ function StoredCardProperties() {
   this.notDeleted = true;
   this.faceAreaText = 'Input your face card text';
   this.bottomAreaText = 'Input your bottom card text';
-  this.bottomAreaHeight = 1;
-  this.faceAreaHeight = this.editableRows;
 }
 
 function CardProperties(k, freshCardSwitch) {
@@ -16,6 +14,8 @@ function CardProperties(k, freshCardSwitch) {
   this.label = document.createElement('label');
   this.input = document.createElement('input');
   this.node = document.createTextNode('Completed')
+  this.bottomAreaHeight = 1;
+  this.faceAreaHeight = AllCardsProperties.editableRows;
 }
 
 function addHTMLElements(e) {
@@ -50,7 +50,7 @@ function editableAreaSwitch(e) {
       localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
       newDateSwitch = false;
     }
-    e.cardSide ? Object.getPrototypeOf(e).faceAreaHeight = rowCount(e) : Object.getPrototypeOf(e).bottomAreaHeight = rowCount(e)
+    e.faceAreaHeight = rowCount(e.area.value);
     e.faceAreaHeight > e.bottomAreaHeight ? e.area.rows = e.faceAreaHeight : e.area.rows = e.bottomAreaHeight
     e.input.checked = false;
     Object.getPrototypeOf(e).faceAreaText = e.area.value;
@@ -59,7 +59,7 @@ function editableAreaSwitch(e) {
     localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
   }
   if (e.input.checked) {
-    e.cardSide ? Object.getPrototypeOf(e).faceAreaHeight = rowCount(e) : Object.getPrototypeOf(e).bottomAreaHeight = rowCount(e)
+    e.cardSide ? e.faceAreaHeight = rowCount(e.area.value) : e.bottomAreaHeight = rowCount(e.area.value)
     e.faceAreaHeight > e.bottomAreaHeight ? e.area.rows = e.faceAreaHeight : e.area.rows = e.bottomAreaHeight
     e.cardSide ? Object.getPrototypeOf(e).faceAreaText = e.area.value : Object.getPrototypeOf(e).bottomAreaText = e.area.value
     localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
@@ -96,6 +96,8 @@ function getStoredCard(i) {
   card.push(new CardProperties(i, false));
   Object.setPrototypeOf(storedCard[i], AllCardsProperties);
   Object.setPrototypeOf(card[i], storedCard[i]);
+  card[i].faceAreaHeight = rowCount(card[i].faceAreaText);
+  card[i].bottomAreaHeight = rowCount(card[i].bottomAreaText);
   addHTMLElements(card[i]);
   card[i].input.checked = true;
   card[i].area.onclick = function() {rotateCardClick(card[i])};
@@ -258,5 +260,16 @@ function getChoosableTheme(i) {
   div.onclick = function() {
     mainTheme.value = thisItemTheme;
     mainThemeChange();
+  }
+}
+
+function setCardWidth() {
+  var rubberBodyElementWidth = rubberBodyElement.clientWidth;
+  if (rubberBodyElementWidth < 830) {
+    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / 18);
+  } else if (rubberBodyElementWidth < 1230) {
+    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * 18));
+  } else {
+    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * 18));
   }
 }

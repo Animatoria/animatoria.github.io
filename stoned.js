@@ -8,11 +8,11 @@
         }
 
         function findLetters(letter, type) {
-          var index = e.area.value.indexOf(letter);
+          var index = e.indexOf(letter);
           var letters = [];
           while (index != -1) {
             var prevIndex = index;
-            index = e.area.value.indexOf(letter, prevIndex + 1);
+            index = e.indexOf(letter, prevIndex + 1);
             letters.push(new ExceptSymbol(prevIndex, type));
           }
           return letters;
@@ -36,7 +36,7 @@
 
         var indexMap =  findLetters(' ', 'space').concat(findLetters('\n', 'enter'));
 
-        indexMap.push(new ExceptSymbol(e.area.value.length, 'end'));
+        indexMap.push(new ExceptSymbol(e.length, 'end'));
 
         indexMap.sort(sortProcess);
 
@@ -55,13 +55,13 @@
         if (wordsMap[i].type == 'space') {
           lineSumm++;
         }
-        if (lineSumm > e.colWidth) {
+        if (lineSumm > AllCardsProperties.colWidth) {
           finallyLines++;
-          if (wordsMap[i].letterLength == e.colWidth) {
+          if (wordsMap[i].letterLength == AllCardsProperties.colWidth) {
             lineSumm = 0;
-          } else if (wordsMap[i].letterLength > e.colWidth) {
-            finallyLines += Math.floor((wordsMap[i].letterLength - 1)/e.colWidth) - ((i == 0) || (wordsMap[i - 1].type == 'enter'));
-            lineSumm = wordsMap[i].letterLength%e.colWidth;
+          } else if (wordsMap[i].letterLength > AllCardsProperties.colWidth) {
+            finallyLines += Math.floor((wordsMap[i].letterLength - 1)/AllCardsProperties.colWidth) - ((i == 0) || (wordsMap[i - 1].type == 'enter'));
+            lineSumm = wordsMap[i].letterLength%AllCardsProperties.colWidth;
           } else {
             lineSumm = wordsMap[i].letterLength;
           }

@@ -17,7 +17,6 @@
     rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
 
     var currentDate = new Date();
-    currentDate = (new Date(2018, 4, 17));
     var currentDateToLocaleDateString = currentDate.toLocaleDateString();
     var mainDate = currentDateToLocaleDateString;
 

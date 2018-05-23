@@ -13,11 +13,16 @@
 
     StoredCardProperties.prototype = AllCardsProperties;
 
+    var deviceBrowserType = detect.parse(navigator.userAgent);
+    var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
+    deviceBrowserTypeParagraph.innerHTML = ('Device type: ' + deviceBrowserType.device.type + ' device: ' + deviceBrowserType.device.family + ' os: ' + deviceBrowserType.os.family + ' browser: ' + deviceBrowserType.browser.family);
+
     var rubberBodyElement = document.querySelector('.rubberBody');
     rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
     setCardWidth();
 
     var currentDate = new Date();
+    currentDate = (new Date(2018, 4, 1));
     var currentDateToLocaleDateString = currentDate.toLocaleDateString();
     var mainDate = currentDateToLocaleDateString;
 

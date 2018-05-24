@@ -1,1 +1,1 @@
-this App is help students.
+This App is helpful for students.

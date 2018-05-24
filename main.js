@@ -22,7 +22,6 @@
     setCardWidth();
 
     var currentDate = new Date();
-    currentDate = (new Date(2018, 4, 1));
     var currentDateToLocaleDateString = currentDate.toLocaleDateString();
     var mainDate = currentDateToLocaleDateString;
 

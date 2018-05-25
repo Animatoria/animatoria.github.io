@@ -1,4 +1,4 @@
-window.onunload = function() {location.reload(true);};
+
 
 var k = 0;
 var storedCard = [];

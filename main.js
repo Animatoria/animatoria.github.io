@@ -11,6 +11,21 @@
     var newThemeSwitch = false;
     var mainDateIndex;
 
+    window.onunload = function() {
+        k = 0;
+        storedCard = [];
+        card = [];
+        storedMainDate = [];
+        storedMainTheme = [];
+        AllCardsProperties = {
+            colWidth : 30,
+            editableRows : 12
+        }
+        newDateSwitch = false;
+        newThemeSwitch = false;
+        mainDateIndex;
+    }
+
     StoredCardProperties.prototype = AllCardsProperties;
 
     var deviceBrowserType = detect.parse(navigator.userAgent);
@@ -22,6 +37,7 @@
     setCardWidth();
 
     var currentDate = new Date();
+    currentDate = (new Date(2018, 4, 1));
     var currentDateToLocaleDateString = currentDate.toLocaleDateString();
     var mainDate = currentDateToLocaleDateString;
 

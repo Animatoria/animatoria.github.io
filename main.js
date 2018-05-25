@@ -1,49 +1,49 @@
-    var k = 0;
-    var storedCard = [];
-    var card = [];
-    var storedMainDate = [];
-    var storedMainTheme = [];
-    var AllCardsProperties = {
-      colWidth : 30,
-      editableRows : 12
-    }
-    var newDateSwitch = false;
-    var newThemeSwitch = false;
-    var mainDateIndex;
+window.onunload = function() {location.reload(true);};
 
-    window.onunload = function() {location.reload(true);};
+var k = 0;
+var storedCard = [];
+var card = [];
+var storedMainDate = [];
+var storedMainTheme = [];
+var AllCardsProperties = {
+    colWidth : 30,
+    editableRows : 12
+}
+var newDateSwitch = false;
+var newThemeSwitch = false;
+var mainDateIndex;
 
-    StoredCardProperties.prototype = AllCardsProperties;
+StoredCardProperties.prototype = AllCardsProperties;
 
-    var deviceBrowserType = detect.parse(navigator.userAgent);
-    var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
-    deviceBrowserTypeParagraph.innerHTML = ('Device type: ' + deviceBrowserType.device.type + ' device: ' + deviceBrowserType.device.family + ' os: ' + deviceBrowserType.os.family + ' browser: ' + deviceBrowserType.browser.family);
+var deviceBrowserType = detect.parse(navigator.userAgent);
+var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
+deviceBrowserTypeParagraph.innerHTML = ('Device type: ' + deviceBrowserType.device.type + ' device: ' + deviceBrowserType.device.family + ' os: ' + deviceBrowserType.os.family + ' browser: ' + deviceBrowserType.browser.family);
 
-    var rubberBodyElement = document.querySelector('.rubberBody');
-    rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
-    setCardWidth();
+var rubberBodyElement = document.querySelector('.rubberBody');
+rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
+setCardWidth();
 
-    var currentDate = new Date();
-    var currentDateToLocaleDateString = currentDate.toLocaleDateString();
-    var mainDate = currentDateToLocaleDateString;
+var currentDate = new Date();
+var currentDateToLocaleDateString = currentDate.toLocaleDateString();
+var mainDate = currentDateToLocaleDateString;
 
-    var currentDateParagraph = document.querySelector('.currentDate');
-    currentDateParagraph.innerHTML = mainDate;
+var currentDateParagraph = document.querySelector('.currentDate');
+currentDateParagraph.innerHTML = mainDate;
 
-    var mainTheme = document.querySelector('.mainTheme');
-    mainTheme.onclick = mainThemeMenu;
-    mainTheme.oninput = mainThemeChange;
-    setMainTheme();
-    
-    var newCardButton = document.querySelector('.addNewCard');
-    newCardButton.onclick = addNewCard;
+var mainTheme = document.querySelector('.mainTheme');
+mainTheme.onclick = mainThemeMenu;
+mainTheme.oninput = mainThemeChange;
+setMainTheme();
 
-    getStoredCards();
-    setStoredMainDate();
-    var mainDateButton = document.querySelector('.mainDateButton');
-    mainDateButton.onclick = changeMainDate;
+var newCardButton = document.querySelector('.addNewCard');
+newCardButton.onclick = addNewCard;
 
-    var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
-    clearLocalStorageButton.onclick = function() {localStorage.clear()};
+getStoredCards();
+setStoredMainDate();
+var mainDateButton = document.querySelector('.mainDateButton');
+mainDateButton.onclick = changeMainDate;
 
-    rubberBodyElement.style.backgroundColor = '#dfd';
+var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
+clearLocalStorageButton.onclick = function() {localStorage.clear()};
+
+rubberBodyElement.style.backgroundColor = '#dfd';

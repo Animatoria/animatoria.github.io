@@ -10,14 +10,6 @@
     var newDateSwitch = false;
     var newThemeSwitch = false;
     var mainDateIndex;
-    console.log('k: ' + k);
-    console.log('storedCard: ' + storedCard);
-    console.log('card: ' + card);
-    console.log('storedMainDate: ' + storedMainDate);
-    console.log('storedMainTheme: ' + storedMainTheme);
-    console.log('newDateSwitch: ' + newDateSwitch);
-    console.log('newThemeSwitch: ' + newThemeSwitch);
-    console.log('mainDateIndex: ' + mainDateIndex);
 
     StoredCardProperties.prototype = AllCardsProperties;
 

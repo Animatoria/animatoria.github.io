@@ -11,7 +11,7 @@
     var newThemeSwitch = false;
     var mainDateIndex;
 
-    location.reload(true);
+    window.onunload = function() {location.reload(true);};
 
     StoredCardProperties.prototype = AllCardsProperties;
 

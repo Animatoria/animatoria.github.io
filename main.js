@@ -11,6 +11,8 @@
     var newThemeSwitch = false;
     var mainDateIndex;
 
+    location.reload(true);
+
     StoredCardProperties.prototype = AllCardsProperties;
 
     var deviceBrowserType = detect.parse(navigator.userAgent);

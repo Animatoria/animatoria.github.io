@@ -219,13 +219,17 @@ function setMainTheme() {
     if (storedMainTheme.length) {
       mainTheme.value = storedMainTheme[storedMainTheme.length - 1];
     } else {
-      mainTheme.value = 'Input main theme';
-      newThemeSwitch = true;
+      mainThemeNotAvailable();
     }
   } else {
-    mainTheme.value = 'Input main theme';
-    newThemeSwitch = true;
+    mainThemeNotAvailable();
   }
+}
+
+function mainThemeNotAvailable() {
+  mainTheme.value = 'Input main theme';
+  mainTheme.onblur = function() {newCardButton.style.visibility = 'visible'; mainDateButton.style.visibility = 'visible'};
+  newThemeSwitch = true;
 }
 
 function mainThemeChange() {

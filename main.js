@@ -43,7 +43,7 @@ var newCardButton = document.querySelector('.addNewCard');
 newCardButton.onclick = addNewCard;
 
 var readOnlyModeButton = document.querySelector('.readOnlyMode');
-readOnlyModeButton.onclick = function() {readOnlyMode = true; saveCardDataToLocalStorage()};
+readOnlyModeButton.onclick = readOnlyModeOn;
 
 getStoredCards();
 setStoredMainDate();
@@ -55,6 +55,6 @@ clearLocalStorageButton.onclick = function() {localStorage.clear()};
 
 var deviceBrowserType = detect.parse(navigator.userAgent);
 var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
-deviceBrowserTypeParagraph.innerHTML = ('Device type: ' + deviceBrowserType.device.type + ' device: ' + deviceBrowserType.device.family + ' os: ' + deviceBrowserType.os.family + ' browser: ' + deviceBrowserType.browser.family);
+deviceBrowserTypeParagraph.innerHTML = ('Device type: ' + deviceBrowserType.device.type + ' device: ' + deviceBrowserType.device.family + ' os: ' + deviceBrowserType.os.family + ' browser: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version);
 
 rubberBodyElement.style.backgroundColor = '#dfd';

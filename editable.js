@@ -303,7 +303,8 @@ function readOnlyModeOn() {
   k = 0;
   storedCard = [];
   card = [];
-  newCardButton.onclick = function() {alert('In case if you opened Rotation Cards application in more then one window at the same time, only last opened app can apply your changes. In another window you can read only your cards.')};
+  newCardButton.onclick = function() {alert('In case if you opened Rotation Cards application in more then one window\
+ at the same time, only last opened app can apply your changes. In another window you can read only your cards.')};
   newCardButton.value = 'Read only mode?';
   readOnlyModeButton.onclick = readOnlyModeOff;
   readOnlyModeButton.value = 'Card edit mode';
@@ -322,6 +323,7 @@ function readOnlyModeOff() {
     deleteAllCards();
     for (var i in storedCard) {
       addHTMLElements(card[i]);
+      card[i].cardSide = 1;
     }
   } else {
     location.reload(true);

@@ -195,19 +195,19 @@ function getStoredCards() {
     }
     localStorageItem = localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k]);
   }
-  if (!isAnyCardShowed && currentDateToLocaleDateString != mainDate && confirm('This ' + mainDate + ' card list empty. Delete?')) {
+  if (!isAnyCardShowed && currentDateToLocaleDateString != mainDate && !readOnlyMode && confirm('This ' + mainDate + ' card list empty. Delete?')) {
     if (storedMainDate.length == 1) {
       localStorage.removeItem('storedMainDate_' + mainTheme.value);
       mainDate = currentDateToLocaleDateString;
       currentDateParagraph.innerHTML = mainDate;
       console.log(storedMainTheme.indexOf(mainTheme.value))
       storedMainTheme.splice(storedMainTheme.indexOf(mainTheme.value), 1);
-      saveCardDataToLocalStorage('storedMainTheme', JSON.stringify(storedMainTheme));
+      localStorage.setItem('storedMainTheme', JSON.stringify(storedMainTheme));
       newThemeSwitch = true;
       storedMainDate = [];
     } else {
       storedMainDate.splice(mainDateIndex, 1);
-      saveCardDataToLocalStorage('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
+      localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
       changeMainDate();
     }
   }

@@ -18,10 +18,12 @@ var readOnlyMode = false;
 var thisSessionID;
 var mainDateIndex;
 
+var zIndexCounter = 1;
+
 StoredCardProperties.prototype = AllCardsProperties;
 
 var rubberBodyElement = document.querySelector('.rubberBody');
-rubberBodyElement.style.minHeight = (window.innerHeight - 20) + 'px';
+rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
 
 setCardWidth();
 

@@ -10,6 +10,7 @@ function CardProperties(k, freshCardSwitch) {
   this.freshCardSwitch = freshCardSwitch;
   this.div = document.createElement('div');
   this.flipper = document.createElement('div');
+  this.zoomer = document.createElement('div');
   this.button = document.createElement('input');
   this.faceArea = document.createElement('textarea');
   this.backArea = document.createElement('textarea');
@@ -22,6 +23,7 @@ function CardProperties(k, freshCardSwitch) {
 
 function addHTMLElements(e) {
   e.div.className = 'card';
+  e.zoomer.className = 'zoomer'
   e.flipper.className = 'flipper';
   e.backArea.className = 'backArea';
   e.input.className = 'completed';
@@ -30,7 +32,8 @@ function addHTMLElements(e) {
   e.button.type = 'button';
   e.button.value = 'Delete';
   rubberBodyElement.appendChild(e.div);
-  e.div.appendChild(e.flipper);
+  e.div.appendChild(e.zoomer);
+  e.zoomer.appendChild(e.flipper);
   e.flipper.appendChild(e.faceArea);
   e.flipper.appendChild(e.backArea);
   if (!readOnlyMode) {
@@ -111,9 +114,13 @@ function textAreaSwitch(e) {
 }
 
 function rotateCardClick(e) {
+  e.div.style.zIndex = zIndexCounter;
+  zIndexCounter += 1;
   if (e.cardSide) {
+    e.zoomer.style.animation = '2s first';
     e.flipper.style.transform = 'rotateY(180deg)';
   } else {
+    e.zoomer.style.animation = '2s second';
     e.flipper.style.transform = 'rotateY(0deg)';
   }
   e.cardSide = e.cardSide ^ 1;
@@ -351,6 +358,7 @@ function readOnlyModeOn() {
   readOnlyMode = true;
   deleteAllCards();
   getStoredCards();
+  changeDivClassCardProperties('#dfd')
 }
 
 function readOnlyModeOff() {
@@ -365,7 +373,15 @@ function readOnlyModeOff() {
       addHTMLElements(card[i]);
       card[i].cardSide = 1;
     }
+    changeDivClassCardProperties('#ddf')
   } else {
     location.reload(true);
+  }
+}
+
+function changeDivClassCardProperties(color) {
+  var divCard = document.querySelectorAll('div.card');
+  for (var i = 0; i < divCard.length; i++) {
+    divCard[i].style.backgroundColor = color;
   }
 }

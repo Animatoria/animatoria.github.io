@@ -69,6 +69,8 @@ function textAreaSwitch(e) {
       rotateCardClick(e);
       e.freshCardSwitch = false;
       localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
+      e.faceArea.onclick = function() {rotateCardClick(e)};
+      e.faceArea.readOnly = true;
     }
     if (e.input.checked) {
       if (e.cardSide) {

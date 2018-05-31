@@ -291,11 +291,18 @@ function setCardWidth() {
 }
 
 function setSessionID() {
-  if (localStorage.getItem('')) {
-    thisSessionID = +localStorage.getItem('') + 1;
-    localStorage.setItem('', thisSessionID);
+  var sessionID = +localStorage.getItem('');
+  if (sessionID) {
+    if (sessionID == 255) {
+      thisSessionID = 1;
+      localStorage.setItem('', 1);
+    } else {
+      thisSessionID = sessionID + 1;
+      localStorage.setItem('', thisSessionID);
+    }
   } else {
-    localStorage.setItem('', 0);
+    thisSessionID = 1;
+    localStorage.setItem('', 1);
   }
 }
 

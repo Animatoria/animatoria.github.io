@@ -1,5 +1,5 @@
 function StoredCardProperties() {
-  this.notDeleted = true;
+  this.deleted = true;
   this.faceAreaText = 'Input your face card text';
   this.bottomAreaText = 'Input your bottom card text';
 }
@@ -68,6 +68,7 @@ function textAreaSwitch(e) {
       Object.getPrototypeOf(e).faceAreaText = e.faceArea.value;
       rotateCardClick(e);
       e.freshCardSwitch = false;
+      Object.getPrototypeOf(e).deleted = false;
       localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
       e.faceArea.onclick = function() {rotateCardClick(e)};
       e.faceArea.readOnly = true;
@@ -121,6 +122,7 @@ function rotateCardClick(e) {
 
 function addNewCard() {
   storedCard.push(new StoredCardProperties());
+  localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
   card.push(new CardProperties(k, true));
   Object.setPrototypeOf(card[k], storedCard[k]);
   addHTMLElements(card[k]);
@@ -208,7 +210,7 @@ function deleteAllCards() {
 function deleteCard(e) {
   if (localStorage.getItem('') == thisSessionID) {
     rubberBodyElement.removeChild(e.div);
-    Object.getPrototypeOf(e).notDeleted = false;
+    Object.getPrototypeOf(e).deleted = true;
     localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
   } else {
     alert('Read only, because new Rotation cards application opened at the  same time.');
@@ -220,7 +222,7 @@ function getStoredCards() {
   var isAnyCardShowed = false;
   var localStorageItem = localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k]);
   while (localStorageItem) {
-    if (JSON.parse(localStorageItem).notDeleted) {
+    if (!(JSON.parse(localStorageItem).deleted)) {
       isAnyCardShowed = true;
       getStoredCard(k);
       k++;

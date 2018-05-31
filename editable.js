@@ -372,6 +372,7 @@ function readOnlyModeOff() {
     for (var i in storedCard) {
       addHTMLElements(card[i]);
       card[i].cardSide = 1;
+      card[i].zoomer.style.animation = '';
     }
     changeDivClassCardProperties('#ddf')
   } else {

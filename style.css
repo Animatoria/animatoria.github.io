@@ -1,59 +1,83 @@
     label {
 
     }
+
     body {
       margin: 0;
       width: 100%;
     }
+
     div.body {
       display: block;
       margin: auto;
       width: 90%;
     }
+
+    div.flipper {
+      transition: 2s;
+      transform-style: preserve-3d;
+    }
+
     textarea {
+      outline: none;
       font-size: 33px;
       display: block;
       resize: none;
-      transition: 2s;
       backface-visibility: hidden;
     }
+
+    textarea.backArea {
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+    }
+
     div.card {
       margin: 2px;
       display: inline-block;
       perspective: 1000px;
       -webkit-perspective: 1000px;
     }
+
     div.header {
       margin: 0;
     }
+
     div.rubberBody {
       margin: 20px 0 0 0;
       background-color: #fdd;
     }
+
     div.card {
       background-color: #ddf;
     }
+
     div.storedDate {
       height: 30px;
       background-color: #ddf;
       width: 30%;
       border: 1px solid black;
     }
+
     div.storedTheme {
       height: 30px;
       background-color: #ddf;
       width: 30%;
       border: 1px solid black;
     }
+
     input.deleteButton {
       display: inline-block;
     }
+
     input.addNewCard {
       
     }
+
     input.completed {
 
     }
+
     header {
       z-index: 1;
       top : 0px;
@@ -61,6 +85,7 @@
       position: fixed;
       background-color: #fdd;
     }
+
     p {
       display: inline-block;
       margin: 0;  

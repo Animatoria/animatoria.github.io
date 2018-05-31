@@ -9,6 +9,7 @@ function CardProperties(k, freshCardSwitch) {
   this.cardSide = 1;
   this.freshCardSwitch = freshCardSwitch;
   this.div = document.createElement('div');
+  this.flipper = document.createElement('div');
   this.button = document.createElement('input');
   this.faceArea = document.createElement('textarea');
   this.backArea = document.createElement('textarea');
@@ -21,24 +22,24 @@ function CardProperties(k, freshCardSwitch) {
 
 function addHTMLElements(e) {
   e.div.className = 'card';
+  e.flipper.className = 'flipper';
+  e.backArea.className = 'backArea';
   e.input.className = 'completed';
   e.input.type = 'checkbox';
   e.button.className = 'deleteButton';
   e.button.type = 'button';
   e.button.value = 'Delete';
   rubberBodyElement.appendChild(e.div);
-  e.div.appendChild(e.faceArea);
-  e.div.appendChild(e.backArea);
+  e.div.appendChild(e.flipper);
+  e.flipper.appendChild(e.faceArea);
+  e.flipper.appendChild(e.backArea);
   if (!readOnlyMode) {
     e.div.appendChild(e.label);
     e.div.appendChild(e.button);
     e.label.appendChild(e.input);
     e.label.appendChild(e.node);
   }
-  e.faceArea.style.transform = 'rotateY(0deg)';
-  e.backArea.style.transform = 'rotateY(180deg)';
-  e.backArea.style.position = 'absolute';
-  e.backArea.style.top = 0;
+  e.flipper.style.transform = 'rotateY(0deg)';
   e.faceArea.cols = e.colWidth;
   e.backArea.cols = e.colWidth;
   e.faceArea.rows = e.faceAreaHeight > e.bottomAreaHeight ? e.faceAreaHeight : e.bottomAreaHeight;
@@ -111,11 +112,9 @@ function textAreaSwitch(e) {
 
 function rotateCardClick(e) {
   if (e.cardSide) {
-    e.faceArea.style.transform = 'rotateY(180deg)';
-    e.backArea.style.transform = 'rotateY(360deg)';
+    e.flipper.style.transform = 'rotateY(180deg)';
   } else {
-    e.faceArea.style.transform = 'rotateY(0deg)';
-    e.backArea.style.transform = 'rotateY(180deg)';
+    e.flipper.style.transform = 'rotateY(0deg)';
   }
   e.cardSide = e.cardSide ^ 1;
 }

@@ -10,7 +10,8 @@ function CardProperties(k, freshCardSwitch) {
   this.freshCardSwitch = freshCardSwitch;
   this.div = document.createElement('div');
   this.button = document.createElement('input');
-  this.area = document.createElement('textarea');
+  this.faceArea = document.createElement('textarea');
+  this.backArea = document.createElement('textarea');
   this.label = document.createElement('label');
   this.input = document.createElement('input');
   this.node = document.createTextNode('Completed')
@@ -20,22 +21,30 @@ function CardProperties(k, freshCardSwitch) {
 
 function addHTMLElements(e) {
   e.div.className = 'card';
-  e.input.className = 'comleted';
+  e.input.className = 'completed';
   e.input.type = 'checkbox';
   e.button.className = 'deleteButton';
   e.button.type = 'button';
   e.button.value = 'Delete';
   rubberBodyElement.appendChild(e.div);
-  e.div.appendChild(e.area);
+  e.div.appendChild(e.faceArea);
+  e.div.appendChild(e.backArea);
   if (!readOnlyMode) {
     e.div.appendChild(e.label);
     e.div.appendChild(e.button);
     e.label.appendChild(e.input);
     e.label.appendChild(e.node);
   }
-  e.area.cols = e.colWidth;
-  e.area.rows = e.faceAreaHeight > e.bottomAreaHeight ? e.faceAreaHeight : e.bottomAreaHeight;
-  e.area.value = e.faceAreaText;
+  e.faceArea.style.transform = 'rotateY(0deg)';
+  e.backArea.style.transform = 'rotateY(180deg)';
+  e.backArea.style.position = 'absolute';
+  e.backArea.style.top = 0;
+  e.faceArea.cols = e.colWidth;
+  e.backArea.cols = e.colWidth;
+  e.faceArea.rows = e.faceAreaHeight > e.bottomAreaHeight ? e.faceAreaHeight : e.bottomAreaHeight;
+  e.backArea.rows = e.faceArea.rows;
+  e.faceArea.value = e.faceAreaText;
+  e.backArea.value = e.bottomAreaText;
   e.input.onchange = function() {textAreaSwitch(e)};
   e.button.onclick = function() {deleteCard(e)};
 }
@@ -53,26 +62,43 @@ function textAreaSwitch(e) {
         localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
         newDateSwitch = false;
       }
-      e.faceAreaHeight = rowCount(e.area.value);
-      e.faceAreaHeight > e.bottomAreaHeight ? e.area.rows = e.faceAreaHeight : e.area.rows = e.bottomAreaHeight
+      e.faceAreaHeight = rowCount(e.faceArea.value);
+      e.faceAreaHeight > e.bottomAreaHeight ? e.faceArea.rows = e.faceAreaHeight : e.faceArea.rows = e.bottomAreaHeight
       e.input.checked = false;
-      Object.getPrototypeOf(e).faceAreaText = e.area.value;
+      Object.getPrototypeOf(e).faceAreaText = e.faceArea.value;
       rotateCardClick(e);
       e.freshCardSwitch = false;
       localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
     }
     if (e.input.checked) {
-      e.cardSide ? e.faceAreaHeight = rowCount(e.area.value) : e.bottomAreaHeight = rowCount(e.area.value)
-      e.faceAreaHeight > e.bottomAreaHeight ? e.area.rows = e.faceAreaHeight : e.area.rows = e.bottomAreaHeight
-      e.cardSide ? Object.getPrototypeOf(e).faceAreaText = e.area.value : Object.getPrototypeOf(e).bottomAreaText = e.area.value
-      localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
-      e.area.onclick = function() {rotateCardClick(e)};
-      e.area.readOnly = true;
+      if (e.cardSide) {
+        e.faceAreaHeight = rowCount(e.faceArea.value);
+        Object.getPrototypeOf(e).faceAreaText = e.faceArea.value;
+        localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
+        e.faceArea.onclick = function() {rotateCardClick(e)};
+        e.faceArea.readOnly = true;
+      } else {
+        e.bottomAreaHeight = rowCount(e.backArea.value);
+        Object.getPrototypeOf(e).bottomAreaText = e.backArea.value;
+        localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + e.cardNum], JSON.stringify(storedCard[e.cardNum]));
+        e.backArea.onclick = function() {rotateCardClick(e)};
+        e.backArea.readOnly = true;
+      }
+      e.faceAreaHeight > e.bottomAreaHeight ? e.faceArea.rows = e.faceAreaHeight : e.faceArea.rows = e.bottomAreaHeight
+      e.backArea.rows = e.faceArea.rows;
     } else {
-      e.area.onclick = function(){}
-      e.area.readOnly = false;
-      e.area.rows = e.editableRows;
-      e.area.select();
+      if (e.cardSide) {
+        e.faceArea.onclick = function(){}
+        e.faceArea.readOnly = false;
+        e.faceArea.rows = e.editableRows;
+        e.faceArea.select();
+      } else {
+        e.backArea.onclick = function(){}
+        e.backArea.readOnly = false;
+        e.faceArea.rows = e.editableRows;
+        e.backArea.rows = e.editableRows;
+        e.backArea.select();
+      }
     }
   } else {
     alert('Read only, because new Rotation cards application opened at the  same time.');
@@ -82,9 +108,11 @@ function textAreaSwitch(e) {
 
 function rotateCardClick(e) {
   if (e.cardSide) {
-    e.area.value = e.bottomAreaText;
+    e.faceArea.style.transform = 'rotateY(180deg)';
+    e.backArea.style.transform = 'rotateY(360deg)';
   } else {
-    e.area.value = e.faceAreaText;
+    e.faceArea.style.transform = 'rotateY(0deg)';
+    e.backArea.style.transform = 'rotateY(180deg)';
   }
   e.cardSide = e.cardSide ^ 1;
 }
@@ -94,7 +122,7 @@ function addNewCard() {
   card.push(new CardProperties(k, true));
   Object.setPrototypeOf(card[k], storedCard[k]);
   addHTMLElements(card[k]);
-  card[k].area.select();
+  card[k].faceArea.select();
   k++;
 }
 
@@ -107,8 +135,10 @@ function getStoredCard(i) {
   card[i].bottomAreaHeight = rowCount(card[i].bottomAreaText);
   addHTMLElements(card[i]);
   card[i].input.checked = true;
-  card[i].area.onclick = function() {rotateCardClick(card[i])};
-  card[i].area.readOnly = true;
+  card[i].faceArea.onclick = function() {rotateCardClick(card[i])};
+  card[i].backArea.onclick = function() {rotateCardClick(card[i])};
+  card[i].faceArea.readOnly = true;
+  card[i].backArea.readOnly = true;
 }
 
 function setStoredMainDate() {

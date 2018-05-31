@@ -1,5 +1,5 @@
     label {
-      
+
     }
     body {
       margin: 0;
@@ -14,10 +14,14 @@
       font-size: 33px;
       display: block;
       resize: none;
+      transition: 2s;
+      backface-visibility: hidden;
     }
     div.card {
       margin: 2px;
       display: inline-block;
+      perspective: 1000px;
+      -webkit-perspective: 1000px;
     }
     div.header {
       margin: 0;
@@ -46,6 +50,9 @@
     }
     input.addNewCard {
       
+    }
+    input.completed {
+
     }
     header {
       top : 0px;

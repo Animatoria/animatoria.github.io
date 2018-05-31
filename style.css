@@ -13,6 +13,8 @@
     textarea {
       font-size: 33px;
       display: block;
+      resize: none;
+      transition: transform 4s;
     }
     div.card {
       margin: 2px;

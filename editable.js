@@ -36,11 +36,11 @@ function addHTMLElements(e) {
   e.area.cols = e.colWidth;
   e.area.rows = e.faceAreaHeight > e.bottomAreaHeight ? e.faceAreaHeight : e.bottomAreaHeight;
   e.area.value = e.faceAreaText;
-  e.input.onchange = function() {editableAreaSwitch(e)};
+  e.input.onchange = function() {textAreaSwitch(e)};
   e.button.onclick = function() {deleteCard(e)};
 }
 
-function editableAreaSwitch(e) {
+function textAreaSwitch(e) {
   if (localStorage.getItem('') == thisSessionID) {
     if (e.freshCardSwitch) {
       if (newThemeSwitch) {

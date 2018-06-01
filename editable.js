@@ -332,9 +332,12 @@ function setCardProperties() {
     if (deviceBrowserType.browser.family == 'Edge') {
       extender = 5;
     }
+    if (deviceBrowserType.browser.family == 'IE') {
+      extender = 5;
+    }
     if (deviceBrowserType.os.family == 'Android') {
       letterWidth++;
-      extender = 5;
+      extender = 10;
     }
     if (rubberBodyElementWidth < 830) {
       AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);

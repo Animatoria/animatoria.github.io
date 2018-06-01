@@ -327,6 +327,8 @@ function setCardProperties() {
     styleLink.rel = 'stylesheet';
     if (deviceBrowserType.device.type == 'Desktop') {
       styleLink.href = 'styleDesktop.css';
+      var letterWidth = 18;
+      if (deviceBrowserType.os.family == 'Android') letterWidth++;
       if (rubberBodyElementWidth < 830) {
         AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / 18);
       } else if (rubberBodyElementWidth < 1230) {
@@ -336,7 +338,7 @@ function setCardProperties() {
       }
     } else {
       styleLink.href = 'styleMobile.css';
-      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 31);
+      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
     }
     headTag.appendChild(styleLink);
     console.log(AllCardsProperties.colWidth);

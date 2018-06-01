@@ -321,7 +321,7 @@ function getChoosableTheme(i) {
 
 function setCardProperties() {
   var rubberBodyElementWidth = rubberBodyElement.clientWidth;
-  var androidExtender = 0;
+  var extender = 0;
   var headTag = document.querySelector('head');
   var styleLink = document.createElement('link');
   styleLink.type = 'text/css';
@@ -329,9 +329,12 @@ function setCardProperties() {
   if (deviceBrowserType.device.type == 'Desktop') {
     styleLink.href = 'styleDesktop.css';
     var letterWidth = 18;
+    if (deviceBrowserType.browser.family == 'Edge') {
+      extender = 5;
+    }
     if (deviceBrowserType.os.family == 'Android') {
       letterWidth++;
-      androidExtender = 5;
+      extender = 5;
     }
     if (rubberBodyElementWidth < 830) {
       AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
@@ -347,7 +350,7 @@ function setCardProperties() {
     styleLink.href = 'styleMobile.css';
     AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
     rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
-    androidExtender = 5;
+    extender = 5;
   }
   document.querySelector('.body').style.width = androidExtender + rubberBodyElementWidth + 'px';
   document.querySelector('header').style.width = androidExtender + rubberBodyElementWidth + 'px';

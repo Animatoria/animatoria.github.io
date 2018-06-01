@@ -321,32 +321,37 @@ function getChoosableTheme(i) {
 
 function setCardProperties() {
   var rubberBodyElementWidth = rubberBodyElement.clientWidth;
-    var headTag = document.querySelector('head');
-    var styleLink = document.createElement('link');
-    styleLink.type = 'text/css';
-    styleLink.rel = 'stylesheet';
-    if (deviceBrowserType.device.type == 'Desktop') {
-      styleLink.href = 'styleDesktop.css';
-      var letterWidth = 18;
-      if (deviceBrowserType.os.family == 'Android') letterWidth++;
-      if (rubberBodyElementWidth < 830) {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
-        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth + 26;
-      } else if (rubberBodyElementWidth < 1230) {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * letterWidth));
-        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
-      } else {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
-        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
-      }
-    } else {
-      styleLink.href = 'styleMobile.css';
-      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
-      rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
+  var androidExtender = 0;
+  var headTag = document.querySelector('head');
+  var styleLink = document.createElement('link');
+  styleLink.type = 'text/css';
+  styleLink.rel = 'stylesheet';
+  if (deviceBrowserType.device.type == 'Desktop') {
+    styleLink.href = 'styleDesktop.css';
+    var letterWidth = 18;
+    if (deviceBrowserType.os.family == 'Android') {
+      letterWidth++;
+      androidExtender = 5;
     }
-    document.querySelector('.body').style.width = rubberBodyElementWidth + 'px';
-    document.querySelector('header').style.width = rubberBodyElementWidth + 'px';
-    headTag.appendChild(styleLink);
+    if (rubberBodyElementWidth < 830) {
+      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
+      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth + 26;
+    } else if (rubberBodyElementWidth < 1230) {
+      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * letterWidth));
+      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
+    } else {
+      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
+      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
+    }
+  } else {
+    styleLink.href = 'styleMobile.css';
+    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
+    rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
+    androidExtender = 5;
+  }
+  document.querySelector('.body').style.width = androidExtender + rubberBodyElementWidth + 'px';
+  document.querySelector('header').style.width = androidExtender + rubberBodyElementWidth + 'px';
+  headTag.appendChild(styleLink);
 }
 
 function setSessionID() {

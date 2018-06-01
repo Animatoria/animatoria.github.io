@@ -1,5 +1,7 @@
 window.onunload = function() {location.reload(true);};
 
+var applicationVersion = 1
+
 var k = 0;
 var storedCard = [];
 var card = [];
@@ -28,7 +30,7 @@ rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
 var deviceBrowserType = detect.parse(navigator.userAgent);
 var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
 deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
-os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version);
+os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
 setCardProperties();
 

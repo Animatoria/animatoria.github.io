@@ -331,18 +331,22 @@ function setCardProperties() {
       if (deviceBrowserType.os.family == 'Android') letterWidth++;
       if (rubberBodyElementWidth < 830) {
         AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
+        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth + 26;
       } else if (rubberBodyElementWidth < 1230) {
         AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * letterWidth));
+        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
       } else {
         AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
+        rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
       }
     } else {
       styleLink.href = 'styleMobile.css';
       AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
+      rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
     }
+    document.querySelector('.body').style.width = rubberBodyElementWidth + 'px';
+    document.querySelector('header').style.width = rubberBodyElementWidth + 'px';
     headTag.appendChild(styleLink);
-    console.log(AllCardsProperties.colWidth);
-    console.log(rubberBodyElement.clientWidth);
 }
 
 function setSessionID() {

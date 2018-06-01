@@ -319,15 +319,28 @@ function getChoosableTheme(i) {
   }
 }
 
-function setCardWidth() {
+function setCardProperties() {
   var rubberBodyElementWidth = rubberBodyElement.clientWidth;
-  if (rubberBodyElementWidth < 830) {
-    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / 18);
-  } else if (rubberBodyElementWidth < 1230) {
-    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * 18));
-  } else {
-    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * 18));
-  }
+    var headTag = document.querySelector('head');
+    var styleLink = document.createElement('link');
+    styleLink.type = 'text/css';
+    styleLink.rel = 'stylesheet';
+    if (deviceBrowserType.device.type == 'Desktop') {
+      styleLink.href = 'styleDesktop.css';
+      if (rubberBodyElementWidth < 830) {
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / 18);
+      } else if (rubberBodyElementWidth < 1230) {
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * 18));
+      } else {
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * 18));
+      }
+    } else {
+      styleLink.href = 'styleMobile.css';
+      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 31);
+    }
+    headTag.appendChild(styleLink);
+    console.log(AllCardsProperties.colWidth);
+    console.log(rubberBodyElement.clientWidth);
 }
 
 function setSessionID() {

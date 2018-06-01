@@ -8,7 +8,6 @@
     }
 
     div.body {
-      display: block;
       margin: auto;
       width: 90%;
     }
@@ -24,7 +23,6 @@
 
     textarea {
       outline: none;
-      font-size: 33px;
       display: block;
       resize: none;
       backface-visibility: hidden;

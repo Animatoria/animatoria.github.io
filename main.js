@@ -25,7 +25,12 @@ StoredCardProperties.prototype = AllCardsProperties;
 var rubberBodyElement = document.querySelector('.rubberBody');
 rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
 
-setCardWidth();
+var deviceBrowserType = detect.parse(navigator.userAgent);
+var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
+deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
+os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version);
+
+setCardProperties();
 
 var currentDate = new Date();
 var currentDateToLocaleDateString = currentDate.toLocaleDateString();
@@ -54,10 +59,5 @@ mainDateButton.onclick = changeMainDate;
 
 var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
 clearLocalStorageButton.onclick = function() {localStorage.clear()};
-
-var deviceBrowserType = detect.parse(navigator.userAgent);
-var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
-deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
-os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version);
 
 rubberBodyElement.style.backgroundColor = '#dfd';

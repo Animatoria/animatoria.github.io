@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 1
+var applicationVersion = 2
 
 var k = 0;
 var storedCard = [];

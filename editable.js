@@ -352,8 +352,8 @@ function setCardProperties() {
     rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
     extender = 5;
   }
-  document.querySelector('.body').style.width = androidExtender + rubberBodyElementWidth + 'px';
-  document.querySelector('header').style.width = androidExtender + rubberBodyElementWidth + 'px';
+  document.querySelector('.body').style.width = extender + rubberBodyElementWidth + 'px';
+  document.querySelector('header').style.width = extender + rubberBodyElementWidth + 'px';
   headTag.appendChild(styleLink);
 }
 

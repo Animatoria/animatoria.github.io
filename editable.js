@@ -330,11 +330,11 @@ function setCardProperties() {
       var letterWidth = 18;
       if (deviceBrowserType.os.family == 'Android') letterWidth++;
       if (rubberBodyElementWidth < 830) {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / 18);
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
       } else if (rubberBodyElementWidth < 1230) {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * 18));
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * letterWidth));
       } else {
-        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * 18));
+        AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
       }
     } else {
       styleLink.href = 'styleMobile.css';

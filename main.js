@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 8;
+var applicationVersion = 9;
 
 var k = 0;
 var storedCard = [];
@@ -32,7 +32,6 @@ deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserTy
 os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
 setCardProperties();
-onresize = setCardProperties;
 
 var currentDate = new Date();
 var currentDateToLocaleDateString = currentDate.toLocaleDateString();

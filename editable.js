@@ -45,7 +45,7 @@ function addHTMLElements(e) {
   e.zoomer.appendChild(e.flipper);
   e.flipper.appendChild(e.faceArea);
   e.flipper.appendChild(e.backArea);
-  e.flipper.style.transform = 'rotateY(0deg)';
+  if (!e.cardSide) e.flipper.style.transform = 'rotateY(180deg)';
   e.faceArea.cols = e.colWidth;
   e.backArea.cols = e.colWidth;
   e.faceArea.rows = e.faceAreaHeight > e.backAreaHeight ? e.faceAreaHeight : e.backAreaHeight;
@@ -330,6 +330,7 @@ function setCardProperties() {
   styleLink.type = 'text/css';
   styleLink.rel = 'stylesheet';
   if (deviceBrowserType.device.type == 'Desktop') {
+    onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
     var letterWidth = 18;
     if (deviceBrowserType.browser.family == 'Edge') {
@@ -339,6 +340,7 @@ function setCardProperties() {
       extender = 5;
     }
     if (deviceBrowserType.os.family == 'Android') {
+      onresize = function() {};
       letterWidth++;
       extender = 20;
     }
@@ -414,7 +416,6 @@ function refreshCardsOnTable() {
   deleteAllCards();
     for (var i in storedCard) {
       addHTMLElements(card[i]);
-      card[i].cardSide = 1;
       card[i].zoomer.style.animation = '';
     }
 }

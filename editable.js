@@ -9,20 +9,22 @@ function CardProperties(k, freshCardSwitch) {
   this.cardSide = 1;
   this.freshCardSwitch = freshCardSwitch;
   this.div = document.createElement('div');
-  this.flipper = document.createElement('div');
-  this.zoomer = document.createElement('div');
-  this.button = document.createElement('input');
-  this.faceArea = document.createElement('textarea');
-  this.backArea = document.createElement('textarea');
+  this.divCardMenu = document.createElement('div');
   this.label = document.createElement('label');
   this.input = document.createElement('input');
   this.node = document.createTextNode('Completed')
+  this.button = document.createElement('input');
+  this.zoomer = document.createElement('div');
+  this.flipper = document.createElement('div');
+  this.faceArea = document.createElement('textarea');
+  this.backArea = document.createElement('textarea');
   this.backAreaHeight = 1;
   this.faceAreaHeight = AllCardsProperties.editableRows;
 }
 
 function addHTMLElements(e) {
   e.div.className = 'card';
+  e.divCardMenu.className = 'cardMenu';
   e.zoomer.className = 'zoomer'
   e.flipper.className = 'flipper';
   e.backArea.className = 'backArea';
@@ -33,8 +35,9 @@ function addHTMLElements(e) {
   e.button.value = 'X';
   rubberBodyElement.appendChild(e.div);
   if (!readOnlyMode) {
-    e.div.appendChild(e.label);
-    e.div.appendChild(e.button);
+    e.div.appendChild(e.divCardMenu);
+    e.divCardMenu.appendChild(e.label);
+    e.divCardMenu.appendChild(e.button);
     e.label.appendChild(e.input);
     e.label.appendChild(e.node);
   }
@@ -330,7 +333,7 @@ function setCardProperties() {
     styleLink.href = 'styleDesktop.css';
     var letterWidth = 18;
     if (deviceBrowserType.browser.family == 'Edge') {
-      extender = 5;
+      extender = 10;
     }
     if (deviceBrowserType.browser.family == 'IE') {
       extender = 5;

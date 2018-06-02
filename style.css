@@ -16,6 +16,26 @@
       margin: auto;
     }
 
+    div.card {
+      background-color: #ddf;
+      position: relative;
+      margin: 2px;
+      display: inline-block;
+      perspective: 1000px;
+    }
+
+    div.cardMenu {
+      width: 100%;
+    }
+
+    input.deleteButton {
+      float: right;
+    }
+
+    input.completed {
+
+    }
+
     div.zoomer {
       perspective: 1000px;
     }
@@ -36,14 +56,6 @@
       transform: rotateY(180deg);
       position: absolute;
       top: 0;
-    }
-
-    div.card {
-      background-color: #ddf;
-      position: relative;
-      margin: 2px;
-      display: inline-block;
-      perspective: 1000px;
     }
 
     div.header {
@@ -69,16 +81,8 @@
       border: 1px solid black;
     }
 
-    input.deleteButton {
-      float: right;
-    }
-
     input.addNewCard {
       
-    }
-
-    input.completed {
-
     }
 
     header {

@@ -337,7 +337,7 @@ function setCardProperties() {
     }
     if (deviceBrowserType.os.family == 'Android') {
       letterWidth++;
-      extender = 10;
+      extender = 20;
     }
     if (rubberBodyElementWidth < 830) {
       AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);

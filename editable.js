@@ -30,18 +30,18 @@ function addHTMLElements(e) {
   e.input.type = 'checkbox';
   e.button.className = 'deleteButton';
   e.button.type = 'button';
-  e.button.value = 'Delete';
+  e.button.value = 'X';
   rubberBodyElement.appendChild(e.div);
-  e.div.appendChild(e.zoomer);
-  e.zoomer.appendChild(e.flipper);
-  e.flipper.appendChild(e.faceArea);
-  e.flipper.appendChild(e.backArea);
   if (!readOnlyMode) {
     e.div.appendChild(e.label);
     e.div.appendChild(e.button);
     e.label.appendChild(e.input);
     e.label.appendChild(e.node);
   }
+  e.div.appendChild(e.zoomer);
+  e.zoomer.appendChild(e.flipper);
+  e.flipper.appendChild(e.faceArea);
+  e.flipper.appendChild(e.backArea);
   e.flipper.style.transform = 'rotateY(0deg)';
   e.faceArea.cols = e.colWidth;
   e.backArea.cols = e.colWidth;
@@ -320,7 +320,7 @@ function getChoosableTheme(i) {
 }
 
 function setCardProperties() {
-  var rubberBodyElementWidth = rubberBodyElement.clientWidth;
+  var divOxygenWidth = document.querySelector('.oxygen').clientWidth;
   var extender = 0;
   var headTag = document.querySelector('head');
   var styleLink = document.createElement('link');
@@ -339,25 +339,27 @@ function setCardProperties() {
       letterWidth++;
       extender = 20;
     }
-    if (rubberBodyElementWidth < 830) {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 26) / letterWidth);
-      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth + 26;
-    } else if (rubberBodyElementWidth < 1230) {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 2 - (2 * 26)) / (2 * letterWidth));
-      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
+    if (divOxygenWidth < 830) {
+      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 26) / letterWidth);
+      divOxygenWidth = AllCardsProperties.colWidth * letterWidth + 26;
+    } else if (divOxygenWidth < 1230) {
+      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 2 - (2 * 26)) / (2 * letterWidth));
+      divOxygenWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
     } else {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
-      rubberBodyElementWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
+      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
+      divOxygenWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
     }
   } else {
     styleLink.href = 'styleMobile.css';
-    AllCardsProperties.colWidth = Math.floor((rubberBodyElementWidth - 36) / 32);
-    rubberBodyElementWidth = AllCardsProperties.colWidth * 32 + 36;
+    AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 36) / 32);
+    divOxygenWidth = AllCardsProperties.colWidth * 32 + 36;
     extender = 5;
   }
-  document.querySelector('.body').style.width = extender + rubberBodyElementWidth + 'px';
-  document.querySelector('header').style.width = extender + rubberBodyElementWidth + 'px';
+  document.querySelector('.body').style.width = extender + divOxygenWidth + 'px';
+  document.querySelector('header').style.width = extender + divOxygenWidth + 'px';
   headTag.appendChild(styleLink);
+  rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
+  refreshCardsOnTable();
 }
 
 function setSessionID() {
@@ -398,16 +400,20 @@ function readOnlyModeOff() {
     readOnlyModeButton.onclick = readOnlyModeOn;
     readOnlyModeButton.value = 'Read only mode';
     readOnlyMode = false;
-    deleteAllCards();
+    refreshCardsOnTable();
+    changeDivClassCardProperties('#ddf')
+  } else {
+    location.reload(true);
+  }
+}
+
+function refreshCardsOnTable() {
+  deleteAllCards();
     for (var i in storedCard) {
       addHTMLElements(card[i]);
       card[i].cardSide = 1;
       card[i].zoomer.style.animation = '';
     }
-    changeDivClassCardProperties('#ddf')
-  } else {
-    location.reload(true);
-  }
 }
 
 function changeDivClassCardProperties(color) {

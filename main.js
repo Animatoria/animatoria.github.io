@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 6
+var applicationVersion = 7;
 
 var k = 0;
 var storedCard = [];
@@ -25,7 +25,6 @@ var zIndexCounter = 1;
 StoredCardProperties.prototype = AllCardsProperties;
 
 var rubberBodyElement = document.querySelector('.rubberBody');
-rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
 
 var deviceBrowserType = detect.parse(navigator.userAgent);
 var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
@@ -33,6 +32,7 @@ deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserTy
 os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
 setCardProperties();
+onresize = setCardProperties;
 
 var currentDate = new Date();
 var currentDateToLocaleDateString = currentDate.toLocaleDateString();

@@ -7,9 +7,13 @@
       width: 100%;
     }
 
+    div.oxygen {
+      width: 90%;
+      height: 40px;
+    }
+
     div.body {
       margin: auto;
-      width: 90%;
     }
 
     div.zoomer {
@@ -47,7 +51,7 @@
     }
 
     div.rubberBody {
-      margin: 40px 0 0 0;
+      margin: 0;
       background-color: #fdd;
     }
 
@@ -66,7 +70,7 @@
     }
 
     input.deleteButton {
-      display: inline-block;
+      float: right;
     }
 
     input.addNewCard {
@@ -91,6 +95,9 @@
     }
 
     @keyframes first {
+      0% {
+        transform: translateZ(0px) translateX(0px);
+      }
       50% {
         transform: translateZ(100px) translateX(5%);
       }
@@ -100,6 +107,9 @@
     }
 
     @keyframes second {
+      0% {
+        transform: translateZ(0px) translateX(0px);
+      }
       50% {
         transform: translateZ(100px) translateX(5%);
       }

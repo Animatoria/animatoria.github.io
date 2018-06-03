@@ -117,13 +117,13 @@ function textAreaSwitch(e) {
 }
 
 function rotateCardClick(e) {
+  e.zoomer.style.animation = '';
   e.div.style.zIndex = zIndexCounter;
   zIndexCounter += 1;
+  e.zoomer.style.animation = '2s zoomer';
   if (e.cardSide) {
-    e.zoomer.style.animation = '2s first';
     e.flipper.style.transform = 'rotateY(180deg)';
   } else {
-    e.zoomer.style.animation = '2s second';
     e.flipper.style.transform = 'rotateY(0deg)';
   }
   e.cardSide = e.cardSide ^ 1;

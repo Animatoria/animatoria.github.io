@@ -46,6 +46,7 @@
     }
 
     textarea {
+      font-family: consolas;
       outline: none;
       display: block;
       resize: none;
@@ -98,10 +99,7 @@
       margin: 0;  
     }
 
-    @keyframes first {
-      0% {
-        transform: translateZ(0px) translateX(0px);
-      }
+    @keyframes zoomer {
       50% {
         transform: translateZ(100px) translateX(5%);
       }
@@ -110,14 +108,7 @@
       }
     }
 
-    @keyframes second {
-      0% {
-        transform: translateZ(0px) translateX(0px);
-      }
-      50% {
-        transform: translateZ(100px) translateX(5%);
-      }
-      100% {
-        transform: translateZ(0px) translateX(0px);
-      }
+    @font-face {
+      font-family: consolas;
+      src: url(consolas.ttf);
     }

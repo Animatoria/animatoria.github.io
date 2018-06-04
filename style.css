@@ -7,7 +7,7 @@
       width: 100%;
     }
 
-    div.oxygen {
+    div.empty {
       width: 90%;
       height: 40px;
     }
@@ -17,7 +17,7 @@
     }
 
     div.card {
-      background-color: #ddf;
+      background-color: #dfd;
       position: relative;
       margin: 2px;
       display: inline-block;

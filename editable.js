@@ -40,6 +40,7 @@ function addHTMLElements(e) {
     e.divCardMenu.appendChild(e.button);
     e.label.appendChild(e.input);
     e.label.appendChild(e.node);
+    e.div.style.backgroundColor = '#ddf';
   }
   e.div.appendChild(e.zoomer);
   e.zoomer.appendChild(e.flipper);
@@ -323,7 +324,7 @@ function getChoosableTheme(i) {
 }
 
 function setCardProperties() {
-  var divOxygenWidth = document.querySelector('.oxygen').clientWidth;
+  var divWidthMeasure = document.querySelector('.empty').clientWidth;
   var extender = 0;
   var headTag = document.querySelector('head');
   var styleLink = document.createElement('link');
@@ -344,24 +345,24 @@ function setCardProperties() {
       letterWidth++;
       extender = 20;
     }
-    if (divOxygenWidth < 830) {
-      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 26) / letterWidth);
-      divOxygenWidth = AllCardsProperties.colWidth * letterWidth + 26;
-    } else if (divOxygenWidth < 1230) {
-      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 2 - (2 * 26)) / (2 * letterWidth));
-      divOxygenWidth = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
+    if (divWidthMeasure < 830) {
+      AllCardsProperties.colWidth = Math.floor((divWidthMeasure - 26) / letterWidth);
+      divWidthMeasure = AllCardsProperties.colWidth * letterWidth + 26;
+    } else if (divWidthMeasure < 1230) {
+      AllCardsProperties.colWidth = Math.floor((divWidthMeasure - 2 - (2 * 26)) / (2 * letterWidth));
+      divWidthMeasure = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
     } else {
-      AllCardsProperties.colWidth = Math.floor((divOxygenWidth - (2 * 2) - (3 * 26)) / (3 * letterWidth));
-      divOxygenWidth = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
+      AllCardsProperties.colWidth = Math.floor((divWidthMeasure - (2 * 2) - (3 * 26)) / (3 * letterWidth));
+      divWidthMeasure = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
     }
   } else {
     styleLink.href = 'styleMobile.css';
-    AllCardsProperties.colWidth = Math.floor((divOxygenWidth - 36) / 32);
-    divOxygenWidth = AllCardsProperties.colWidth * 32 + 36;
+    AllCardsProperties.colWidth = Math.floor((divWidthMeasure - 36) / 32);
+    divWidthMeasure = AllCardsProperties.colWidth * 32 + 36;
     extender = 5;
   }
-  document.querySelector('.body').style.width = extender + divOxygenWidth + 'px';
-  document.querySelector('header').style.width = extender + divOxygenWidth + 'px';
+  document.querySelector('.body').style.width = extender + divWidthMeasure + 'px';
+  document.querySelector('header').style.width = extender + divWidthMeasure + 'px';
   headTag.appendChild(styleLink);
   rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
   refreshCardsOnTable();
@@ -395,7 +396,6 @@ function readOnlyModeOn() {
   readOnlyMode = true;
   deleteAllCards();
   getStoredCards();
-  changeDivClassCardProperties('#dfd')
 }
 
 function readOnlyModeOff() {
@@ -406,7 +406,6 @@ function readOnlyModeOff() {
     readOnlyModeButton.value = 'Read only mode';
     readOnlyMode = false;
     refreshCardsOnTable();
-    changeDivClassCardProperties('#ddf')
   } else {
     location.reload(true);
   }
@@ -418,11 +417,4 @@ function refreshCardsOnTable() {
       addHTMLElements(card[i]);
       card[i].zoomer.style.animation = '';
     }
-}
-
-function changeDivClassCardProperties(color) {
-  var divCard = document.querySelectorAll('div.card');
-  for (var i = 0; i < divCard.length; i++) {
-    divCard[i].style.backgroundColor = color;
-  }
 }

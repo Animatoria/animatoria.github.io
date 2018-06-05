@@ -103,7 +103,7 @@
 
     @keyframes forward {
       50% {
-        transform: translateZ(100px) translateX(5%);
+        transform: translateZ(200px) translateX(10%) translateY(10%);
       }
       100% {
         transform: translateZ(0px) translateX(0px);
@@ -112,7 +112,7 @@
 
     @keyframes backward {
       50% {
-        transform: translateZ(100px) translateX(5%);
+        transform: translateZ(200px) translateX(10%) translateY(10%);
       }
       100% {
         transform: translateZ(0px) translateX(0px);

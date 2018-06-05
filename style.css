@@ -50,6 +50,7 @@
     }
 
     textarea {
+      font-size: 55px;
       font-family: consolas;
       outline: none;
       display: block;

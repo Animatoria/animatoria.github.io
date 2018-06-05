@@ -331,7 +331,6 @@ function setCardProperties() {
   var styleLink = document.createElement('link');
   styleLink.type = 'text/css';
   styleLink.rel = 'stylesheet';
-  if (deviceBrowserType.device.type == 'Desktop') {
     onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
     var textAreaExtender = 23;
@@ -354,11 +353,6 @@ function setCardProperties() {
       AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
       rubberBodyWidthMeasure = AllCardsProperties.colWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
     }
-  } else {
-    styleLink.href = 'styleMobile.css';
-    AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - 10) / 30);
-    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 30 + 10 + 4;
-  }
   document.querySelector('.body').style.width = extender + rubberBodyWidthMeasure + 'px';
   document.querySelector('header').style.width = extender + rubberBodyWidthMeasure + 'px';
   headTag.appendChild(styleLink);

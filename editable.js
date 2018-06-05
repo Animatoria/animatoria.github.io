@@ -336,7 +336,7 @@ function setCardProperties() {
     styleLink.href = 'styleDesktop.css';
     var textAreaExtender = 23;
     if (deviceBrowserType.browser.family == 'Edge') {
-      textAreaExtender = 26;
+      textAreaExtender = 27;
     }
     if (deviceBrowserType.browser.family == 'IE') {
     }

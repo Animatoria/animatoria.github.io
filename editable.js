@@ -357,7 +357,7 @@ function setCardProperties() {
   } else {
     styleLink.href = 'styleMobile.css';
     AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - 10) / 30);
-    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 3 + 10 + 4;
+    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 30 + 10 + 4;
   }
   document.querySelector('.body').style.width = extender + rubberBodyWidthMeasure + 'px';
   document.querySelector('header').style.width = extender + rubberBodyWidthMeasure + 'px';

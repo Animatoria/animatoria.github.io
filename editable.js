@@ -356,9 +356,8 @@ function setCardProperties() {
     }
   } else {
     styleLink.href = 'styleMobile.css';
-    //AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4) / 31);
-    AllCardsProperties.colWidth = 12;
-    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 31 + 4;
+    AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - 10) / 30);
+    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 3 + 10 + 4;
   }
   document.querySelector('.body').style.width = extender + rubberBodyWidthMeasure + 'px';
   document.querySelector('header').style.width = extender + rubberBodyWidthMeasure + 'px';

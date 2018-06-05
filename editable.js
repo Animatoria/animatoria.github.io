@@ -334,30 +334,31 @@ function setCardProperties() {
   if (deviceBrowserType.device.type == 'Desktop') {
     onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
-    var letterWidth = 18;
+    var textAreaExtender = 23;
     if (deviceBrowserType.browser.family == 'Edge') {
-      //extender = 10;
+      textAreaExtender = 26;
     }
     if (deviceBrowserType.browser.family == 'IE') {
-      //extender = 5;
     }
     if (deviceBrowserType.os.family == 'Android') {
+      textAreaExtender = 12;
       onresize = function() {};
     }
     if (rubberBodyWidthMeasure < 830) {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 26) / letterWidth);
-      rubberBodyWidthMeasure = AllCardsProperties.colWidth * letterWidth + 26;
+      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - textAreaExtender) / 18);
+      rubberBodyWidthMeasure = AllCardsProperties.colWidth * 18 + textAreaExtender + 4;
     } else if (rubberBodyWidthMeasure < 1230) {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 2 - (2 * 26)) / (2 * letterWidth));
-      rubberBodyWidthMeasure = AllCardsProperties.colWidth * letterWidth * 2 + 2 * 26 + 2;
+      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - 4 - (2 * textAreaExtender)) / (2 * 18));
+      rubberBodyWidthMeasure = AllCardsProperties.colWidth * 18 * 2 + 2 * textAreaExtender + 4 + 4;
     } else {
-      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - (2 * 2) - (3 * 26)) / (3 * letterWidth));
-      rubberBodyWidthMeasure = AllCardsProperties.colWidth * letterWidth * 3 + 3 * 26 + 2 * 2;
+      AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
+      rubberBodyWidthMeasure = AllCardsProperties.colWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
     }
   } else {
     styleLink.href = 'styleMobile.css';
-    AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure) / 31);
-    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 31;
+    //AllCardsProperties.colWidth = Math.floor((rubberBodyWidthMeasure - 4) / 31);
+    AllCardsProperties.colWidth = 10;
+    rubberBodyWidthMeasure = AllCardsProperties.colWidth * 31 + 4;
   }
   document.querySelector('.body').style.width = extender + rubberBodyWidthMeasure + 'px';
   document.querySelector('header').style.width = extender + rubberBodyWidthMeasure + 'px';

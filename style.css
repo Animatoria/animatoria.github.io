@@ -101,7 +101,7 @@
       display: block;
     }
 
-    @keyframes zoomer {
+    @keyframes forward {
       50% {
         transform: translateZ(100px) translateX(5%);
       }
@@ -109,6 +109,15 @@
         transform: translateZ(0px) translateX(0px);
       }
     }
+
+    @keyframes backward {
+      50% {
+        transform: translateZ(100px) translateX(5%);
+      }
+      100% {
+        transform: translateZ(0px) translateX(0px);
+      }
+    }    
 
     @font-face {
       font-family: consolas;

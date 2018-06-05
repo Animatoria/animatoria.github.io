@@ -27,11 +27,12 @@ StoredCardProperties.prototype = AllCardsProperties;
 var rubberBodyElement = document.querySelector('.rubberBody');
 
 var deviceBrowserType = detect.parse(navigator.userAgent);
-var deviceBrowserTypeParagraph = document.querySelector('.deviceBrowserType');
-deviceBrowserTypeParagraph.innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
+document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
 os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
 setCardProperties();
+
+document.querySelector('.masterInformation').innerHTML = rubberBodyElement.clientWidth;
 
 var currentDate = new Date();
 var currentDateToLocaleDateString = currentDate.toLocaleDateString();

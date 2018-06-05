@@ -55,6 +55,7 @@ function addHTMLElements(e) {
   e.backArea.value = e.backAreaText;
   e.input.onchange = function() {textAreaSwitch(e)};
   e.button.onclick = function() {deleteCard(e)};
+  document.querySelector('.masterInformation').appendChild(document.createTextNode('|' + e.faceArea.offsetWidth));
 }
 
 function textAreaSwitch(e) {

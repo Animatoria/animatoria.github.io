@@ -99,6 +99,10 @@
       margin: 0;  
     }
 
+    p.masterInformation {
+      display: block;
+    }
+
     @keyframes zoomer {
       50% {
         transform: translateZ(100px) translateX(5%);

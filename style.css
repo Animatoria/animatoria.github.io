@@ -11,11 +11,6 @@
       width: 100%;
     }
 
-    div.empty {
-      width: 90%;
-      height: 40px;
-    }
-
     div.body {
       margin: auto;
     }
@@ -50,6 +45,7 @@
     }
 
     textarea {
+      font-size: 33px;
       font-family: consolas;
       outline: none;
       display: block;

@@ -325,14 +325,21 @@ function getChoosableTheme(i) {
 }
 
 function setCardProperties() {
-  var rubberBodyWidthMeasure = document.querySelector('.empty').clientWidth;
+  var rubberBodyWidthMeasure = document.querySelector('.empty');
   var extender = 0;
   var headTag = document.querySelector('head');
   var styleLink = document.createElement('link');
   styleLink.type = 'text/css';
   styleLink.rel = 'stylesheet';
+  if (deviceBrowserType.device.type == 'Desktop') {
     onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
+    rubberBodyWidthMeasure.style.width = '90%';
+  } else {
+    styleLink.href = 'styleMobile.css';
+    rubberBodyWidthMeasure.style.width = '100%';
+  }
+  rubberBodyWidthMeasure = rubberBodyWidthMeasure.clientWidth;
     var textAreaExtender = 23;
     if (deviceBrowserType.browser.family == 'Edge') {
       textAreaExtender = 27;

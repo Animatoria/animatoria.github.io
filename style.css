@@ -89,7 +89,6 @@
     header {
       z-index: 1048575;
       top : 0px;
-      width: 90%;
       position: fixed;
       background-color: #fdd;
     }

@@ -11,11 +11,11 @@
       width: 100%;
     }
 
-    div.body {
+    .body {
       margin: auto;
     }
 
-    div.card {
+    .card {
       background-color: #dfd;
       position: relative;
       margin: 2px;
@@ -23,23 +23,23 @@
       perspective: 1000px;
     }
 
-    div.cardMenu {
+    .cardMenu {
       width: 100%;
     }
 
-    input.deleteButton {
+    .deleteButton {
       float: right;
     }
 
-    input.completed {
+    .completed {
 
     }
 
-    div.zoomer {
+    .zoomer {
       perspective: 1000px;
     }
 
-    div.flipper {
+    .flipper {
       transition: 2s;
       transform-style: preserve-3d;
     }
@@ -53,36 +53,44 @@
       backface-visibility: hidden;
     }
 
-    textarea.backArea {
+    .backArea {
       transform: rotateY(180deg);
       position: absolute;
       top: 0;
     }
 
-    div.header {
+    .header {
       margin: 0;
     }
 
-    div.rubberBody {
+    .headerItem {
+      font-size: 30px;
+    }
+
+    .buttonImg {
+      margin: 0 18px 0 12px;
+    }
+
+    .rubberBody {
       margin: 0;
       background-color: #fdd;
     }
 
-    div.storedDate {
+    .storedDate {
       height: 30px;
       background-color: #ddf;
       width: 30%;
       border: 1px solid black;
     }
 
-    div.storedTheme {
+    .storedTheme {
       height: 30px;
       background-color: #ddf;
       width: 30%;
       border: 1px solid black;
     }
 
-    input.addNewCard {
+    .addNewCard {
     }
 
     header {
@@ -97,7 +105,7 @@
       margin: 0;  
     }
 
-    p.masterInformation {
+    .masterInformation {
       display: block;
     }
 

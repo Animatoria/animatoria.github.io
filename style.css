@@ -65,11 +65,34 @@
 
     .headerItem {
       font-size: 30px;
+      border: none;
+      background-color: #eee;
+      height: 50px;
+      width: 300px;
+      display: inline-block;
+      outline: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    .mainTheme {
+      width: 230px;
+      font-size: 30px;
+      border: none;
+      background-color: #eee;
+      height: 50px;
+      outline: none;
+      padding: 0;
     }
 
     .buttonImg {
-      margin: 0 18px 0 12px;
+      margin: 7px 0 0 18px;
       height: 20px;
+      float: left;
+    }
+
+    .themeIcon {
+      margin-top: 15px;
     }
 
     .rubberBody {

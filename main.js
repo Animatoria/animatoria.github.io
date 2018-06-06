@@ -59,6 +59,9 @@ setStoredMainDate();
 var mainDateButton = document.querySelector('.mainDateButton');
 mainDateButton.onclick = changeMainDate;
 
+var mainDateLog = document.querySelector('.mainDateLog');
+mainDateLog.onclick = changeMainDate;
+
 var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
 clearLocalStorageButton.onclick = function() {localStorage.clear()};
 

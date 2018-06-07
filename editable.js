@@ -55,7 +55,7 @@ function addHTMLElements(e) {
   e.backArea.value = e.backAreaText;
   e.input.onchange = function() {textAreaSwitch(e)};
   e.button.onclick = function() {deleteCard(e)};
-  document.querySelector('.masterInformation').appendChild(document.createTextNode('|' + e.faceArea.offsetWidth));
+  //document.querySelector('.masterInformation').appendChild(document.createTextNode('|' + e.faceArea.offsetWidth));
 }
 
 function textAreaSwitch(e) {
@@ -299,12 +299,16 @@ function mainThemeChange() {
   setStoredMainDate();
   newCardButton.style.visibility = 'visible';
   mainDateButton.style.visibility = 'visible';
+  mainDateLog.style.visibility = 'visible';
+  readOnlyModeButton.style.visibility = 'visible';
   newThemeSwitch = localStorage.getItem('storedMainDate_' + mainTheme.value) ? false : true
 }
 
 function mainThemeMenu() {
   mainDateButton.style.visibility = 'hidden';
+  mainDateLog.style.visibility = 'hidden';
   newCardButton.style.visibility = 'hidden';
+  readOnlyModeButton.style.visibility = 'hidden';
   mainTheme.select();
   deleteAllCards();
   for (var i in storedMainTheme) {
@@ -389,9 +393,13 @@ function readOnlyModeOn() {
   card = [];
   newCardButton.onclick = function() {alert('In case if you opened Rotation Cards application in more then one window\
  at the same time, only last opened app can apply your changes. In another window you can read only your cards.')};
-  newCardButton.value = 'Read only mode?';
+  var childNodes = newCardButton.childNodes;
+  childNodes[1].innerHTML = 'Read only mode?';
+  childNodes[0].src = 'readonlymode.svg';
   readOnlyModeButton.onclick = readOnlyModeOff;
-  readOnlyModeButton.value = 'Card edit mode';
+  childNodes = readOnlyModeButton.childNodes;
+  childNodes[1].innerHTML = 'Card edit mode';
+  childNodes[0].src = 'pencil.svg';
   readOnlyMode = true;
   deleteAllCards();
   getStoredCards();
@@ -400,9 +408,13 @@ function readOnlyModeOn() {
 function readOnlyModeOff() {
   if (localStorage.getItem('') == thisSessionID) {
     newCardButton.onclick = addNewCard;
-    newCardButton.value = 'Add new card';
+    var childNodes = newCardButton.childNodes;
+    childNodes[1].innerHTML = 'Add new card';
+    childNodes[0].src = 'addnewcard.svg';
     readOnlyModeButton.onclick = readOnlyModeOn;
-    readOnlyModeButton.value = 'Read only mode';
+    childNodes = readOnlyModeButton.childNodes;
+    childNodes[1].innerHTML = 'Read only mode';
+    childNodes[0].src = 'readonlymode.svg';
     readOnlyMode = false;
     refreshCardsOnTable();
   } else {

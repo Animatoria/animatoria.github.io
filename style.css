@@ -73,10 +73,11 @@
       outline: none;
       padding: 0;
       text-align: center;
+      cursor: pointer;
     }
 
     .mainTheme {
-      width: 230px;
+      width: 235px;
       font-size: 30px;
       border: none;
       background-color: #eee;

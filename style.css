@@ -94,10 +94,16 @@
 
     .buttonImgMobile {
       display: none;
+      padding: 15px;
+      background-color: #eee;
     }
 
     .themeIcon {
       margin-top: 15px;
+    }
+
+    .bred{
+      cursor: pointer;
     }
 
     .rubberBody {

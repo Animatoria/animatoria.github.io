@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 24;
+var applicationVersion = 25;
 
 var k = 0;
 var storedCard = [];
@@ -62,7 +62,7 @@ mainDateButton.onclick = changeMainDate;
 var mainDateLog = document.querySelector('.mainDateLog');
 mainDateLog.onclick = changeMainDate;
 
-var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
-clearLocalStorageButton.onclick = function() {localStorage.clear()};
+//var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
+//clearLocalStorageButton.onclick = function() {localStorage.clear()};
 
 rubberBodyElement.style.backgroundColor = '#dfd';

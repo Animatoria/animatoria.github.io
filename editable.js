@@ -436,12 +436,11 @@ animatoriaButton.onclick = mobileMenu;
 
 function mobileMenu() {
   var childNodes = document.querySelector('.header').childNodes;
-  var delta = 1;
-  console.log(childNodes[11].style.top);
-  if (childNodes[11].style.top == '300px') {
+  var delta = 0;
+  if (childNodes[11].style.top == '250px') {
     for (var i = 1; i < 12; i += 2) {
       childNodes[i].style.top = -50 + 'px';
-      childNodes[i].style.transitionDelay = (7 - delta) / 8 + 's';
+      childNodes[i].style.transitionDelay = (6 - delta) / 8 + 's';
       delta += 1;
     }
   } else {
@@ -462,3 +461,18 @@ function setMobileMenu() {
     delta += 1;
   }
 }
+var ursus = true;
+document.querySelector('.bred').onclick = function() {
+  if (ursus) {
+    document.querySelector('.jolie1').beginElement();
+    document.querySelector('.jolie2').beginElement();
+    document.querySelector('.jolie3').beginElement();
+    ursus = false;
+  } else {
+    document.querySelector('.jolie4').beginElement();
+    document.querySelector('.jolie5').beginElement();
+    document.querySelector('.jolie6').beginElement();
+    ursus = true;
+  }
+  mobileMenu();
+};

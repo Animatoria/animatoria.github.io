@@ -335,7 +335,7 @@ function setCardProperties() {
   var styleLink = document.createElement('link');
   styleLink.type = 'text/css';
   styleLink.rel = 'stylesheet';
-  if (deviceBrowserType.device.type == 'Desktop') {
+  if (deviceBrowserType.device.type == 'dDesktop') {
     onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
     rubberBodyWidthMeasure.style.width = '90%';
@@ -432,9 +432,22 @@ function refreshCardsOnTable() {
 
 var animatoriaButton = document.querySelector('.animatoria');
 setMobileMenu();
+var ursus = true;
+document.querySelector('.bred').onclick = mobileMenu;
 animatoriaButton.onclick = mobileMenu;
 
 function mobileMenu() {
+  if (ursus) {
+    document.querySelector('.jolie1').beginElement();
+    document.querySelector('.jolie2').beginElement();
+    document.querySelector('.jolie3').beginElement();
+    ursus = false;
+  } else {
+    document.querySelector('.jolie4').beginElement();
+    document.querySelector('.jolie5').beginElement();
+    document.querySelector('.jolie6').beginElement();
+    ursus = true;
+  }
   var childNodes = document.querySelector('.header').childNodes;
   var delta = 0;
   if (childNodes[11].style.top == '250px') {
@@ -461,18 +474,3 @@ function setMobileMenu() {
     delta += 1;
   }
 }
-var ursus = true;
-document.querySelector('.bred').onclick = function() {
-  if (ursus) {
-    document.querySelector('.jolie1').beginElement();
-    document.querySelector('.jolie2').beginElement();
-    document.querySelector('.jolie3').beginElement();
-    ursus = false;
-  } else {
-    document.querySelector('.jolie4').beginElement();
-    document.querySelector('.jolie5').beginElement();
-    document.querySelector('.jolie6').beginElement();
-    ursus = true;
-  }
-  mobileMenu();
-};

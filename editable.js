@@ -335,7 +335,7 @@ function setCardProperties() {
   var styleLink = document.createElement('link');
   styleLink.type = 'text/css';
   styleLink.rel = 'stylesheet';
-  if (deviceBrowserType.device.type == 'dDesktop') {
+  if (deviceBrowserType.device.type == 'Desktop') {
     onresize = setCardProperties;
     styleLink.href = 'styleDesktop.css';
     rubberBodyWidthMeasure.style.width = '90%';

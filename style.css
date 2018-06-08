@@ -104,7 +104,7 @@
 
     .bred{
       cursor: pointer;
-      z-index: 1000;
+      z-index: 10;
     }
 
     .rubberBody {

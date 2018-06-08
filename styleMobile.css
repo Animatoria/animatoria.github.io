@@ -1,12 +1,23 @@
 .empty {
+  height: 70px;
 }
 
 .mobile {
-  margin: auto;
-  display: block;
+  width: 100%;
+  position: absolute;
+  top: -50px; 
+}
+
+.animatoria {
+  top: 0;
+  z-index: 11;
 }
 
 header {
-  position: static;
+}
+
+.buttonImgMobile {
+  display: inline-block;
+  height: 20px;
 }
 

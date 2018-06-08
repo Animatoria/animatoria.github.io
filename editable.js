@@ -18,7 +18,7 @@ function CardProperties(k, freshCardSwitch) {
   this.flipper = document.createElement('div');
   this.faceArea = document.createElement('textarea');
   this.backArea = document.createElement('textarea');
-  this.backAreaHeight = 1;
+  this.backAreaHeight = AllCardsProperties.editableRows;
   this.faceAreaHeight = AllCardsProperties.editableRows;
 }
 
@@ -428,4 +428,37 @@ function refreshCardsOnTable() {
       addHTMLElements(card[i]);
       card[i].zoomer.style.animation = '';
     }
+}
+
+var animatoriaButton = document.querySelector('.animatoria');
+setMobileMenu();
+animatoriaButton.onclick = mobileMenu;
+
+function mobileMenu() {
+  var childNodes = document.querySelector('.header').childNodes;
+  var delta = 1;
+  console.log(childNodes[11].style.top);
+  if (childNodes[11].style.top == '300px') {
+    for (var i = 1; i < 12; i += 2) {
+      childNodes[i].style.top = -50 + 'px';
+      childNodes[i].style.transitionDelay = (7 - delta) / 8 + 's';
+      delta += 1;
+    }
+  } else {
+    for (var i = 1; i < 12; i += 2) {
+      childNodes[i].style.top = delta * 50 + 'px';
+      childNodes[i].style.transitionDelay = '0s';
+      delta += 1;
+    }
+  }
+}
+
+function setMobileMenu() {
+  var delta = 1;
+  for (var i = 1; i < 12; i += 2) {
+    var childNodes = document.querySelector('.header').childNodes;
+    childNodes[i].style.transition = 'top ' + delta / 8 + 's linear';
+    childNodes[i].style.zIndex = 10 - delta;
+    delta += 1;
+  }
 }

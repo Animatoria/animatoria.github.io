@@ -2,21 +2,20 @@
   height: 70px;
 }
 
-.mobile {
+.mobileHeaderButton {
   width: 100%;
   position: absolute;
   top: -50px; 
 }
 
-.animatoria {
+.animatoriaButton {
 }
 
-header {
-}
-
-.buttonImgMobile {
+.buttonMobile {
   display: inline-block;
   height: 20px;
+  padding: 15px;
+  background-color: #eee;
 }
 
 .header {
@@ -27,3 +26,8 @@ header {
 .addNewCard {
   border-top: 1px solid #000;
 }
+
+.burgerMenu{
+      cursor: pointer;
+      z-index: 10;
+    }

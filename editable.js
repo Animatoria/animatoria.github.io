@@ -365,7 +365,7 @@ function setCardProperties() {
       rubberBodyWidthMeasure = AllCardsProperties.colWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
     }
   document.querySelector('.body').style.width = extender + rubberBodyWidthMeasure + 'px';
-  document.querySelector('header').style.width = extender + rubberBodyWidthMeasure + 'px';
+  document.querySelector('.header').style.width = extender + rubberBodyWidthMeasure + 'px';
   headTag.appendChild(styleLink);
   rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
   refreshCardsOnTable();
@@ -428,49 +428,4 @@ function refreshCardsOnTable() {
       addHTMLElements(card[i]);
       card[i].zoomer.style.animation = '';
     }
-}
-
-var animatoriaButton = document.querySelector('.animatoria');
-setMobileMenu();
-var ursus = true;
-document.querySelector('.bred').onclick = mobileMenu;
-animatoriaButton.onclick = mobileMenu;
-
-function mobileMenu() {
-  if (ursus) {
-    document.querySelector('.jolie1').beginElement();
-    document.querySelector('.jolie2').beginElement();
-    document.querySelector('.jolie3').beginElement();
-    ursus = false;
-  } else {
-    document.querySelector('.jolie4').beginElement();
-    document.querySelector('.jolie5').beginElement();
-    document.querySelector('.jolie6').beginElement();
-    ursus = true;
-  }
-  var childNodes = document.querySelector('.header').childNodes;
-  var delta = 0;
-  if (childNodes[11].style.top == '250px') {
-    for (var i = 1; i < 12; i += 2) {
-      childNodes[i].style.top = -50 + 'px';
-      childNodes[i].style.transitionDelay = (6 - delta) / 8 + 's';
-      delta += 1;
-    }
-  } else {
-    for (var i = 1; i < 12; i += 2) {
-      childNodes[i].style.top = delta * 50 + 'px';
-      childNodes[i].style.transitionDelay = '0s';
-      delta += 1;
-    }
-  }
-}
-
-function setMobileMenu() {
-  var delta = 1;
-  for (var i = 1; i < 12; i += 2) {
-    var childNodes = document.querySelector('.header').childNodes;
-    childNodes[i].style.transition = 'top ' + delta / 8 + 's linear';
-    childNodes[i].style.zIndex = 10 - delta;
-    delta += 1;
-  }
 }

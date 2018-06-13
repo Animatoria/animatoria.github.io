@@ -12,23 +12,23 @@
   <div class='empty'>
   </div>
   <div class='body'>
-    <header>
       <div class='header'>
-        <button class='animatoria headerItem mobile'><img class='buttonImg' src='A.svg'><p>Animatoria</p></button>
-        <button class='addNewCard headerItem mobile'><img class='buttonImg' src='addnewcard.svg'><p>Add new card</p></button>
-        <button class='readOnlyMode headerItem mobile'><img class='buttonImg' src='readonlymode.svg'><p>Read only mode</p></button>
-        <button class='mainDateLog headerItem mobile'><img class='buttonImg' src='date.svg'><p class='currentDate'></p></button>
-        <button class='mainDateButton headerItem mobile'><img class='buttonImg' src='calendar.svg'>Choose date</button>
-        <label class='headerItem mobile'><img class='themeIcon buttonImg' src='theme.svg'><input class='mainTheme' type='text'></label>
-        <img class='buttonImgMobile' src='addnewcard.svg'>
-        <img class='buttonImgMobile' src='readonlymode.svg'>
-        <img class='buttonImgMobile' src='calendar.svg'>
-        <img class='buttonImgMobile' src='theme.svg'>
-        <svg class="bred buttonImgMobile" width="20px" height="20px">
+        <button class='animatoriaButton headerButton mobileHeaderButton'><img class='buttonIcon' src='A.svg'><p>Animatoria</p></button>
+        <button class='addNewCard headerButton mobileHeaderButton' accesskey="a"><img class='buttonIcon' src='addnewcard.svg'><p>Add new card</p></button>
+        <button class='readOnlyMode headerButton mobileHeaderButton'><img class='buttonIcon' src='readonlymode.svg'><p>Read only mode</p></button>
+        <input class='clearLocalStorage headerButton mobileHeaderButton' type='button' value='Clear local storage'>
+        <button class='mainDateLog headerButton mobileHeaderButton'><img class='buttonIcon' src='date.svg'><p class='currentDate'></p></button>
+        <button class='mainDateButton headerButton mobileHeaderButton'><img class='buttonIcon' src='calendar.svg'>Choose date</button>
+        <label class='headerButton mobileHeaderButton'><img id='themeIcon' class='buttonIcon' src='theme.svg'><input id='mainTheme' class='headerButton' type='text'></label>
+        <img class='buttonMobile' src='addnewcard.svg'>
+        <img class='buttonMobile' src='readonlymode.svg'>
+        <img class='buttonMobile' src='calendar.svg'>
+        <img class='buttonMobile' src='theme.svg'>
+        <svg class="burgerMenu buttonMobile" width="20px" height="20px">
           <rect x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91" >
 
             <animateTransform
-            class="jolie1"
+            class="burgerCross1"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -40,7 +40,7 @@
             />
 
             <animateTransform
-            class="jolie4"
+            class="crossBurger1"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -54,7 +54,7 @@
           <rect x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91" >
 
             <animateTransform
-            class="jolie2"
+            class="burgerCross2"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -66,7 +66,7 @@
             />
 
             <animateTransform
-            class="jolie5"
+            class="crossBurger2"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -80,7 +80,7 @@
           <rect x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91" >
 
             <animateTransform
-            class="jolie3"
+            class="burgerCross3"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -92,7 +92,7 @@
             />
 
             <animateTransform
-            class="jolie6"
+            class="crossBurger3"
             attributeName="transform"
             dur="0.5s"
             type="rotate"
@@ -105,7 +105,6 @@
           </rect>
      </svg>
       </div>
-    </header>
     <div class='rubberBody'>
       
     </div>
@@ -114,6 +113,7 @@
   </div>
   <script src='detect.js'></script>
   <script src='stoned.js'></script>
+  <script src='mobile.js'></script>
   <script src='editable.js'></script>
   <script src='main.js'></script>
  </body>

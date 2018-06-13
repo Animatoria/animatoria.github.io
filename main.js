@@ -41,7 +41,7 @@ var mainDate = currentDateToLocaleDateString;
 var currentDateParagraph = document.querySelector('.currentDate');
 currentDateParagraph.innerHTML = mainDate;
 
-var mainTheme = document.querySelector('.mainTheme');
+var mainTheme = document.querySelector('#mainTheme');
 mainTheme.onclick = mainThemeMenu;
 mainTheme.oninput = mainThemeChange;
 setMainTheme();

@@ -395,11 +395,11 @@ function readOnlyModeOn() {
  at the same time, only last opened app can apply your changes. In another window you can read only your cards.')};
   var childNodes = newCardButton.childNodes;
   childNodes[1].innerHTML = 'Read only mode?';
-  childNodes[0].src = 'readonlymode.svg';
+  childNodes[0].src = 'icons/readonlymode.svg';
   readOnlyModeButton.onclick = readOnlyModeOff;
   childNodes = readOnlyModeButton.childNodes;
   childNodes[1].innerHTML = 'Card edit mode';
-  childNodes[0].src = 'pencil.svg';
+  childNodes[0].src = 'icons/pencil.svg';
   readOnlyMode = true;
   deleteAllCards();
   getStoredCards();
@@ -410,11 +410,11 @@ function readOnlyModeOff() {
     newCardButton.onclick = addNewCard;
     var childNodes = newCardButton.childNodes;
     childNodes[1].innerHTML = 'Add new card';
-    childNodes[0].src = 'addnewcard.svg';
+    childNodes[0].src = 'icons/addnewcard.svg';
     readOnlyModeButton.onclick = readOnlyModeOn;
     childNodes = readOnlyModeButton.childNodes;
     childNodes[1].innerHTML = 'Read only mode';
-    childNodes[0].src = 'readonlymode.svg';
+    childNodes[0].src = 'icons/readonlymode.svg';
     readOnlyMode = false;
     refreshCardsOnTable();
   } else {

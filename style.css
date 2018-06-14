@@ -77,16 +77,12 @@
     }
 
     .buttonIcon {
-      margin: 7px 18px 0 18px;
+      padding: 7px 18px 0 18px;
       height: 20px;
     }
 
     .buttonMobile {
       display: none;
-    }
-
-    #themeIcon {
-      margin-top: 15px;
     }
 
     .rubberBody {
@@ -147,5 +143,5 @@
 
     @font-face {
       font-family: consolas;
-      src: url(consolas.ttf);
+      src: url(fonts/consolas.ttf);
     }

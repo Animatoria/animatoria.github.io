@@ -1,44 +1,83 @@
-var animatoriaButton = document.querySelector('.animatoriaButton');
-setMobileMenu();
-var ursus = true;
-document.querySelector('.burgerMenu').onclick = mobileMenu;
-animatoriaButton.onclick = mobileMenu;
+var headerChildNodes = header.childNodes;
 
-function mobileMenu() {
-  if (ursus) {
-    document.querySelector('.burgerCross1').beginElement();
-    document.querySelector('.burgerCross2').beginElement();
-    document.querySelector('.burgerCross3').beginElement();
-    ursus = false;
-  } else {
-    document.querySelector('.crossBurger1').beginElement();
-    document.querySelector('.crossBurger2').beginElement();
-    document.querySelector('.crossBurger3').beginElement();
-    ursus = true;
-  }
-  var childNodes = document.querySelector('.header').childNodes;
-  var delta = 0;
-  if (childNodes[11].style.top == '250px') {
-    for (var i = 1; i < 12; i += 2) {
-      childNodes[i].style.top = -50 + 'px';
-      childNodes[i].style.transitionDelay = (6 - delta) / 8 + 's';
-      delta += 1;
-    }
-  } else {
-    for (var i = 1; i < 12; i += 2) {
-      childNodes[i].style.top = delta * 50 + 'px';
-      childNodes[i].style.transitionDelay = '0s';
-      delta += 1;
-    }
-  }
+var singleMenu = false;
+var longMenu = false;
+var plexiGlass = document.querySelector('.plexiGlass');
+var mainThemeLabel = document.querySelector('.mainThemeLabel');
+
+var burgerCross = document.querySelectorAll('.burgerCross');
+var crossBurger = document.querySelectorAll('.crossBurger');
+
+setMobileMenu();
+
+function cross() {
+	for (var i = 0; i < 3; i++) {
+		burgerCross[i].beginElement();
+	}
+}
+
+function burger() {
+	for (var i = 0; i < 3; i++) {
+		crossBurger[i].beginElement();
+	}
+}
+
+function singleLineMenu(label) {
+	singleMenu = true;
+	label.style.top = 0;
+	label.style.transition = 'top ' + 1 / 8 + 's linear';
+	cross();
+}
+
+function closeSingleMenu() {
+	singleMenu = false;
+	burger();
+	rubberBodyElement.style.display = 'flex';
+	dateTable.style.display = 'none';
+	themeTable.style.display = 'none';
+	isDateTable = false;
+	isThemeTable = false;
+	for (var i in arguments) {
+		arguments[i].style.top = '-50px';
+		arguments[i].style.transition = 'top ' + 1 / 8 + 's linear';
+	}
+}
+
+function mobileMenu(label) {
+	for (var i = 0; i < 6; i++) {
+		headerChildNodes[i].style.transition = 'top ' + (i + 1) / 8 + 's linear';
+	}
+	if (longMenu) {
+		longMenu = false;
+		for (var i = 0; i < 6; i++) {
+			headerChildNodes[i].style.top = -50 + 'px';
+			headerChildNodes[i].style.transitionDelay = (6 - i) / 8 + 's';
+		}
+		plexiGlass.style.display = 'none';
+		if (label) {
+			label.style.top = 0;
+			singleMenu = true;
+		} else {
+			burger();
+		}
+	} else {
+		if (singleMenu) {
+			closeSingleMenu(mainDateLog, mainThemeLabel)
+		} else {
+			for (var i = 0; i < 6; i++) {
+				headerChildNodes[i].style.top = i * 50 + 'px';
+				headerChildNodes[i].style.transitionDelay = '0s';
+			}
+			plexiGlass.style.display = 'block';
+			cross();
+			longMenu = true;
+		}
+	}
 }
 
 function setMobileMenu() {
-  var delta = 1;
-  for (var i = 1; i < 12; i += 2) {
-    var childNodes = document.querySelector('.header').childNodes;
-    childNodes[i].style.transition = 'top ' + delta / 8 + 's linear';
-    childNodes[i].style.zIndex = 10 - delta;
-    delta += 1;
-  }
+	for (var i = 0; i < 6; i++) {
+		headerChildNodes[i].style.transition = 'top ' + (i + 1) / 8 + 's linear';
+		headerChildNodes[i].style.zIndex = 10 - (i + 1);
+	}
 }

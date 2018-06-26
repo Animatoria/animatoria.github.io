@@ -1,0 +1,57 @@
+.card {
+	margin: 2px;
+	background-color: #dfd;
+	display: inline-block;
+	position: relative;
+	perspective: 1000px;
+}
+
+.cardMenu {
+	width: 100%;
+}
+
+.deleteButton {
+	float: right;
+}
+
+.completed {}.zoomer {
+	perspective: 1000px;
+}
+
+.flipper {
+	transition: 2s;
+	transform-style: preserve-3d;
+}
+
+textarea {
+	font-size: 33px;
+	font-family: consolas;
+	outline: none;
+	display: block;
+	resize: none;
+	backface-visibility: hidden;
+}
+
+.backArea {
+	transform: rotateY(180deg);
+	position: absolute;
+	top: 0;
+}
+
+@keyframes forward {
+	50% {
+		transform: translateZ(200px) translateX(10%) translateY(10%);
+	}
+	100% {
+		transform: translateZ(0px) translateX(0px);
+	}
+}
+
+@keyframes backward {
+	50% {
+		transform: translateZ(200px) translateX(10%) translateY(10%);
+	}
+	100% {
+		transform: translateZ(0px) translateX(0px);
+	}
+}

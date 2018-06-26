@@ -1,147 +1,133 @@
-    * {
-      margin = 0;
-    }
+* {
+	margin = 0;
+}
 
-    label {
+body {
+	margin: 0;
+	width: 100%;
+}
 
-    }
+.body {
+	margin: auto;
+	background-color: #fdd;
+}
 
-    body {
-      margin: 0;
-      width: 100%;
-    }
+.headerButton {
+	font-size: 30px;
+	border: none;
+	background-color: #eee;
+	height: 50px;
+	width: 300px;
+	display: inline-block;
+	outline: none;
+	text-align: left;
+	cursor: pointer;
+	padding: 0;
+}
 
-    .body {
-      margin: auto;
-    }
+#mainTheme {
+	width: 235px;
+}
 
-    .card {
-      background-color: #dfd;
-      position: relative;
-      margin: 2px;
-      display: inline-block;
-      perspective: 1000px;
-    }
+.buttonIcon {
+	padding: 7px 18px 0 18px;
+	height: 20px;
+}
 
-    .cardMenu {
-      width: 100%;
-    }
+.buttonMobile {
+	display: none;
+}
 
-    .deleteButton {
-      float: right;
-    }
+.dateTable {
+	display: none;
+	background-color: #dfd;
+}
 
-    .completed {
+.themeTable {
+	display: none;
+	background-color: #dfd;
+}
 
-    }
+.storedDate {
+	height: 30px;
+	background-color: #ddf;
+	width: 30%;
+	border: 1px solid black;
+}
 
-    .zoomer {
-      perspective: 1000px;
-    }
+.storedTheme {
+	height: 30px;
+	background-color: #ddf;
+	width: 30%;
+	border: 1px solid black;
+}
 
-    .flipper {
-      transition: 2s;
-      transform-style: preserve-3d;
-    }
+.addNewCard {
+}
 
-    textarea {
-      font-size: 33px;
-      font-family: consolas;
-      outline: none;
-      display: block;
-      resize: none;
-      backface-visibility: hidden;
-    }
+.header {
+	z-index: 1048575;
+	top : 0px;
+	position: fixed;
+	background-color: #fdd;
+}
 
-    .backArea {
-      transform: rotateY(180deg);
-      position: absolute;
-      top: 0;
-    }
+p {
+	display: inline-block;
+	margin: 0;  
+}
 
-    .headerButton {
-      font-size: 30px;
-      border: none;
-      background-color: #eee;
-      height: 50px;
-      width: 300px;
-      display: inline-block;
-      outline: none;
-      text-align: left;
-      cursor: pointer;
-      padding: 0;
-    }
+.masterInformation {
+	display: block;
+}
 
-    #mainTheme {
-      width: 235px;
-    }
+@font-face {
+	font-family: consolas;
+	src: url(fonts/consolas.ttf);
+}
 
-    .buttonIcon {
-      padding: 7px 18px 0 18px;
-      height: 20px;
-    }
+.fiveWeek {
+	display: grid;
+	grid-template-columns: repeat(7, 50px);
+	grid-template-rows: repeat(6, 50px);
+}
 
-    .buttonMobile {
-      display: none;
-    }
+.day {
+	justify-self: center;
+	align-self: center;
+	padding: 10px;
+}
 
-    .rubberBody {
-      margin: 0;
-      background-color: #fdd;
-    }
+.yearDiv, .monthDiv{
+	position: relative;
+	width: 350px;
+	height: 50px;
+	background-color: #ddf;
+}
 
-    .storedDate {
-      height: 30px;
-      background-color: #ddf;
-      width: 30%;
-      border: 1px solid black;
-    }
+.leftArrow {
+	width: 50%;
+	height: 50px;
+	float: left;
+}
 
-    .storedTheme {
-      height: 30px;
-      background-color: #ddf;
-      width: 30%;
-      border: 1px solid black;
-    }
+.rightArrow {
+	width: 50%;
+	height: 50px;
+	float: right;
+}
 
-    .addNewCard {
-    }
+.year, .month {
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	right: calc(50% - 50px);
+	text-align: center;
+	line-height: 50px;
+	background-color: #fdd;
+}
 
-    .header {
-      z-index: 1048575;
-      top : 0px;
-      position: fixed;
-      background-color: #fdd;
-    }
-
-    p {
-      display: inline-block;
-      margin: 0;  
-    }
-
-    .masterInformation {
-      display: block;
-    }
-
-    @keyframes forward {
-      50% {
-        transform: translateZ(200px) translateX(10%) translateY(10%);
-      }
-      100% {
-        transform: translateZ(0px) translateX(0px);
-      }
-    }
-
-    @keyframes backward {
-      50% {
-        transform: translateZ(200px) translateX(10%) translateY(10%);
-      }
-      100% {
-        transform: translateZ(0px) translateX(0px);
-      }
-    }    
-
-    @font-face {
-      font-family: consolas;
-      src: url(fonts/consolas.ttf);
-    }
+.dateTable {
+	margin: 0 auto;
+	width: 350px;
+}

@@ -1,121 +1,130 @@
 <!DOCTYPE html>
 <html>
-
- <head>
-  <meta charset="utf-8">
-  <title>Rotating Cards</title>
-  <link rel = 'stylesheet' href='style.css' type='text/css'>
-  <meta name = "viewport" content = "width=device-width, initial-scale=1">
- </head>
-
- <body>
-  <div class='empty'>
-  </div>
-  <div class='body'>
-      <div class='header'>
-        <button class='animatoriaButton headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p></button>
-        <button class='addNewCard headerButton mobileHeaderButton' accesskey="a"><img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p></button>
-        <button class='readOnlyMode headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/readonlymode.svg'><p>Read only mode</p></button>
-        <input class='clearLocalStorage headerButton mobileHeaderButton' type='button' value='Clear local storage'>
-        <button class='mainDateLog headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/date.svg'><p class='currentDate'></p></button>
-        <button class='mainDateButton headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/calendar.svg'>Choose date</button>
-        <label class='headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' class='headerButton' type='text'></label>
-        <img class='buttonMobile' src='icons/addnewcard.svg'>
-        <img class='buttonMobile' src='icons/readonlymode.svg'>
-        <img class='buttonMobile' src='icons/calendar.svg'>
-        <img class='buttonMobile' src='icons/theme.svg'>
-        <svg class="burgerMenu buttonMobile" width="20px" height="20px">
-          <rect x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91" >
-
-            <animateTransform
-            class="burgerCross1"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="0 18 2"
-            to="-45 18 2"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-
-            <animateTransform
-            class="crossBurger1"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="-45 18 2"
-            to="0 18 2"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-          </rect>
-          <rect x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91" >
-
-            <animateTransform
-            class="burgerCross2"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="0 10 10"
-            to="30 10 10"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-
-            <animateTransform
-            class="crossBurger2"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="30 10 10"
-            to="0 10 10"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-          </rect>
-          <rect x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91" >
-
-            <animateTransform
-            class="burgerCross3"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="0 2 18"
-            to="-45 2 18"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-
-            <animateTransform
-            class="crossBurger3"
-            attributeName="transform"
-            dur="0.5s"
-            type="rotate"
-            from="-45 2 18"
-            to="0 2 18"
-            begin="indefinite"
-            repeatCount="1"
-            fill="freeze"
-            />
-          </rect>
-     </svg>
-      </div>
-    <div class='rubberBody'>
-
-    </div>
-    <p class='deviceBrowserType'><p>
-    <p class='masterInformation'><p>
-  </div>
-  <script src='detect.js'></script>
-  <script src='stoned.js'></script>
-  <script src='mobile/mobile.js'></script>
-  <script src='editable.js'></script>
-  <script src='main.js'></script>
- </body>
+<head>
+	<meta charset="utf-8">
+	<title>Rotating Cards</title>
+	<link rel = 'stylesheet' href='style.css' type='text/css'>
+	<link rel = 'stylesheet' href='card/cardStyle.css' type='text/css'>
+	<link rel = 'stylesheet' href='cardsTable/cardsTable.css' type='text/css'>
+	<meta name = "viewport" content = "width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class='empty'></div>
+	<div class='body'>
+		<div class='header'><button class='animatoriaButton headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p></button><button class='addNewCard headerButton mobileHeaderButton' onclick='addNewCard()' accesskey="a"><img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p></button><button class='readOnlyMode headerButton mobileHeaderButton' onclick='readOnlyModeSwitch()'><img class='buttonIcon' src='icons/readonlymode.svg'><p>Read only mode</p></button><button class='mainDateLog headerButton mobileHeaderButton' onclick='changeMainDate(0)'><img class='buttonIcon' src='icons/date.svg'><p class='currentDate'></p></button><button class='mainDateButton headerButton mobileHeaderButton' onclick='changeMainDate(0)'><img class='buttonIcon' src='icons/calendar.svg'>Choose date</button><label class='mainThemeLabel headerButton mobileHeaderButton'><img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' class='headerButton' onclick='mainThemeMenu(0)' type='text'></label>
+			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'>
+			<img class='readOnlyModeMobile buttonMobile' onclick='readOnlyModeSwitch()' src='icons/readonlymode.svg'>
+			<img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'>
+			<img class='mainThemeMobile buttonMobile' onclick='mainThemeMenu(1)' src='icons/theme.svg'>
+			<svg class="burgerMenu buttonMobile" onclick='mobileMenu(0)' width="20px" height="20px">
+			<rect x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91">
+				<animateTransform
+				class="burgerCross"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="0 18 2"
+				to="-45 18 2"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+				<animateTransform
+				class="crossBurger"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="-45 18 2"
+				to="0 18 2"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+			</rect>
+			<rect x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91">
+				<animateTransform
+				class="burgerCross"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="0 10 10"
+				to="30 10 10"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+				<animateTransform
+				class="crossBurger"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="30 10 10"
+				to="0 10 10"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+			</rect>
+			<rect x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91">
+				<animateTransform
+				class="burgerCross"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="0 2 18"
+				to="-45 2 18"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+				<animateTransform
+				class="crossBurger"
+				attributeName="transform"
+				dur="0.5s"
+				type="rotate"
+				from="-45 2 18"
+				to="0 2 18"
+				begin="indefinite"
+				repeatCount="1"
+				fill="freeze"
+				/>
+			</rect>
+			</svg>
+		</div>
+		<div class='rubberBody'>
+			<div class='cardsColumn'></div>
+			<div class='cardsColumn'></div>
+			<div class='cardsColumn'></div>
+		</div>
+		<div class='dateTable'>
+			<div class='yearDiv'>
+				<div class='year''></div>
+				<div class='leftArrow' onclick='nextYear(-1)'></div>
+				<div class='rightArrow' onclick='nextYear(1)'></div>
+			</div>
+			<div class='monthDiv'>
+				<div class='month''></div>
+				<div class='leftArrow' onclick='nextMonth(-1)'></div>
+				<div class='rightArrow' onclick='nextMonth(1)'></div>
+			</div>
+			<div class='fiveWeek'><div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div>
+			</div>
+		</div>
+		<div class='themeTable'></div>
+		<div class='plexiGlass'></div>
+		<p class='deviceBrowserType'><p>
+		<p class='masterInformation'><p>
+	</div>
+	<script src='cardsTable/cardsTable.js'></script>
+	<script src='card/card.js'></script>
+	<script src='thisSession/thisSession.js'></script>
+	<script src='headerButtons/headerButtons.js'></script>
+	<script src='detect.js'></script>
+	<script src='stoned.js'></script>
+	<script src='dateTable/dateTable.js'></script>
+	<script src='themeTable/themeTable.js'></script>
+	<script src='main.js'></script>
+	<script src='mobile/mobile.js'></script>
+</body>
 
 </html>

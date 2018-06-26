@@ -1,0 +1,10 @@
+.rubberBody {
+	margin: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+
+.cardsColumn {
+	align-self: flex-start;
+}

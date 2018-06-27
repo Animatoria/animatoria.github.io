@@ -196,6 +196,7 @@ var allCardsProperties = {
 	resizeTextarea : function() {
 		this.faceArea.cols = flipperColumnWidth;
 		this.backArea.cols = flipperColumnWidth;
+		textAreaHeigth.style.width = flipperColumnWidth * 18.2 + 'px';
 		this.findCardHeight();
 	},
 

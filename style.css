@@ -39,6 +39,8 @@ body {
 }
 
 .dateTable {
+	margin: 0 auto;
+	width: 350px;
 	display: none;
 	background-color: #dfd;
 }
@@ -127,14 +129,10 @@ p {
 	background-color: #fdd;
 }
 
-.dateTable {
-	margin: 0 auto;
-	width: 350px;
-}
-
 .textAreaHeight {
-	background-color: #dfd;
-	color: #dfd;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
 	font-size: 33px;
 	font-family: consolas;
 	text-align: center;

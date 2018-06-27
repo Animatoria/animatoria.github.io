@@ -1,18 +1,17 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 28;
+var applicationVersion = 29;
 
 var sessionIssueFlag = false;
 
 var deviceBrowserType = detect.parse(navigator.userAgent);
-document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
-os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
+document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 setCardProperties();
 
-document.querySelector('.masterInformation').innerHTML = rubberBodyElement.clientWidth;
+document.querySelector('.masterInformation').innerHTML = '';
 
 var currentDate = new Date();
 actualDate = currentDate;
@@ -40,9 +39,6 @@ setStoredMainDate();
 var mainDateButton = document.querySelector('.mainDateButton');
 
 var mainDateLog = document.querySelector('.mainDateLog');
-
-//var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
-//clearLocalStorageButton.onclick = function() {localStorage.clear()};
 
 window.onload = refreshCardsOnTable;
 

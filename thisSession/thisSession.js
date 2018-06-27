@@ -22,6 +22,7 @@ function setSessionID() {
 }
 
 function setCardProperties() {
+	var emptyHeight;
 	var rubberBodyWidthMeasure = document.querySelector('.empty');
 	var extender = 0;
 	var headTag = document.querySelector('head');
@@ -32,11 +33,13 @@ function setCardProperties() {
 		onresize = setCardProperties;
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
+		emptyHeight = 180;
 	} else {
 		textareaEditableRows = 2;
 		styleLink.href = 'mobile/styleMobile.css';
 		rubberBodyWidthMeasure.style.width = '100%';
 		onscroll = fallingMobileMenu;
+		emptyHeight = 70;
 	}
 	rubberBodyWidthMeasure = rubberBodyWidthMeasure.clientWidth;
 		var textAreaExtender = 23;
@@ -65,7 +68,7 @@ function setCardProperties() {
 	bodyElement.style.width = extender + rubberBodyWidthMeasure + 'px';
 	header.style.width = extender + rubberBodyWidthMeasure + 'px';
 	headTag.appendChild(styleLink);
-	rubberBodyElement.style.minHeight = (window.innerHeight - 40) + 'px';
+	rubberBodyElement.style.minHeight = (window.innerHeight - emptyHeight) + 'px';
 	refreshCardsOnTable();
 }
 

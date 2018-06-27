@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 29;
+var applicationVersion = 30;
 
 var sessionIssueFlag = false;
 
@@ -11,7 +11,7 @@ var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 setCardProperties();
 
-document.querySelector('.masterInformation').innerHTML = '';
+document.querySelector('.masterInformation').innerHTML = window.innerHeight;
 
 var currentDate = new Date();
 actualDate = currentDate;

@@ -47,6 +47,7 @@ function setCardProperties() {
 		if (deviceBrowserType.browser.family == 'IE') {
 		}
 		if (deviceBrowserType.os.family == 'Android') {
+			textareaEditableRows = 2;
 			textAreaExtender = 12;
 			onresize = function() {};
 		}

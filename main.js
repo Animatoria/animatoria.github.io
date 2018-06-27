@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 27;
+var applicationVersion = 28;
 
 var sessionIssueFlag = false;
 

@@ -1,5 +1,5 @@
 var flipperColumnWidth = 30;
-var textareaEditableRows = 3;
+var textareaEditableRows = 6;
 var zIndexCounter = 1;
 
 var textAreaHeigth = document.querySelector('.textAreaHeight');

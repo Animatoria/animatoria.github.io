@@ -33,6 +33,7 @@ function setCardProperties() {
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
 	} else {
+		textareaEditableRows = 2;
 		styleLink.href = 'mobile/styleMobile.css';
 		rubberBodyWidthMeasure.style.width = '100%';
 	}

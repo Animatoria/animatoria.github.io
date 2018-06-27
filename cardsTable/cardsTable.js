@@ -40,6 +40,7 @@ function chooseCardsColumn(e) {
 }
 
 function addNewCard() {
+	if (longMenu) mobileMenu(0);
 	if (!isThemeTable && !isDateTable) {
 		storedCard.push(new StoredCardProperties());
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));

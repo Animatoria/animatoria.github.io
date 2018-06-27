@@ -89,11 +89,11 @@ var allCardsProperties = {
 
 	addEmptyLine : function() {
 		if (this.faceAreaHeight > this.backAreaHeight) {
-			for (var i = 0; i < ((this.faceAreaHeight - this.backAreaHeight) / 2) - ((this.faceAreaHeight - this.backAreaHeight) % 2); i++) {
+			for (var i = 0; i < Math.floor((this.faceAreaHeight - this.backAreaHeight) / 2); i++) {
 				this.backArea.value = '\n' + this.backArea.value;
 			}
 		} else {
-			for (var i = 0; i < ((this.backAreaHeight - this.faceAreaHeight) / 2) - ((this.backAreaHeight - this.faceAreaHeight) % 2); i++) {
+			for (var i = 0; i < Math.floor((this.backAreaHeight - this.faceAreaHeight) / 2); i++) {
 				this.faceArea.value = '\n' + this.faceArea.value;
 			}
 		}

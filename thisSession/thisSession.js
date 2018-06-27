@@ -36,6 +36,7 @@ function setCardProperties() {
 		textareaEditableRows = 2;
 		styleLink.href = 'mobile/styleMobile.css';
 		rubberBodyWidthMeasure.style.width = '100%';
+		onscroll = fallingMobileMenu;
 	}
 	rubberBodyWidthMeasure = rubberBodyWidthMeasure.clientWidth;
 		var textAreaExtender = 23;

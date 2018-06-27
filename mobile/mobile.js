@@ -1,3 +1,4 @@
+var header = document.querySelector('.header');
 var headerChildNodes = header.childNodes;
 
 var singleMenu = false;
@@ -8,7 +9,18 @@ var mainThemeLabel = document.querySelector('.mainThemeLabel');
 var burgerCross = document.querySelectorAll('.burgerCross');
 var crossBurger = document.querySelectorAll('.crossBurger');
 
+var lastScrollTop;
+
 setMobileMenu();
+
+function fallingMobileMenu() {
+	if (lastScrollTop > document.documentElement.scrollTop) {
+		header.style.top = 0;
+	} else {
+		header.style.top = '-50px';
+	}
+	lastScrollTop = document.documentElement.scrollTop;
+}
 
 function cross() {
 	for (var i = 0; i < 3; i++) {

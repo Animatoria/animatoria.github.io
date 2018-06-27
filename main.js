@@ -8,7 +8,6 @@ var deviceBrowserType = detect.parse(navigator.userAgent);
 document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>\
 os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
 
-var header = document.querySelector('.header');
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 setCardProperties();

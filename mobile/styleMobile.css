@@ -21,6 +21,7 @@
 }
 
 .header {
+	transition: top 0.125s linear;
 	display: flex;
 	justify-content: space-between;
 }

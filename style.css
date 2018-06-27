@@ -50,17 +50,15 @@ body {
 	background-color: #dfd;
 }
 
-.storedDate {
-	height: 30px;
-	background-color: #ddf;
-	width: 30%;
-	border: 1px solid black;
-}
-
 .storedTheme {
-	height: 30px;
+	font-family: consolas;
+	font-size: 33px;
+	height: 50px;
 	background-color: #ddf;
-	width: 30%;
+	width: 350px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 50px;
 	border: 1px solid black;
 }
 

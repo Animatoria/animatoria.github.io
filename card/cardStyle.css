@@ -14,7 +14,9 @@
 	float: right;
 }
 
-.completed {}.zoomer {
+.completed {}
+
+.zoomer {
 	perspective: 1000px;
 }
 
@@ -30,6 +32,8 @@ textarea {
 	display: block;
 	resize: none;
 	backface-visibility: hidden;
+	text-align: center;
+	overflow-x: hidden;
 }
 
 .backArea {

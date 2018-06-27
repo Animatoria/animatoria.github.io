@@ -27,10 +27,10 @@ function mainThemeChange() {
 	} else {
 		newThemeFlag = true;
 	}
-	getStoredCards();
 	setCalendar();
 	if (dateList.some(function(value) {return value == actualDate.getDate()})) newDateFlag = false;
 	else newDateFlag = true;
+	getStoredCards();
 }
 
 function mainThemeMenu(mobileVersion) {
@@ -42,6 +42,7 @@ function mainThemeMenu(mobileVersion) {
 			rubberBodyElement.style.display = 'flex';
 			themeTable.style.display = 'none';
 		}
+		mainThemeChange();
 	} else {
 		mainTheme.select();
 		deleteAllThemeItems();
@@ -67,7 +68,6 @@ function clearTheme() {
 	storedMainTheme.splice(storedMainTheme.indexOf(mainTheme.value), 1);
 	localStorage.setItem('storedMainTheme', JSON.stringify(storedMainTheme));
 	newThemeFlag = true;
-	storedMainDate = [];
 }
 
 function getChoosableTheme(i) {

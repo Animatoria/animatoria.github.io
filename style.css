@@ -131,3 +131,12 @@ p {
 	margin: 0 auto;
 	width: 350px;
 }
+
+.textAreaHeight {
+	background-color: #dfd;
+	color: #dfd;
+	font-size: 33px;
+	font-family: consolas;
+	text-align: center;
+	word-wrap: break-word;
+}

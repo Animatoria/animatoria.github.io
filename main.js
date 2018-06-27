@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 26;
+var applicationVersion = 27;
 
 var sessionIssueFlag = false;
 
@@ -44,5 +44,7 @@ var mainDateLog = document.querySelector('.mainDateLog');
 
 //var clearLocalStorageButton = document.querySelector('.clearLocalStorage');
 //clearLocalStorageButton.onclick = function() {localStorage.clear()};
+
+window.onload = refreshCardsOnTable;
 
 bodyElement.style.backgroundColor = '#dfd';

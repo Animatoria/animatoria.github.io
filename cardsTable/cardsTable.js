@@ -145,3 +145,9 @@ function refreshCardsOnTable() {
 		card[i].zoomer.style.animation = '';
 	}
 }
+
+function refreshCardsAnimation() {
+	for (var i in card) {
+		card[i].zoomer.style.animation = '';
+	}
+}

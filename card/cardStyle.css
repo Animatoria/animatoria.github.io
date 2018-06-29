@@ -4,6 +4,7 @@
 	display: inline-block;
 	position: relative;
 	perspective: 1000px;
+	border-radius: 0 0 5px 5px;
 }
 
 .cardMenu {
@@ -27,6 +28,7 @@
 
 textarea {
 	font-size: 33px;
+	font-weight: 600;
 	font-family: consolas;
 	outline: none;
 	display: block;
@@ -34,12 +36,21 @@ textarea {
 	backface-visibility: hidden;
 	text-align: center;
 	overflow-x: hidden;
+	padding: 30px 0 30px 0;
+	color: #6f8a91;
+}
+
+.faceArea {
+	border-radius: 30px 30px 5px 30px;
 }
 
 .backArea {
 	transform: rotateY(180deg);
 	position: absolute;
 	top: 0;
+	background: linear-gradient(rgba(0,0,0,0) 25px, rgba(255,255,255,0.7) 25px, rgba(255,255,255,0.7) calc(100% - 25px), rgba(0,0,0,0) 0), linear-gradient(60deg, #fff 50%, #f9d8a2 0);
+	background-size: 100% 100%, 5px 5px;
+	border-radius: 30px 30px 30px 5px;
 }
 
 @keyframes forward {

@@ -5,6 +5,7 @@
 body {
 	margin: 0;
 	width: 100%;
+	overflow-x: hidden;
 }
 
 .body {
@@ -23,6 +24,7 @@ body {
 	text-align: left;
 	cursor: pointer;
 	padding: 0;
+	color: #6f8a91;
 }
 
 #mainTheme {

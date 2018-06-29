@@ -106,6 +106,7 @@ function clearDate() {
 }
 
 function changeMainDate(mobileVersion) {
+	refreshCardsAnimation();
 	if (isDateTable) {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog);

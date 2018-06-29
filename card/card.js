@@ -189,7 +189,7 @@ var allCardsProperties = {
 	},
 
 	rowCount : function(value) {
-		textAreaHeigth.innerHTML = value;
+		textAreaHeigth.innerHTML = value.split('\n').join('<br>');
 		return textAreaHeigth.clientHeight / 38;
 	},
 
@@ -210,7 +210,6 @@ var allCardsProperties = {
 			this.zoomer.style.animation = '2s backward';
 			this.flipper.style.transform = 'rotateY(0deg)';
 		}
-		setTimeout(() => {this.zoomer.style.animation = ''; console.log('timeOut')}, 2000);
 		this.cardSide = this.cardSide ^ 1;
 	},
 	

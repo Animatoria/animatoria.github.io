@@ -34,6 +34,7 @@ function mainThemeChange() {
 }
 
 function mainThemeMenu(mobileVersion) {
+	refreshCardsAnimation();
 	if (isThemeTable) {
 		if (singleMenu) {
 			closeSingleMenu(mainThemeLabel);

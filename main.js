@@ -41,4 +41,6 @@ var mainDateButton = document.querySelector('.mainDateButton');
 
 var mainDateLog = document.querySelector('.mainDateLog');
 
+window.onload = refreshCardsOnTable;
+
 bodyElement.style.backgroundColor = '#dfd';

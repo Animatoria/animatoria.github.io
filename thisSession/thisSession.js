@@ -21,15 +21,15 @@ function setSessionID() {
 	}
 }
 
-function setCardProperties() {
+function setCardProperties(resize) {
 	var rubberBodyWidthMeasure = document.querySelector('.empty');
-	var extender = 0;
+	var extender = 10;
 	var headTag = document.querySelector('head');
 	var styleLink = document.createElement('link');
 	styleLink.type = 'text/css';
 	styleLink.rel = 'stylesheet';
 	if (deviceBrowserType.device.type == 'Desktop') {
-		onresize = setCardProperties;
+		onresize = function() {setCardProperties(true)};
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
 		rubberBodyElement.style.minHeight = (window.innerHeight - 180) + 'px';
@@ -67,7 +67,7 @@ function setCardProperties() {
 	bodyElement.style.width = extender + rubberBodyWidthMeasure + 'px';
 	header.style.width = extender + rubberBodyWidthMeasure + 'px';
 	headTag.appendChild(styleLink);
-	refreshCardsOnTable();
+	if (resize) refreshCardsOnTable();
 }
 
 function setMainTheme() {

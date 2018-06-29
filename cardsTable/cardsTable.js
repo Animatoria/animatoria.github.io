@@ -17,9 +17,13 @@ function sessionIssue() {
 	readOnlyModeOn();
 }
 
-function chooseCardsColumn(e) {
+function chooseCardsColumn(e, resize) {
 	if (cardsColumnNumber == 3) {
 		var shortCardsColumn = Math.min(cardsColumn[0].clientHeight, cardsColumn[1].clientHeight, cardsColumn[2].clientHeight);
+		if (resize) {
+			cardsColumn[1].style.display = 'block';
+			cardsColumn[2].style.display = 'block';
+		}
 		if (cardsColumn[0].clientHeight == shortCardsColumn) {
 			cardsColumn[0].appendChild(e.div);
 		} else if (cardsColumn[1].clientHeight == shortCardsColumn) {
@@ -28,6 +32,10 @@ function chooseCardsColumn(e) {
 			cardsColumn[2].appendChild(e.div);
 		}
 	} else if (cardsColumnNumber == 2) {
+		if (resize) {
+			cardsColumn[1].style.display = 'block';
+			cardsColumn[2].style.display = 'none';
+		}
 		if (cardsColumn[0].clientHeight < cardsColumn[1].clientHeight) {
 			cardsColumn[0].appendChild(e.div);
 		} else {
@@ -35,6 +43,10 @@ function chooseCardsColumn(e) {
 		}
 	}
 	else {
+		if (resize) {
+			cardsColumn[1].style.display = 'none';
+			cardsColumn[2].style.display = 'none';
+		}
 		cardsColumn[0].appendChild(e.div);
 	}
 }
@@ -141,7 +153,7 @@ function refreshCardsOnTable() {
 	deleteAllCards();
 	for (var i in card) {
 		card[i].resizeTextarea();
-		chooseCardsColumn(card[i]);
+		chooseCardsColumn(card[i], true);
 		card[i].zoomer.style.animation = '';
 	}
 }

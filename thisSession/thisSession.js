@@ -23,12 +23,13 @@ function setSessionID() {
 
 function setCardProperties(resize) {
 	var rubberBodyWidthMeasure = document.querySelector('.empty');
-	var extender = 10;
+	var extender = 0;
 	var headTag = document.querySelector('head');
 	var styleLink = document.createElement('link');
 	styleLink.type = 'text/css';
 	styleLink.rel = 'stylesheet';
 	if (deviceBrowserType.device.type == 'Desktop') {
+		extender = 10;
 		onresize = function() {setCardProperties(true)};
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';

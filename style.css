@@ -130,6 +130,7 @@ p {
 }
 
 .textAreaHeight {
+	font-weight: 600;
 	visibility: hidden;
 	position: absolute;
 	top: 0;

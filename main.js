@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 30;
+var applicationVersion = 31;
 
 var sessionIssueFlag = false;
 
@@ -10,6 +10,7 @@ var deviceBrowserType = detect.parse(navigator.userAgent);
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 setCardProperties();
+textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
 
 //document.querySelector('.masterInformation').innerHTML = '';
 
@@ -39,7 +40,5 @@ setStoredMainDate();
 var mainDateButton = document.querySelector('.mainDateButton');
 
 var mainDateLog = document.querySelector('.mainDateLog');
-
-window.onload = refreshCardsOnTable;
 
 bodyElement.style.backgroundColor = '#dfd';

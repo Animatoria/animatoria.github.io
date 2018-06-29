@@ -2,8 +2,7 @@ var flipperColumnWidth = 30;
 var textareaEditableRows = 6;
 var zIndexCounter = 1;
 
-var textAreaHeigth = document.querySelector('.textAreaHeight');
-textAreaHeigth.style.width = flipperColumnWidth * 18.2 + 'px';
+var textAreaHeight = document.querySelector('.textAreaHeight');
 
 var allCardsProperties = {
 
@@ -189,14 +188,14 @@ var allCardsProperties = {
 	},
 
 	rowCount : function(value) {
-		textAreaHeigth.innerHTML = value.split('\n').join('<br>');
-		return textAreaHeigth.clientHeight / 38;
+		textAreaHeight.innerHTML = value.split('\n').join('<br>');
+		return textAreaHeight.clientHeight / 38;
 	},
 
 	resizeTextarea : function() {
 		this.faceArea.cols = flipperColumnWidth;
 		this.backArea.cols = flipperColumnWidth;
-		textAreaHeigth.style.width = flipperColumnWidth * 18.2 + 'px';
+		textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
 		this.findCardHeight();
 	},
 

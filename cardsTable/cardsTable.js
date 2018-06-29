@@ -2,7 +2,7 @@ var k = 0;
 var storedCard = [];
 var card = [];
 
-var readOnlyMode = false;
+var readOnlyMode = true;
 var isCardsTable = true;
 var isAnyCardShowed;
 
@@ -124,10 +124,10 @@ function readOnlyModeSwitch() {
 }
 
 function readOnlyModeOn() {
-	readOnlyModeMobile.src = 'icons/pencil.svg';
+	readOnlyModeMobile.src = 'icons/readonlymode.svg';
 	var childNodes = readOnlyModeButton.childNodes;
-	childNodes[1].innerHTML = 'Card edit mode';
-	childNodes[0].src = 'icons/pencil.svg';
+	childNodes[1].innerHTML = 'Read only mode';
+	childNodes[0].src = 'icons/readonlymode.svg';
 	readOnlyMode = true;
 	for (var i in card) {
 		card[i].removeMenu();
@@ -136,10 +136,10 @@ function readOnlyModeOn() {
 
 function readOnlyModeOff() {
 	if (localStorage.getItem('') == thisSessionID) {
-		readOnlyModeMobile.src = 'icons/readonlymode.svg';
+		readOnlyModeMobile.src = 'icons/pencil.svg';
 		var childNodes = readOnlyModeButton.childNodes;
-		childNodes[1].innerHTML = 'Read only mode';
-		childNodes[0].src = 'icons/readonlymode.svg';
+		childNodes[1].innerHTML = 'Card edit mode';
+		childNodes[0].src = 'icons/pencil.svg';
 		readOnlyMode = false;
 		for (var i in card) {
 			card[i].addMenu();

@@ -187,8 +187,8 @@ var allCardsProperties = {
 				this.sideIsEdit();
 			}
 		} else {
-			sessionIssue();
 			this.div.parentElement.removeChild(this.div);
+			sessionIssue();
 		}
 	},
 
@@ -224,6 +224,7 @@ var allCardsProperties = {
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			getStoredCards();
 		} else {
+			if (this.isNewCard) this.div.parentElement.removeChild(this.div);
 			sessionIssue();
 		}
 	}

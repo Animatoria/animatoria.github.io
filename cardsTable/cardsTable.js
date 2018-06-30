@@ -11,27 +11,27 @@ var cardsColumnNumber;
 var rubberBodyElement = document.querySelector('.rubberBody');
 var cardsColumn = document.querySelectorAll('.cardsColumn');
 
+var columnExpression = [
+	function(e) {cardsColumn[0].appendChild(e.div)},
+	function(e) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 1, (cardsColumn[1].clientHeight << 1) + 1)) & 1].appendChild(e.div)},
+	function(e) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3].appendChild(e.div)}
+];
+
 function sessionIssue() {
 	alert('Read only, because new Rotation cards application opened at the  same time.');
-	sessionIssueFlag = true;
 	readOnlyModeOn();
 }
 
-function chooseCardsColumn(e, resize) {
-	if (resize) {
-		cardsColumn[1].style.display = 'none';
-		cardsColumn[2].style.display = 'none';
-	}
+function chooseCardsColumn() {};
+
+function defineCardsColumn() {
+	cardsColumn[1].style.display = 'none';
+	cardsColumn[2].style.display = 'none';
 	if (cardsColumnNumber) {
-		if (resize) {
-			cardsColumn[cardsColumnNumber - 1].style.display = 'block';
-			cardsColumn[cardsColumnNumber].style.display = 'block';
-		}
-		cardsColumn[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + (2 / (cardsColumnNumber -1)))) & 3].appendChild(e.div);
+		cardsColumn[cardsColumnNumber - 1].style.display = 'block';
+		cardsColumn[cardsColumnNumber].style.display = 'block';
 	}
-	else {
-		cardsColumn[0].appendChild(e.div);
-	}
+	chooseCardsColumn = columnExpression[cardsColumnNumber];
 }
 
 function addNewCard() {

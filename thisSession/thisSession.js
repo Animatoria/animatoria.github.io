@@ -3,7 +3,11 @@ var newDateFlag = true;
 
 var thisSessionID;
 
+var extender = 0;
+var textAreaExtender = 23;
+
 var bodyElement = document.querySelector('.body');
+var rubberBodyWidthMeasure = document.querySelector('.empty');
 
 function setSessionID() {
 	var sessionID = +localStorage.getItem('');
@@ -21,16 +25,13 @@ function setSessionID() {
 	}
 }
 
-function setCardProperties(resize) {
-	var rubberBodyWidthMeasure = document.querySelector('.empty');
-	var extender = 0;
-	var headTag = document.querySelector('head');
+function defineDeviceProperties() {
 	var styleLink = document.createElement('link');
 	styleLink.type = 'text/css';
 	styleLink.rel = 'stylesheet';
 	if (deviceBrowserType.device.type == 'Desktop') {
 		extender = 10;
-		onresize = function() {setCardProperties(true)};
+		onresize = function() {setCardProperties()};
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
 		rubberBodyElement.style.minHeight = (window.innerHeight - 180) + 'px';
@@ -40,8 +41,6 @@ function setCardProperties(resize) {
 		rubberBodyWidthMeasure.style.width = '100%';
 		onscroll = fallingMobileMenu;
 	}
-	rubberBodyWidthMeasure = rubberBodyWidthMeasure.clientWidth;
-		var textAreaExtender = 23;
 		if (deviceBrowserType.browser.family == 'Edge') {
 			textAreaExtender = 27;
 		}
@@ -52,23 +51,29 @@ function setCardProperties(resize) {
 			textAreaExtender = 12;
 			onresize = function() {};
 		}
-		if (rubberBodyWidthMeasure < 830) {
-			cardsColumnNumber = 0;
-			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - textAreaExtender) / 18);
-			rubberBodyWidthMeasure = flipperColumnWidth * 18 + textAreaExtender + 4;
-		} else if (rubberBodyWidthMeasure < 1230) {
-			cardsColumnNumber = 1;
-			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - 4 - (2 * textAreaExtender)) / (2 * 18));
-			rubberBodyWidthMeasure = flipperColumnWidth * 18 * 2 + 2 * textAreaExtender + 4 + 4;
-		} else {
-			cardsColumnNumber = 2;
-			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
-			rubberBodyWidthMeasure = flipperColumnWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
-		}
-	bodyElement.style.width = extender + rubberBodyWidthMeasure + 'px';
-	header.style.width = extender + rubberBodyWidthMeasure + 'px';
-	headTag.appendChild(styleLink);
-	if (resize) refreshCardsOnTable();
+	document.querySelector('head').appendChild(styleLink);
+	setCardProperties();
+}
+
+function setCardProperties() {
+	rubberBodyWidth = rubberBodyWidthMeasure.clientWidth;
+	if (rubberBodyWidth < 830) {
+		cardsColumnNumber = 0;
+		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - textAreaExtender) / 18);
+		rubberBodyWidth = flipperColumnWidth * 18 + textAreaExtender + 4;
+	} else if (rubberBodyWidth < 1230) {
+		cardsColumnNumber = 1;
+		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - 4 - (2 * textAreaExtender)) / (2 * 18));
+		rubberBodyWidth = flipperColumnWidth * 18 * 2 + 2 * textAreaExtender + 4 + 4;
+	} else {
+		cardsColumnNumber = 2;
+		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
+		rubberBodyWidth = flipperColumnWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
+	}
+	bodyElement.style.width = extender + rubberBodyWidth + 'px';
+	header.style.width = extender + rubberBodyWidth + 'px';
+	defineCardsColumn();
+	refreshCardsOnTable();
 }
 
 function setMainTheme() {

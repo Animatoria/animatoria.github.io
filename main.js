@@ -27,6 +27,10 @@ setMainTheme();
 setSessionID();
 
 var animatoriaButton = document.querySelector('.animatoriaButton');
+animatoriaButton.onclick = function() {
+	isReverse ^= 1;
+	console.log(isReverse);
+}
 
 var newCardButton = document.querySelector('.addNewCard');
 

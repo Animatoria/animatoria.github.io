@@ -2,6 +2,8 @@ var flipperColumnWidth = 30;
 var textareaEditableRows = 6;
 var zIndexCounter = 1;
 
+var isReverse = false;
+
 var textAreaHeight = document.querySelector('.textAreaHeight');
 
 var allCardsProperties = {
@@ -68,6 +70,7 @@ var allCardsProperties = {
 		this.createFlipperElements();
 		this.adjustFlipperElements();
 		if (!this.isNewCard) {
+			if (isReverse) this.reverse();
 			this.findCardHeight();
 			this.faceArea.onclick = () => {this.rotate()};
 			this.backArea.onclick = () => {this.rotate()};
@@ -214,6 +217,11 @@ var allCardsProperties = {
 			this.zoomer.style.animation = '2s backward';
 			this.flipper.style.transform = 'rotateY(0deg)';
 		}
+		this.cardSide = this.cardSide ^ 1;
+	},
+
+	reverse : function() {
+		this.flipper.style.transform = 'rotateY(180deg)';
 		this.cardSide = this.cardSide ^ 1;
 	},
 	

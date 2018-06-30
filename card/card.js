@@ -104,6 +104,7 @@ var allCardsProperties = {
 		this.faceAreaHeight > this.backAreaHeight ? this.faceArea.rows = this.faceAreaHeight : this.faceArea.rows = this.backAreaHeight;
 		this.addEmptyLine();
 		this.input.checked = false;
+		this.faceArea.style.overflowY = 'hidden';
 		this.rotate();
 		this.isNewCard = false;
 		Object.getPrototypeOf(this).deleted = false;
@@ -138,12 +139,14 @@ var allCardsProperties = {
 		if (this.cardSide) {
 			Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
 			this.findCardHeight();
+			this.faceArea.style.overflowY = 'hidden';
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			this.faceArea.onclick = () => {this.rotate()};
 			this.faceArea.readOnly = true;
 		} else {
 			Object.getPrototypeOf(this).backAreaText = this.backArea.value;
 			this.findCardHeight();
+			this.backArea.style.overflowY = 'hidden';
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			this.backArea.onclick = () => {this.rotate()};
 			this.backArea.readOnly = true;
@@ -159,6 +162,7 @@ var allCardsProperties = {
 			this.faceArea.onclick = function(){}
 			this.faceArea.readOnly = false;
 			this.faceArea.rows = textareaEditableRows;
+			this.faceArea.style.overflowY = 'auto';
 			this.faceArea.select();
 		} else {
 			this.backArea.value = this.backAreaText;
@@ -166,6 +170,7 @@ var allCardsProperties = {
 			this.backArea.readOnly = false;
 			this.faceArea.rows = textareaEditableRows;
 			this.backArea.rows = textareaEditableRows;
+			this.backArea.style.overflowY = 'auto';
 			this.backArea.select();
 		}
 	},

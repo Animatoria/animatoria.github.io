@@ -53,15 +53,15 @@ function setCardProperties(resize) {
 			onresize = function() {};
 		}
 		if (rubberBodyWidthMeasure < 830) {
-			cardsColumnNumber = 1;
+			cardsColumnNumber = 0;
 			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - textAreaExtender) / 18);
 			rubberBodyWidthMeasure = flipperColumnWidth * 18 + textAreaExtender + 4;
 		} else if (rubberBodyWidthMeasure < 1230) {
-			cardsColumnNumber = 2;
+			cardsColumnNumber = 1;
 			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - 4 - (2 * textAreaExtender)) / (2 * 18));
 			rubberBodyWidthMeasure = flipperColumnWidth * 18 * 2 + 2 * textAreaExtender + 4 + 4;
 		} else {
-			cardsColumnNumber = 3;
+			cardsColumnNumber = 2;
 			flipperColumnWidth = Math.floor((rubberBodyWidthMeasure - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
 			rubberBodyWidthMeasure = flipperColumnWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
 		}

@@ -31,7 +31,6 @@ function defineDeviceProperties() {
 	styleLink.rel = 'stylesheet';
 	if (deviceBrowserType.device.type == 'Desktop') {
 		extender = 10;
-		onresize = function() {setCardProperties()};
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
 		rubberBodyElement.style.minHeight = (window.innerHeight - 180) + 'px';
@@ -49,7 +48,6 @@ function defineDeviceProperties() {
 		if (deviceBrowserType.os.family == 'Android') {
 			textareaEditableRows = 2;
 			textAreaExtender = 12;
-			onresize = function() {};
 		}
 	document.querySelector('head').appendChild(styleLink);
 	setCardProperties();

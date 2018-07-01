@@ -1,6 +1,6 @@
 window.onunload = function() {location.reload(true);};
 
-var applicationVersion = 31;
+var applicationVersion = 32;
 
 var deviceBrowserType = detect.parse(navigator.userAgent);
 //document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
@@ -8,6 +8,7 @@ var deviceBrowserType = detect.parse(navigator.userAgent);
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 defineDeviceProperties();
+onresize = function() {setCardProperties()};
 textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
 
 //document.querySelector('.masterInformation').innerHTML = '';
@@ -27,10 +28,7 @@ setMainTheme();
 setSessionID();
 
 var animatoriaButton = document.querySelector('.animatoriaButton');
-animatoriaButton.onclick = function() {
-	isReverse ^= 1;
-	console.log(isReverse);
-}
+animatoriaButton.onclick = function() {isReverse ^= 1};
 
 var newCardButton = document.querySelector('.addNewCard');
 

@@ -27,7 +27,7 @@ function mainThemeChange() {
 	} else {
 		newThemeFlag = true;
 	}
-	setCalendar();
+	nextMonth(0);
 	if (dateList.some(function(value) {return value == actualDate.getDate()})) newDateFlag = false;
 	else newDateFlag = true;
 	getStoredCards();

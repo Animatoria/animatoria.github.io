@@ -36,14 +36,14 @@ function setCalendar() {
 	bigExtender = 0;
 	firstDay = new Date(actualDate.getFullYear(), actualDate.getMonth()).getDay();
 	switch(firstDay) {
-		case 0 : for (var i = 7; i < 14; i++) fiveWeekNodes[i].style.display = 'block'; smallExtender = 0; break;
+		case 0 : for (var i = 7; i < 14; i++) fiveWeekNodes[i].style.display = 'inline-block'; smallExtender = 0; break;
 		default : for (var i = 7; i < 14; i++) fiveWeekNodes[i].style.display = 'none';
 		case 6 : bigExtender = 7;
 	}
 	for (var i = 49; i < 56; i++) fiveWeekNodes[i].style.display = 'none';
 	findStoredYearAndMonth();
 	fillDates();
-	if (bigExtender == 7 && thisDate.getDate() == 6) for (var i = 49; i < 56; i++) fiveWeekNodes[i].style.display = 'block';
+	if (bigExtender == 7 && thisDate.getDate() == 6) for (var i = 49; i < 56; i++) fiveWeekNodes[i].style.display = 'inline-block';
 }
 
 function fillDates() {
@@ -52,9 +52,11 @@ function fillDates() {
 		fiveWeekNodes[i].innerHTML = thisDate.getDate();
 		if (thisDate.getMonth() == actualDate.getMonth()) {
 			fiveWeekNodes[i].style.backgroundColor = 'green';
+			fiveWeekNodes[i].style.cursor = 'pointer';
 			selectCalendarDate(i, thisDate);
 		} else {
 			fiveWeekNodes[i].style.backgroundColor = '#dfd';
+			fiveWeekNodes[i].style.cursor = 'auto';
 		}
 	}
 	for (var i in dateList) {

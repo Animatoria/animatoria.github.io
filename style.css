@@ -89,16 +89,16 @@ p {
 }
 
 .fiveWeek {
-	display: grid;
-	grid-template-columns: repeat(7, 50px);
-	grid-template-rows: repeat(6, 50px);
+	width: 350px;
 }
 
 .day {
+	margin: 5px;
+	height: 40px;
+	width: 40px;
 	display: inline-block;
-	justify-self: center;
-	align-self: center;
-	padding: 10px;
+	text-align: center;
+	line-height: 40px;
 }
 
 .yearDiv, .monthDiv{
@@ -112,12 +112,14 @@ p {
 	width: 50%;
 	height: 50px;
 	float: left;
+	cursor: pointer;
 }
 
 .rightArrow {
 	width: 50%;
 	height: 50px;
 	float: right;
+	cursor: pointer;
 }
 
 .year, .month {

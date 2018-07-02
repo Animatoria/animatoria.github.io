@@ -95,6 +95,7 @@ p {
 }
 
 .day {
+	display: inline-block;
 	justify-self: center;
 	align-self: center;
 	padding: 10px;

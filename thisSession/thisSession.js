@@ -39,6 +39,7 @@ function defineDeviceProperties() {
 		styleLink.href = 'mobile/styleMobile.css';
 		rubberBodyWidthMeasure.style.width = '100%';
 		onscroll = fallingMobileMenu;
+		rubberBodyElement.style.minHeight = '300px';
 	}
 		if (deviceBrowserType.browser.family == 'Edge') {
 			textAreaExtender = 27;

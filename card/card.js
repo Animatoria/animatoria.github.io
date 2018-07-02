@@ -76,6 +76,8 @@ var allCardsProperties = {
 			this.backArea.onclick = () => {this.rotate()};
 			this.faceArea.readOnly = true;
 			this.backArea.readOnly = true;
+			this.faceArea.style.cursor = 'pointer';
+			this.backArea.style.cursor = 'pointer';
 		}
 	},
 
@@ -114,6 +116,7 @@ var allCardsProperties = {
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 		this.faceArea.onclick = () => {this.rotate()};
 		this.faceArea.readOnly = true;
+		this.faceArea.style.cursor = 'pointer';
 	},
 
 	removeMenu : function() {
@@ -146,6 +149,7 @@ var allCardsProperties = {
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			this.faceArea.onclick = () => {this.rotate()};
 			this.faceArea.readOnly = true;
+			this.faceArea.style.cursor = 'pointer';
 		} else {
 			Object.getPrototypeOf(this).backAreaText = this.backArea.value;
 			this.findCardHeight();
@@ -153,6 +157,7 @@ var allCardsProperties = {
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			this.backArea.onclick = () => {this.rotate()};
 			this.backArea.readOnly = true;
+			this.backArea.style.cursor = 'pointer';
 			if (readOnlyMode) {
 				this.removeMenu();
 			}
@@ -164,6 +169,7 @@ var allCardsProperties = {
 			this.faceArea.value = this.faceAreaText;
 			this.faceArea.onclick = function(){}
 			this.faceArea.readOnly = false;
+			this.faceArea.style.cursor = 'auto';
 			this.faceArea.rows = textareaEditableRows;
 			this.faceArea.style.overflowY = 'auto';
 			this.faceArea.select();
@@ -171,6 +177,7 @@ var allCardsProperties = {
 			this.backArea.value = this.backAreaText;
 			this.backArea.onclick = function(){}
 			this.backArea.readOnly = false;
+			this.backArea.style.cursor = 'auto';
 			this.faceArea.rows = textareaEditableRows;
 			this.backArea.rows = textareaEditableRows;
 			this.backArea.style.overflowY = 'auto';

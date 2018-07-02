@@ -41,6 +41,7 @@ function defineDeviceProperties() {
 		rubberBodyWidthMeasure.style.width = '100%';
 		onscroll = fallingMobileMenu;
 		rubberBodyElement.style.minHeight = '300px';
+		Screen.onorientationchange = function() {setCardProperties()};
 	}
 		if (deviceBrowserType.browser.family == 'Edge') {
 			textAreaExtender = 27;

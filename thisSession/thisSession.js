@@ -30,7 +30,6 @@ function defineDeviceProperties() {
 	var styleLink = document.createElement('link');
 	styleLink.type = 'text/css';
 	styleLink.rel = 'stylesheet';
-	screenWidth = window.innerWidth;
 	if (deviceBrowserType.device.type == 'Desktop') {
 		extender = 10;
 		styleLink.href = 'desktop/styleDesktop.css';
@@ -44,27 +43,28 @@ function defineDeviceProperties() {
 		onscroll = fallingMobileMenu;
 		rubberBodyElement.style.minHeight = '300px';
 		onresize = function() {
-			if (screenWidth != window.innerWidth) {
-				screenWidth = window.innerWidth;
+			if (screenWidth != rubberBodyWidthMeasure.clientWidth) {
+				screenWidth = rubberBodyWidthMeasure.clientWidth;
 				setCardProperties();
 			}
 		};
 	}
-		if (deviceBrowserType.browser.family == 'Edge') {
-			textAreaExtender = 27;
+	screenWidth = rubberBodyWidthMeasure.clientWidth;
+	if (deviceBrowserType.browser.family == 'Edge') {
+		textAreaExtender = 27;
+	}
+	if (deviceBrowserType.browser.family == 'IE') {
+	}
+	if (deviceBrowserType.os.family == 'Android') {
+		textareaEditableRows = 2;
+		textAreaExtender = 12;
+		onresize = function() {
+		if (screenWidth != rubberBodyWidthMeasure.clientWidth) {
+			screenWidth = rubberBodyWidthMeasure.clientWidth;
+			setCardProperties();
 		}
-		if (deviceBrowserType.browser.family == 'IE') {
-		}
-		if (deviceBrowserType.os.family == 'Android') {
-			textareaEditableRows = 2;
-			textAreaExtender = 12;
-			onresize = function() {
-			if (screenWidth != window.innerWidth) {
-				screenWidth = window.innerWidth;
-				setCardProperties();
-			}
-		};
-		}
+	};
+	}
 	document.querySelector('head').appendChild(styleLink);
 	setCardProperties();
 }

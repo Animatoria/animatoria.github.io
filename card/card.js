@@ -4,8 +4,6 @@ var zIndexCounter = 1;
 
 var isReverse = false;
 
-var textAreaHeight = document.querySelector('.textAreaHeight');
-
 var allCardsProperties = {
 
 	createFlipperElements : function() {
@@ -60,7 +58,6 @@ var allCardsProperties = {
 	},
 
 	addCard : function() {
-		this.div = document.createElement('div');
 		this.div.style.backgroundColor = '#dfd';
 		if (this.isEditable || this.isNewCard) {
 			this.createMenuElements();
@@ -84,10 +81,12 @@ var allCardsProperties = {
 	},
 
 	findCardHeight : function() {
+		this.faceArea.rows = 1;
+		this.backArea.rows = 1;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
-		this.faceAreaHeight = this.rowCount(this.faceAreaText);
-		this.backAreaHeight = this.rowCount(this.backAreaText);
+		this.faceAreaHeight = this.rowCount(this.faceArea);
+		this.backAreaHeight = this.rowCount(this.backArea);
 		this.addEmptyLine();
 		this.faceArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 		this.backArea.rows = this.faceArea.rows;
@@ -107,7 +106,7 @@ var allCardsProperties = {
 
 	newCardFirstStep : function() {
 		Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
-		this.faceAreaHeight = this.rowCount(this.faceArea.value);
+		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.faceAreaHeight > this.backAreaHeight ? this.faceArea.rows = this.faceAreaHeight : this.faceArea.rows = this.backAreaHeight;
 		this.backArea.rows = this.faceArea.rows;
 		this.addEmptyLine();
@@ -203,8 +202,7 @@ var allCardsProperties = {
 	},
 
 	rowCount : function(value) {
-		textAreaHeight.innerHTML = value.split('\n').join('<br>');
-		return textAreaHeight.clientHeight / 38;
+		return Math.floor((value.scrollHeight - 60) / 38);
 	},
 
 	autoGrow : function(area) {
@@ -214,7 +212,6 @@ var allCardsProperties = {
 	resizeTextarea : function() {
 		this.faceArea.cols = flipperColumnWidth;
 		this.backArea.cols = flipperColumnWidth;
-		textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
 		this.findCardHeight();
 	},
 
@@ -265,4 +262,5 @@ function CardProperties(k, isNewCard) {
 	this.wasCardMenu = false;
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
+	this.div = document.createElement('div');
 }

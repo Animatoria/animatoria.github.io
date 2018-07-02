@@ -41,8 +41,8 @@ function addNewCard() {
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
 		card.push(new CardProperties(k, true));
 		Object.setPrototypeOf(card[k], storedCard[k]);
-		card[k].addCard();
 		chooseCardsColumn(card[k]);
+		card[k].addCard();
 		card[k].faceArea.select();
 		k++;
 	}
@@ -53,8 +53,8 @@ function getStoredCard(i) {
 	card.push(new CardProperties(i, false));
 	Object.setPrototypeOf(storedCard[i], allCardsProperties);
 	Object.setPrototypeOf(card[i], storedCard[i]);
-	card[i].addCard();
 	chooseCardsColumn(card[i]);
+	card[i].addCard();
 }
 
 function deleteAllCards() {
@@ -135,8 +135,8 @@ function readOnlyModeOff() {
 function refreshCardsOnTable() {
 	deleteAllCards();
 	for (var i in card) {
+		chooseCardsColumn(card[i]);
 		card[i].resizeTextarea();
-		chooseCardsColumn(card[i], true);
 		card[i].zoomer.style.animation = '';
 	}
 }

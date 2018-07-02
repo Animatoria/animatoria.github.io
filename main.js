@@ -7,9 +7,6 @@ var deviceBrowserType = detect.parse(navigator.userAgent);
 
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
-defineDeviceProperties();
-textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
-
 //document.querySelector('.masterInformation').innerHTML = '';
 
 var currentDate = new Date();
@@ -22,9 +19,6 @@ currentDateParagraph.innerHTML = mainDate;
 
 var mainTheme = document.querySelector('#mainTheme');
 mainTheme.onchange = mainThemeChange;
-setMainTheme();
-
-setSessionID();
 
 var animatoriaButton = document.querySelector('.animatoriaButton');
 animatoriaButton.onclick = function() {isReverse ^= 1};
@@ -33,13 +27,15 @@ var newCardButton = document.querySelector('.addNewCard');
 
 var readOnlyModeButton = document.querySelector('.readOnlyMode');
 
-getStoredCards();
-setStoredMainDate();
 
 var mainDateButton = document.querySelector('.mainDateButton');
 
 var mainDateLog = document.querySelector('.mainDateLog');
 
-window.onload = refreshCardsOnTable;
+defineDeviceProperties();
+setMainTheme();
+setSessionID();
+getStoredCards();
+setStoredMainDate();
 
 bodyElement.style.backgroundColor = '#dfd';

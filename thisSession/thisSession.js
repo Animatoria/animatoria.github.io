@@ -2,6 +2,7 @@ var newThemeFlag = false;
 var newDateFlag = true;
 
 var thisSessionID;
+var screenWidth;
 
 var extender = 0;
 var textAreaExtender = 23;
@@ -29,6 +30,7 @@ function defineDeviceProperties() {
 	var styleLink = document.createElement('link');
 	styleLink.type = 'text/css';
 	styleLink.rel = 'stylesheet';
+	screenWidth = window.innerWidth;
 	if (deviceBrowserType.device.type == 'Desktop') {
 		extender = 10;
 		styleLink.href = 'desktop/styleDesktop.css';
@@ -41,7 +43,12 @@ function defineDeviceProperties() {
 		rubberBodyWidthMeasure.style.width = '100%';
 		onscroll = fallingMobileMenu;
 		rubberBodyElement.style.minHeight = '300px';
-		Screen.onorientationchange = function() {setCardProperties()};
+		onresize = function() {
+			if (screenWidth != window.innerWidth) {
+				screenWidth = window.innerWidth;
+				setCardProperties();
+			}
+		};
 	}
 		if (deviceBrowserType.browser.family == 'Edge') {
 			textAreaExtender = 27;
@@ -51,6 +58,12 @@ function defineDeviceProperties() {
 		if (deviceBrowserType.os.family == 'Android') {
 			textareaEditableRows = 2;
 			textAreaExtender = 12;
+			onresize = function() {
+			if (screenWidth != window.innerWidth) {
+				screenWidth = window.innerWidth;
+				setCardProperties();
+			}
+		};
 		}
 	document.querySelector('head').appendChild(styleLink);
 	setCardProperties();

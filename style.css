@@ -101,6 +101,16 @@ p {
 	line-height: 40px;
 }
 
+.greenDay {
+	background-color: green;
+	cursor: pointer;
+}
+
+.redDay {
+	background-color: red;
+	cursor: pointer;
+}
+
 .yearDiv, .monthDiv{
 	position: relative;
 	width: 350px;

@@ -51,16 +51,18 @@ function fillDates() {
 		thisDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), i - 12 - firstDay);
 		fiveWeekNodes[i].innerHTML = thisDate.getDate();
 		if (thisDate.getMonth() == actualDate.getMonth()) {
-			fiveWeekNodes[i].style.backgroundColor = 'green';
-			fiveWeekNodes[i].style.cursor = 'pointer';
+			fiveWeekNodes[i].classList.add('greenDay');
+			fiveWeekNodes[i].classList.remove('redDay');
 			selectCalendarDate(i, thisDate);
 		} else {
-			fiveWeekNodes[i].style.backgroundColor = '#dfd';
-			fiveWeekNodes[i].style.cursor = 'auto';
+			fiveWeekNodes[i].classList.remove('greenDay');
+			fiveWeekNodes[i].classList.remove('redDay');
+			fiveWeekNodes[i].onclick = function() {};
 		}
 	}
 	for (var i in dateList) {
-		fiveWeekNodes[dateList[i] + 12 + firstDay].style.backgroundColor = 'red';
+		fiveWeekNodes[dateList[i] + 12 + firstDay].classList.remove('greenDay');
+		fiveWeekNodes[dateList[i] + 12 + firstDay].classList.add('redDay');
 	}
 }
 
@@ -72,7 +74,7 @@ function selectCalendarDate(i, thisDate) {
 		isDateTable = false;
 		mainDate = thisDate.toLocaleDateString();
 		actualDate = thisDate;
-		if (fiveWeekNodes[i].style.backgroundColor == 'green') {
+		if (fiveWeekNodes[i].classList.contains('greenDay')) {
 			newDateFlag = true;
 		} else {
 			newDateFlag = false;

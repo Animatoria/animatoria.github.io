@@ -34,6 +34,7 @@ function defineDeviceProperties() {
 		styleLink.href = 'desktop/styleDesktop.css';
 		rubberBodyWidthMeasure.style.width = '90%';
 		rubberBodyElement.style.minHeight = (window.innerHeight - 180) + 'px';
+		onresize = function() {setCardProperties()};
 	} else {
 		textareaEditableRows = 2;
 		styleLink.href = 'mobile/styleMobile.css';

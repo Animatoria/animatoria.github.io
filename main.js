@@ -8,7 +8,6 @@ var deviceBrowserType = detect.parse(navigator.userAgent);
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 defineDeviceProperties();
-onresize = function() {setCardProperties()};
 textAreaHeight.style.width = flipperColumnWidth * 18.2 + 'px';
 
 //document.querySelector('.masterInformation').innerHTML = '';

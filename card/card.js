@@ -1,5 +1,5 @@
 var flipperColumnWidth = 30;
-var textareaEditableRows = 6;
+var textareaEditableRows = 1;
 var zIndexCounter = 1;
 
 var isReverse = false;
@@ -39,6 +39,8 @@ var allCardsProperties = {
 		this.backArea.rows = this.faceArea.rows;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
+		this.faceArea.oninput = () => {this.autoGrow(this.faceArea)};
+		this.backArea.oninput = () => {this.autoGrow(this.backArea)};
 	},
 
 	adjustMenuElements : function() {
@@ -107,6 +109,7 @@ var allCardsProperties = {
 		Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
 		this.faceAreaHeight = this.rowCount(this.faceArea.value);
 		this.faceAreaHeight > this.backAreaHeight ? this.faceArea.rows = this.faceAreaHeight : this.faceArea.rows = this.backAreaHeight;
+		this.backArea.rows = this.faceArea.rows;
 		this.addEmptyLine();
 		this.input.checked = false;
 		this.faceArea.style.overflowY = 'hidden';
@@ -170,7 +173,6 @@ var allCardsProperties = {
 			this.faceArea.onclick = function(){}
 			this.faceArea.readOnly = false;
 			this.faceArea.style.cursor = 'auto';
-			this.faceArea.rows = textareaEditableRows;
 			this.faceArea.style.overflowY = 'auto';
 			this.faceArea.select();
 		} else {
@@ -178,8 +180,6 @@ var allCardsProperties = {
 			this.backArea.onclick = function(){}
 			this.backArea.readOnly = false;
 			this.backArea.style.cursor = 'auto';
-			this.faceArea.rows = textareaEditableRows;
-			this.backArea.rows = textareaEditableRows;
 			this.backArea.style.overflowY = 'auto';
 			this.backArea.select();
 		}
@@ -205,6 +205,10 @@ var allCardsProperties = {
 	rowCount : function(value) {
 		textAreaHeight.innerHTML = value.split('\n').join('<br>');
 		return textAreaHeight.clientHeight / 38;
+	},
+
+	autoGrow : function(area) {
+		if (area.scrollHeight > area.clientHeight) area.rows++;
 	},
 
 	resizeTextarea : function() {

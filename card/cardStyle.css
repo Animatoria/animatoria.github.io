@@ -26,6 +26,7 @@
 }
 
 textarea {
+	font-family: monospace;
 	font-size: 33px;
 	font-weight: 600;
 	outline: none;

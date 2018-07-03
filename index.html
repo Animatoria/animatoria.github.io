@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>Rotating Cards</title>
-	<link rel = 'stylesheet' href='style.css' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Cousine:700" rel="stylesheet">
 	<link rel = 'stylesheet' href='card/cardStyle.css' type='text/css'>
 	<link rel = 'stylesheet' href='cardsTable/cardsTable.css' type='text/css'>
+	<link rel = 'stylesheet' href='style.css' type='text/css'>
 	<meta name = "viewport" content = "width=device-width, initial-scale=1">
 </head>
 <body>
@@ -96,7 +97,7 @@
 			<div class='cardsColumn'></div>
 			<div class='cardsColumn'></div>
 		</div>
-		<div class='dateTable'>
+		<div class='dateTable displayNone'>
 			<div class='yearDiv'>
 				<div class='year''></div>
 				<div class='leftArrow' onclick='nextYear(-1)'></div>
@@ -110,9 +111,26 @@
 			<div class='fiveWeek'><div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div>
 			</div>
 		</div>
-		<div class='themeTable'></div>
-		<div class='plexiGlass'></div>
+		<div class='themeTable displayNone'></div>
+		<div class='plexiGlass displayNone'></div>
 	</div>
+	<template>
+		<div class='card'>
+			<div class='cardMenu displayNone'>
+				<label>
+					<input class='completed' type='checkbox'>
+					Completed
+				</label>
+				<input class='deleteButton' type='button' value='X'>
+			</div>
+			<div class='zoomer'>
+				<div class='flipper'>
+					<textarea class='faceArea'></textarea>
+					<textarea class='backArea'></textarea>
+				</div>
+			</div>
+		</div>
+	</template>
 	<script src='cardsTable/cardsTable.js'></script>
 	<script src='card/card.js'></script>
 	<script src='thisSession/thisSession.js'></script>

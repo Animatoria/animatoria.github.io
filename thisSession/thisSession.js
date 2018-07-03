@@ -73,17 +73,12 @@ function setCardProperties() {
 	rubberBodyWidth = rubberBodyWidthMeasure.clientWidth;
 	if (rubberBodyWidth < 830) {
 		cardsColumnNumber = 0;
-		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - textAreaExtender) / 18);
-		rubberBodyWidth = flipperColumnWidth * 18 + textAreaExtender + 4;
 	} else if (rubberBodyWidth < 1230) {
 		cardsColumnNumber = 1;
-		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - 4 - (2 * textAreaExtender)) / (2 * 18));
-		rubberBodyWidth = flipperColumnWidth * 18 * 2 + 2 * textAreaExtender + 4 + 4;
 	} else {
 		cardsColumnNumber = 2;
-		flipperColumnWidth = Math.floor((rubberBodyWidth - 4 - (2 * 4) - (3 * textAreaExtender)) / (3 * 18));
-		rubberBodyWidth = flipperColumnWidth * 18 * 3 + 3 * textAreaExtender + 2 * 4 + 4;
 	}
+	flipperColumnWidth = (rubberBodyWidth - 20) / (cardsColumnNumber + 1);
 	bodyElement.style.width = extender + rubberBodyWidth + 'px';
 	header.style.width = extender + rubberBodyWidth + 'px';
 	defineCardsColumn();
@@ -124,4 +119,12 @@ function isNewDateOrTheme() {
 		fillDates();
 		newDateFlag = false;
 	}
+}
+
+function changeTable(table) {
+	cardsTable.is = dateTable.is = themeTable.is = false;
+	table.is = true;
+	rubberBodyElement.classList.toggle('displayNone', !cardsTable.is);
+	dateTable.classList.toggle('displayNone', !dateTable.is);
+	themeTable.classList.toggle('displayNone', !themeTable.is);
 }

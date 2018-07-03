@@ -1,6 +1,8 @@
 var storedMainTheme = [];
 
-var isThemeTable = false;
+var themeTable = {
+	is : false
+}
 
 var themeTable = document.querySelector('.themeTable');
 
@@ -14,13 +16,11 @@ function mainThemeChange() {
 	if (singleMenu) {
 		closeSingleMenu(mainThemeLabel);
 	}
-	isThemeTable = false;
 	storedMainDate = [];
 	mainDate = currentDateToLocaleDateString;
 	actualDate = currentDate;
 	currentDateParagraph.innerHTML = mainDate;
-	rubberBodyElement.style.display = 'flex';
-	themeTable.style.display = 'none';
+	changeTable(cardsTable);
 	if (localStorage.getItem('storedMainDate_' + mainTheme.value)) {
 		storedMainDate = JSON.parse(localStorage.getItem('storedMainDate_' + mainTheme.value), function(key, value) {if (key == '') {return value} else {return new Date(value)}});
 		newThemeFlag = false;
@@ -35,23 +35,17 @@ function mainThemeChange() {
 
 function mainThemeMenu(mobileVersion) {
 	refreshCardsAnimation();
-	if (isThemeTable) {
+	if (themeTable.is) {
 		if (singleMenu) {
 			closeSingleMenu(mainThemeLabel);
 		} else {
-			isThemeTable = false;
-			rubberBodyElement.style.display = 'flex';
-			themeTable.style.display = 'none';
+			changeTable(themeTable);
 		}
 		mainThemeChange();
 	} else {
 		mainTheme.select();
 		deleteAllThemeItems();
-		isDateTable = false;
-		isThemeTable = true;
-		rubberBodyElement.style.display = 'none';
-		dateTable.style.display = 'none';
-		themeTable.style.display = 'block';
+		changeTable(themeTable);
 		for (var i in storedMainTheme) {
 			getChoosableTheme(i);
 		}

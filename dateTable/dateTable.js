@@ -2,7 +2,9 @@ var storedMainDate = [];
 var dateList = [];
 var dateIndex = [];
 
-var isDateTable = false;
+var dateTable = {
+	is : false
+}
 var isActualMainDate = true;
 
 var actualDate;
@@ -36,14 +38,14 @@ function setCalendar() {
 	bigExtender = 0;
 	firstDay = new Date(actualDate.getFullYear(), actualDate.getMonth()).getDay();
 	switch(firstDay) {
-		case 0 : for (var i = 7; i < 14; i++) fiveWeekNodes[i].style.display = 'inline-block'; smallExtender = 0; break;
-		default : for (var i = 7; i < 14; i++) fiveWeekNodes[i].style.display = 'none';
+		case 0 : for (var i = 7; i < 14; i++) fiveWeekNodes[i].classList.remove('displayNone'); smallExtender = 0; break;
+		default : for (var i = 7; i < 14; i++) fiveWeekNodes[i].classList.add('displayNone');
 		case 6 : bigExtender = 7;
 	}
-	for (var i = 49; i < 56; i++) fiveWeekNodes[i].style.display = 'none';
+	for (var i = 49; i < 56; i++) fiveWeekNodes[i].classList.add('displayNone');
 	findStoredYearAndMonth();
 	fillDates();
-	if (bigExtender == 7 && thisDate.getDate() == 6) for (var i = 49; i < 56; i++) fiveWeekNodes[i].style.display = 'inline-block';
+	if (bigExtender == 7 && thisDate.getDate() == 6) for (var i = 49; i < 56; i++) fiveWeekNodes[i].classList.remove('displayNone');
 }
 
 function fillDates() {
@@ -71,15 +73,15 @@ function selectCalendarDate(i, thisDate) {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog);
 		}
-		isDateTable = false;
 		mainDate = thisDate.toLocaleDateString();
+		currentDateParagraph.innerHTML = mainDate;
 		actualDate = thisDate;
 		if (fiveWeekNodes[i].classList.contains('greenDay')) {
 			newDateFlag = true;
 		} else {
 			newDateFlag = false;
 		}
-		changeDateItem();
+		changeTable(cardsTable);
 		getStoredCards();
 	}
 }
@@ -95,12 +97,6 @@ function findStoredYearAndMonth() {
 	}
 }
 
-function changeDateItem() {
-	currentDateParagraph.innerHTML = mainDate;
-	rubberBodyElement.style.display = 'flex';
-	dateTable.style.display = 'none';
-}
-
 function clearDate() {
 	storedMainDate.splice(dateIndex[dateList.indexOf(actualDate.getDate())], 1);
 	dateIndex.splice(dateList.indexOf(actualDate.getDate()), 1);
@@ -111,20 +107,14 @@ function clearDate() {
 
 function changeMainDate(mobileVersion) {
 	refreshCardsAnimation();
-	if (isDateTable) {
+	if (dateTable.is) {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog);
 		} else {
-			isDateTable = false;
-			rubberBodyElement.style.display = 'flex';
-			dateTable.style.display = 'none';
+			changeTable(cardsTable);
 		}
 	} else {
-		isThemeTable = false;
-		isDateTable = true;
-		rubberBodyElement.style.display = 'none';
-		dateTable.style.display = 'block';
-		themeTable.style.display = 'none';
+		changeTable(dateTable);
 		if (mobileVersion) {
 			singleLineMenu(mainDateLog);
 		}

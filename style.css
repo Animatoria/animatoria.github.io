@@ -43,12 +43,10 @@ body {
 .dateTable {
 	margin: 0 auto;
 	width: 350px;
-	display: none;
 	background-color: #dfd;
 }
 
 .themeTable {
-	display: none;
 	background-color: #dfd;
 }
 
@@ -134,4 +132,8 @@ p {
 	text-align: center;
 	line-height: 50px;
 	background-color: #fdd;
+}
+
+.displayNone {
+	display: none !important;
 }

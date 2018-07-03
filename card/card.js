@@ -1,4 +1,4 @@
-var flipperColumnWidth = 30;
+var flipperColumnWidth;
 var textareaEditableRows = 1;
 var zIndexCounter = 1;
 
@@ -31,8 +31,8 @@ var allCardsProperties = {
 		this.zoomer.appendChild(this.flipper);
 		this.flipper.appendChild(this.faceArea);
 		this.flipper.appendChild(this.backArea);
-		this.faceArea.cols = flipperColumnWidth;
-		this.backArea.cols = flipperColumnWidth;
+		this.faceArea.style.width = flipperColumnWidth + 'px';
+		this.backArea.style.width = flipperColumnWidth + 'px';
 		this.faceArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 		this.backArea.rows = this.faceArea.rows;
 		this.faceArea.value = this.faceAreaText;
@@ -123,7 +123,7 @@ var allCardsProperties = {
 
 	removeMenu : function() {
 		if (!this.isNewCard) {
-			this.divCardMenu.style.display = 'none';
+			this.divCardMenu.classList.add('displayNone');
 			this.div.style.backgroundColor = '#dfd';
 		}
 	},
@@ -131,7 +131,7 @@ var allCardsProperties = {
 	addMenu : function() {
 		if (!this.isNewCard) {
 			if (this.wasCardMenu) {
-				this.divCardMenu.style.display = 'block';
+				this.divCardMenu.classList.remove('displayNone');
 				this.div.style.backgroundColor = '#ddf';
 			} else {
 				this.createMenuElements();
@@ -210,8 +210,8 @@ var allCardsProperties = {
 	},
 
 	resizeTextarea : function() {
-		this.faceArea.cols = flipperColumnWidth;
-		this.backArea.cols = flipperColumnWidth;
+		this.faceArea.style.width = flipperColumnWidth + 'px';
+		this.backArea.style.width = flipperColumnWidth + 'px';
 		this.findCardHeight();
 	},
 

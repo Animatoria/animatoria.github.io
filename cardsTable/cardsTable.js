@@ -3,7 +3,10 @@ var storedCard = [];
 var card = [];
 
 var readOnlyMode = true;
-var isCardsTable = true;
+var cardsTable = {
+	is : true
+}
+
 var isAnyCardShowed;
 
 var cardsColumnNumber;
@@ -25,18 +28,18 @@ function sessionIssue() {
 function chooseCardsColumn() {};
 
 function defineCardsColumn() {
-	cardsColumn[1].style.display = 'none';
-	cardsColumn[2].style.display = 'none';
+	cardsColumn[1].classList.add('displayNone');
+	cardsColumn[2].classList.add('displayNone');
 	if (cardsColumnNumber) {
-		cardsColumn[cardsColumnNumber - 1].style.display = 'block';
-		cardsColumn[cardsColumnNumber].style.display = 'block';
+		cardsColumn[cardsColumnNumber - 1].classList.remove('displayNone');
+		cardsColumn[cardsColumnNumber].classList.remove('displayNone');
 	}
 	chooseCardsColumn = columnExpression[cardsColumnNumber];
 }
 
 function addNewCard() {
 	if (longMenu) mobileMenu(0);
-	if (!isThemeTable && !isDateTable) {
+	if (!themeTable.is && !dateTable.is) {
 		storedCard.push(new StoredCardProperties());
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
 		card.push(new CardProperties(k, true));

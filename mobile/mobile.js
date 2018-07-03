@@ -44,11 +44,7 @@ function singleLineMenu(label) {
 function closeSingleMenu() {
 	singleMenu = false;
 	burger();
-	rubberBodyElement.style.display = 'flex';
-	dateTable.style.display = 'none';
-	themeTable.style.display = 'none';
-	isDateTable = false;
-	isThemeTable = false;
+	changeTable(cardsTable);
 	for (var i in arguments) {
 		arguments[i].style.top = '-50px';
 		arguments[i].style.transition = 'top ' + 1 / 8 + 's linear';
@@ -65,7 +61,7 @@ function mobileMenu(label) {
 			headerChildNodes[i].style.top = -50 + 'px';
 			headerChildNodes[i].style.transitionDelay = (6 - i) / 8 + 's';
 		}
-		plexiGlass.style.display = 'none';
+		plexiGlass.classList.add('displayNone');
 		if (label) {
 			label.style.top = 0;
 			singleMenu = true;
@@ -80,7 +76,7 @@ function mobileMenu(label) {
 				headerChildNodes[i].style.top = i * 50 + 'px';
 				headerChildNodes[i].style.transitionDelay = '0s';
 			}
-			plexiGlass.style.display = 'block';
+			plexiGlass.classList.remove('displayNone');
 			cross();
 			longMenu = true;
 		}

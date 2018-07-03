@@ -78,7 +78,7 @@ function setCardProperties() {
 	} else {
 		cardsColumnNumber = 2;
 	}
-	flipperColumnWidth = (rubberBodyWidth - 20) / (cardsColumnNumber + 1);
+	flipperColumnWidth = (rubberBodyWidth - 20) / (cardsColumnNumber + 1) - 10;
 	bodyElement.style.width = extender + rubberBodyWidth + 'px';
 	header.style.width = extender + rubberBodyWidth + 'px';
 	defineCardsColumn();
@@ -122,9 +122,9 @@ function isNewDateOrTheme() {
 }
 
 function changeTable(table) {
-	cardsTable.is = dateTable.is = themeTable.is = false;
-	table.is = true;
-	rubberBodyElement.classList.toggle('displayNone', !cardsTable.is);
-	dateTable.classList.toggle('displayNone', !dateTable.is);
-	themeTable.classList.toggle('displayNone', !themeTable.is);
+	cardsTable.on = dateTable.on = themeTable.on = false;
+	table.on = true;
+	rubberBodyElement.classList.toggle('displayNone', !cardsTable.on);
+	dateTable.classList.toggle('displayNone', !dateTable.on);
+	themeTable.classList.toggle('displayNone', !themeTable.on);
 }

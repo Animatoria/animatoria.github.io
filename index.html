@@ -99,38 +99,37 @@
 		</div>
 		<div class='dateTable displayNone'>
 			<div class='yearDiv'>
-				<div class='year''></div>
+				<div class='currYear''></div>
 				<div class='leftArrow' onclick='nextYear(-1)'></div>
 				<div class='rightArrow' onclick='nextYear(1)'></div>
 			</div>
 			<div class='monthDiv'>
-				<div class='month''></div>
+				<div class='currMonth''></div>
 				<div class='leftArrow' onclick='nextMonth(-1)'></div>
 				<div class='rightArrow' onclick='nextMonth(1)'></div>
 			</div>
-			<div class='fiveWeek'><div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div>
+			<div class='month'>
+				<div class='namesWeek'>
+					<div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div></div>
+				<div class='firstWeek'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='week'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='week'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='week'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='week'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='week'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
+				<div class='lastWeek'>
+					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
 			</div>
 		</div>
 		<div class='themeTable displayNone'></div>
 		<div class='plexiGlass displayNone'></div>
 	</div>
-	<template>
-		<div class='card'>
-			<div class='cardMenu displayNone'>
-				<label>
-					<input class='completed' type='checkbox'>
-					Completed
-				</label>
-				<input class='deleteButton' type='button' value='X'>
-			</div>
-			<div class='zoomer'>
-				<div class='flipper'>
-					<textarea class='faceArea'></textarea>
-					<textarea class='backArea'></textarea>
-				</div>
-			</div>
-		</div>
-	</template>
 	<script src='cardsTable/cardsTable.js'></script>
 	<script src='card/card.js'></script>
 	<script src='thisSession/thisSession.js'></script>

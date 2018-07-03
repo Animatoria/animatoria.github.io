@@ -4,7 +4,7 @@ var card = [];
 
 var readOnlyMode = true;
 var cardsTable = {
-	is : true
+	on : true
 }
 
 var isAnyCardShowed;
@@ -39,7 +39,7 @@ function defineCardsColumn() {
 
 function addNewCard() {
 	if (longMenu) mobileMenu(0);
-	if (!themeTable.is && !dateTable.is) {
+	if (!themeTable.on && !dateTable.on) {
 		storedCard.push(new StoredCardProperties());
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
 		card.push(new CardProperties(k, true));

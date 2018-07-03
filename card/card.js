@@ -22,7 +22,6 @@ var allCardsProperties = {
 	},
 
 	adjustFlipperElements : function() {
-		this.div.className = 'card';
 		this.zoomer.className = 'zoomer'
 		this.flipper.className = 'flipper';
 		this.faceArea.className = 'faceArea';
@@ -33,8 +32,8 @@ var allCardsProperties = {
 		this.flipper.appendChild(this.backArea);
 		this.faceArea.style.width = flipperColumnWidth + 'px';
 		this.backArea.style.width = flipperColumnWidth + 'px';
-		this.faceArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
-		this.backArea.rows = this.faceArea.rows;
+		this.faceArea.rows = this.faceAreaHeight;
+		this.backArea.rows = this.backAreaHeight;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
 		this.faceArea.oninput = () => {this.autoGrow(this.faceArea)};
@@ -52,13 +51,12 @@ var allCardsProperties = {
 		this.divCardMenu.appendChild(this.button);
 		this.label.appendChild(this.input);
 		this.label.appendChild(this.node);
-		this.div.style.backgroundColor = '#ddf';
+		this.div.classList.add('cardBgCMenu');
 		this.input.onchange = () => {this.modeSwitch()};
 		this.button.onclick = () => {this.delete()};
 	},
 
 	addCard : function() {
-		this.div.style.backgroundColor = '#dfd';
 		if (this.isEditable || this.isNewCard) {
 			this.createMenuElements();
 			this.adjustMenuElements();
@@ -88,8 +86,7 @@ var allCardsProperties = {
 		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.backAreaHeight = this.rowCount(this.backArea);
 		this.addEmptyLine();
-		this.faceArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
-		this.backArea.rows = this.faceArea.rows;
+		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 	},
 
 	addEmptyLine : function() {
@@ -107,8 +104,7 @@ var allCardsProperties = {
 	newCardFirstStep : function() {
 		Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
 		this.faceAreaHeight = this.rowCount(this.faceArea);
-		this.faceAreaHeight > this.backAreaHeight ? this.faceArea.rows = this.faceAreaHeight : this.faceArea.rows = this.backAreaHeight;
-		this.backArea.rows = this.faceArea.rows;
+		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 		this.addEmptyLine();
 		this.input.checked = false;
 		this.faceArea.style.overflowY = 'hidden';
@@ -124,7 +120,7 @@ var allCardsProperties = {
 	removeMenu : function() {
 		if (!this.isNewCard) {
 			this.divCardMenu.classList.add('displayNone');
-			this.div.style.backgroundColor = '#dfd';
+			this.div.classList.remove('cardBgCMenu');
 		}
 	},
 
@@ -132,7 +128,7 @@ var allCardsProperties = {
 		if (!this.isNewCard) {
 			if (this.wasCardMenu) {
 				this.divCardMenu.classList.remove('displayNone');
-				this.div.style.backgroundColor = '#ddf';
+				this.div.classList.add('cardBgCMenu');
 			} else {
 				this.createMenuElements();
 				this.adjustMenuElements();
@@ -263,4 +259,5 @@ function CardProperties(k, isNewCard) {
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
 	this.div = document.createElement('div');
+	this.div.className = 'card';
 }

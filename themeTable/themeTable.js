@@ -1,7 +1,7 @@
 var storedMainTheme = [];
 
 var themeTable = {
-	is : false
+	on : false
 }
 
 var themeTable = document.querySelector('.themeTable');
@@ -35,7 +35,8 @@ function mainThemeChange() {
 
 function mainThemeMenu(mobileVersion) {
 	refreshCardsAnimation();
-	if (themeTable.is) {
+	if (themeTable.on) {
+		mainTheme.readOnly = true;
 		if (singleMenu) {
 			closeSingleMenu(mainThemeLabel);
 		} else {
@@ -43,6 +44,7 @@ function mainThemeMenu(mobileVersion) {
 		}
 		mainThemeChange();
 	} else {
+		mainTheme.readOnly = false;
 		mainTheme.select();
 		deleteAllThemeItems();
 		changeTable(themeTable);

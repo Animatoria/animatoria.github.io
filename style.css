@@ -80,8 +80,12 @@ p {
 	display: block;
 }
 
-.fiveWeek {
+.month {
 	width: 350px;
+}
+
+.namesWeek div {
+	background-color: orange;
 }
 
 .day {
@@ -124,7 +128,7 @@ p {
 	cursor: pointer;
 }
 
-.year, .month {
+.currYear, .currMonth {
 	position: absolute;
 	width: 100px;
 	height: 50px;

@@ -3,7 +3,7 @@ var dateList = [];
 var dateIndex = [];
 
 var dateTable = {
-	is : false
+	on : false
 }
 var isActualMainDate = true;
 
@@ -16,14 +16,16 @@ var thisDate;
 var monthString = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 var dateTable = document.querySelector('.dateTable');
-var year = document.querySelector('.year');
-var month = document.querySelector('.month');
-var fiveWeekNodes = document.querySelector('.fiveWeek').childNodes;
+var year = document.querySelector('.currYear');
+var month = document.querySelector('.currMonth');
+var firstWeek = document.querySelector('.firstWeek');
+var lastWeek = document.querySelector('.lastWeek');
+var fiveWeekNodes = document.querySelectorAll('.day');
 
 function nextYear(direction) {
-		actualDate = new Date(actualDate.getFullYear() + direction, actualDate.getMonth(), actualDate.getDate());
-		year.innerHTML = actualDate.getFullYear();
-		setCalendar();
+	actualDate = new Date(actualDate.getFullYear() + direction, actualDate.getMonth(), actualDate.getDate());
+	year.innerHTML = actualDate.getFullYear();
+	setCalendar();
 }
 
 function nextMonth(direction) {
@@ -38,14 +40,14 @@ function setCalendar() {
 	bigExtender = 0;
 	firstDay = new Date(actualDate.getFullYear(), actualDate.getMonth()).getDay();
 	switch(firstDay) {
-		case 0 : for (var i = 7; i < 14; i++) fiveWeekNodes[i].classList.remove('displayNone'); smallExtender = 0; break;
-		default : for (var i = 7; i < 14; i++) fiveWeekNodes[i].classList.add('displayNone');
+		case 0 : firstWeek.classList.remove('displayNone'); smallExtender = 0; break;
+		default : firstWeek.classList.add('displayNone');
 		case 6 : bigExtender = 7;
 	}
-	for (var i = 49; i < 56; i++) fiveWeekNodes[i].classList.add('displayNone');
+	lastWeek.classList.add('displayNone');
 	findStoredYearAndMonth();
 	fillDates();
-	if (bigExtender == 7 && thisDate.getDate() == 6) for (var i = 49; i < 56; i++) fiveWeekNodes[i].classList.remove('displayNone');
+	if (bigExtender == 7 && thisDate.getDate() == 6) lastWeek.classList.remove('displayNone');
 }
 
 function fillDates() {
@@ -53,18 +55,26 @@ function fillDates() {
 		thisDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), i - 12 - firstDay);
 		fiveWeekNodes[i].innerHTML = thisDate.getDate();
 		if (thisDate.getMonth() == actualDate.getMonth()) {
-			fiveWeekNodes[i].classList.add('greenDay');
-			fiveWeekNodes[i].classList.remove('redDay');
+			dayN(i).become('greenDay');
 			selectCalendarDate(i, thisDate);
 		} else {
-			fiveWeekNodes[i].classList.remove('greenDay');
-			fiveWeekNodes[i].classList.remove('redDay');
-			fiveWeekNodes[i].onclick = function() {};
+			dayN(i).becomePassive;
 		}
 	}
 	for (var i in dateList) {
-		fiveWeekNodes[dateList[i] + 12 + firstDay].classList.remove('greenDay');
-		fiveWeekNodes[dateList[i] + 12 + firstDay].classList.add('redDay');
+		dayN(dateList[i] + 12 + firstDay).become('redDay');
+	}
+}
+
+function dayN(num) {
+	fiveWeekNodes[num].className = 'day';
+	return {
+		become : function(color) {
+			fiveWeekNodes[num].classList.add(color);
+		},
+		get becomePassive() {
+			fiveWeekNodes[num].onclick = function() {};
+		}
 	}
 }
 
@@ -107,7 +117,7 @@ function clearDate() {
 
 function changeMainDate(mobileVersion) {
 	refreshCardsAnimation();
-	if (dateTable.is) {
+	if (dateTable.on) {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog);
 		} else {

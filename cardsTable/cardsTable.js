@@ -25,24 +25,12 @@ function sessionIssue() {
 	readOnlyModeOn();
 }
 
-function chooseCardsColumn() {};
-
-function defineCardsColumn() {
-	cardsColumn[1].classList.add('displayNone');
-	cardsColumn[2].classList.add('displayNone');
-	if (cardsColumnNumber) {
-		cardsColumn[cardsColumnNumber - 1].classList.remove('displayNone');
-		cardsColumn[cardsColumnNumber].classList.remove('displayNone');
-	}
-	chooseCardsColumn = columnExpression[cardsColumnNumber];
-}
-
 function addNewCard() {
 	if (longMenu) mobileMenu(0);
 	if (!themeTable.on && !dateTable.on) {
-		storedCard.push(new StoredCardProperties());
+		storedCard.push(new StoredCard());
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
-		card.push(new CardProperties(k, true));
+		card.push(new Card(k, true));
 		Object.setPrototypeOf(card[k], storedCard[k]);
 		chooseCardsColumn(card[k]);
 		card[k].addCard();
@@ -53,7 +41,7 @@ function addNewCard() {
 
 function getStoredCard(i) {
 	storedCard.push(JSON.parse(localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + i])));
-	card.push(new CardProperties(i, false));
+	card.push(new Card(i, false));
 	Object.setPrototypeOf(storedCard[i], allCardsProperties);
 	Object.setPrototypeOf(card[i], storedCard[i]);
 	chooseCardsColumn(card[i]);
@@ -139,7 +127,7 @@ function refreshCardsOnTable() {
 	deleteAllCards();
 	for (var i in card) {
 		chooseCardsColumn(card[i]);
-		card[i].resizeTextarea();
+		card[i].findCardHeight();
 		card[i].zoomer.style.animation = '';
 	}
 }

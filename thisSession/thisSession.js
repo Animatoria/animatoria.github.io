@@ -4,11 +4,7 @@ var newDateFlag = true;
 var thisSessionID;
 var screenWidth;
 
-var extender = 0;
-var textAreaExtender = 23;
-
 var bodyElement = document.querySelector('.body');
-var rubberBodyWidthMeasure = document.querySelector('.empty');
 
 function setSessionID() {
 	var sessionID = +localStorage.getItem('');
@@ -26,63 +22,19 @@ function setSessionID() {
 	}
 }
 
-function defineDeviceProperties() {
-	var styleLink = document.createElement('link');
-	styleLink.type = 'text/css';
-	styleLink.rel = 'stylesheet';
-	if (deviceBrowserType.device.type == 'Desktop') {
-		extender = 10;
-		styleLink.href = 'desktop/styleDesktop.css';
-		rubberBodyWidthMeasure.style.width = '90%';
-		rubberBodyElement.style.minHeight = (window.innerHeight - 180) + 'px';
-		onresize = function() {setCardProperties()};
-	} else {
-		textareaEditableRows = 2;
-		styleLink.href = 'mobile/styleMobile.css';
-		rubberBodyWidthMeasure.style.width = '100%';
-		onscroll = fallingMobileMenu;
-		rubberBodyElement.style.minHeight = '300px';
-		onresize = function() {
-			if (screenWidth != rubberBodyWidthMeasure.clientWidth) {
-				screenWidth = rubberBodyWidthMeasure.clientWidth;
-				setCardProperties();
-			}
-		};
-	}
-	screenWidth = rubberBodyWidthMeasure.clientWidth;
-	if (deviceBrowserType.browser.family == 'Edge') {
-		textAreaExtender = 27;
-	}
-	if (deviceBrowserType.browser.family == 'IE') {
-	}
-	if (deviceBrowserType.os.family == 'Android') {
-		textareaEditableRows = 2;
-		textAreaExtender = 12;
-		onresize = function() {
-		if (screenWidth != rubberBodyWidthMeasure.clientWidth) {
-			screenWidth = rubberBodyWidthMeasure.clientWidth;
-			setCardProperties();
-		}
-	};
-	}
-	document.querySelector('head').appendChild(styleLink);
-	setCardProperties();
-}
-
 function setCardProperties() {
-	rubberBodyWidth = rubberBodyWidthMeasure.clientWidth;
-	if (rubberBodyWidth < 830) {
-		cardsColumnNumber = 0;
-	} else if (rubberBodyWidth < 1230) {
-		cardsColumnNumber = 1;
-	} else {
-		cardsColumnNumber = 2;
+	if (screenWidth != innerWidth) {
+		screenWidth = innerWidth;
+		if (innerWidth < 830) {
+			cardsColumnNumber = 0;
+		} else if (innerWidth < 1230) {
+			cardsColumnNumber = 1;
+		} else {
+			cardsColumnNumber = 2;
+		}
+		chooseCardsColumn = columnExpression[cardsColumnNumber];
+		refreshCardsOnTable();
 	}
-	flipperColumnWidth = (rubberBodyWidth - 20) / (cardsColumnNumber + 1) - 10;
-	bodyElement.style.width = extender + rubberBodyWidth + 'px';
-	header.style.width = extender + rubberBodyWidth + 'px';
-	defineCardsColumn();
-	refreshCardsOnTable();
 }
 
 function setMainTheme() {

@@ -5,7 +5,8 @@
 .mobileHeaderButton {
 	width: 100%;
 	position: absolute;
-	top: -50px; 
+	top: -50px;
+	left: calc(100% - 300px);
 }
 
 .animatoriaButton {
@@ -18,12 +19,6 @@
 	padding: 15px;
 	background-color: #eee;
 	cursor: pointer;
-}
-
-.header {
-	transition: top 0.125s linear;
-	display: flex;
-	justify-content: space-between;
 }
 
 .addNewCard {

@@ -9,6 +9,7 @@ body {
 }
 
 .body {
+	width: 90%;
 	margin: auto;
 	background-color: #fdd;
 }
@@ -36,10 +37,6 @@ body {
 	height: 20px;
 }
 
-.buttonMobile {
-	display: none;
-}
-
 .dateTable {
 	margin: 0 auto;
 	width: 350px;
@@ -61,14 +58,15 @@ body {
 	border: 1px solid black;
 }
 
-.addNewCard {
-}
-
 .header {
 	z-index: 1048575;
 	top : 0px;
 	position: fixed;
 	background-color: #fdd;
+	width: 90%;
+	transition: top 0.125s linear;
+	display: flex;
+	justify-content: space-between;
 }
 
 p {
@@ -76,68 +74,36 @@ p {
 	margin: 0;  
 }
 
-.masterInformation {
-	display: block;
-}
-
-.month {
-	width: 350px;
-}
-
-.namesWeek div {
-	background-color: orange;
-}
-
-.day {
-	margin: 5px;
-	height: 40px;
-	width: 40px;
-	display: inline-block;
-	text-align: center;
-	line-height: 40px;
-}
-
-.greenDay {
-	background-color: green;
-	cursor: pointer;
-}
-
-.redDay {
-	background-color: red;
-	cursor: pointer;
-}
-
-.yearDiv, .monthDiv{
-	position: relative;
-	width: 350px;
-	height: 50px;
-	background-color: #ddf;
-}
-
-.leftArrow {
-	width: 50%;
-	height: 50px;
-	float: left;
-	cursor: pointer;
-}
-
-.rightArrow {
-	width: 50%;
-	height: 50px;
-	float: right;
-	cursor: pointer;
-}
-
-.currYear, .currMonth {
-	position: absolute;
-	width: 100px;
-	height: 50px;
-	right: calc(50% - 50px);
-	text-align: center;
-	line-height: 50px;
-	background-color: #fdd;
-}
-
 .displayNone {
 	display: none !important;
+}
+
+@media(max-width: 1230px) {
+
+	.cardsColumn:nth-of-type(3) {
+		display: none;
+	}
+
+	.cardsColumn {
+		width: 49%;
+	}
+}
+
+@media(max-width: 830px) {
+
+	.body {
+		width: 100%;
+	}
+
+	.header {
+		width: 100%;
+	}
+
+	.cardsColumn:nth-of-type(2) {
+		display: none;
+	}
+
+	.cardsColumn {
+		width: 98%;
+	}
 }

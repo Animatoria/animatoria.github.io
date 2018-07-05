@@ -1,4 +1,3 @@
-var flipperColumnWidth;
 var textareaEditableRows = 1;
 var zIndexCounter = 1;
 
@@ -30,8 +29,6 @@ var allCardsProperties = {
 		this.zoomer.appendChild(this.flipper);
 		this.flipper.appendChild(this.faceArea);
 		this.flipper.appendChild(this.backArea);
-		this.faceArea.style.width = flipperColumnWidth + 'px';
-		this.backArea.style.width = flipperColumnWidth + 'px';
 		this.faceArea.rows = this.faceAreaHeight;
 		this.backArea.rows = this.backAreaHeight;
 		this.faceArea.value = this.faceAreaText;
@@ -205,12 +202,6 @@ var allCardsProperties = {
 		if (area.scrollHeight > area.clientHeight) area.rows++;
 	},
 
-	resizeTextarea : function() {
-		this.faceArea.style.width = flipperColumnWidth + 'px';
-		this.backArea.style.width = flipperColumnWidth + 'px';
-		this.findCardHeight();
-	},
-
 	rotate : function() {
 		this.div.style.zIndex = zIndexCounter;
 		zIndexCounter += 1;
@@ -242,15 +233,15 @@ var allCardsProperties = {
 	}
 }
 
-StoredCardProperties.prototype = allCardsProperties;
+StoredCard.prototype = allCardsProperties;
 
-function StoredCardProperties() {
+function StoredCard() {
 	this.deleted = true;
 	this.faceAreaText = 'Input your face card text';
 	this.backAreaText = 'Input your bottom card text';
 }
 
-function CardProperties(k, isNewCard) {
+function Card(k, isNewCard) {
 	this.cardNum = k;
 	this.cardSide = 1;
 	this.isNewCard = isNewCard;
@@ -261,3 +252,4 @@ function CardProperties(k, isNewCard) {
 	this.div = document.createElement('div');
 	this.div.className = 'card';
 }
+

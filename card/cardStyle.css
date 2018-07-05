@@ -1,4 +1,5 @@
 .card {
+	width: 100%;
 	margin: 10px auto;
 	position: relative;
 	background-color: #dfd;
@@ -17,15 +18,19 @@
 .completed {}
 
 .zoomer {
+	width: 100%;
 	perspective: 1000px;
 }
 
 .flipper {
+	width: 100%;
 	transition: 2s;
 	transform-style: preserve-3d;
 }
 
 textarea {
+	box-sizing: border-box;
+	width: 100%;
 	font-family: monospace;
 	font-size: 33px;
 	font-weight: 700;

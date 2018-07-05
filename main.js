@@ -2,9 +2,6 @@ window.onunload = function() {location.reload(true);};
 
 var applicationVersion = 32;
 
-var deviceBrowserType = detect.parse(navigator.userAgent);
-//document.querySelector('.deviceBrowserType').innerHTML = ('<b>device type</b>: ' + deviceBrowserType.device.type + ' <b>device</b>: ' + deviceBrowserType.device.family + ' <b>os</b>: ' + deviceBrowserType.os.family + ' <b>browser</b>: ' + deviceBrowserType.browser.family + ' ' + deviceBrowserType.browser.version + ' <b>app version</b>: ' + applicationVersion);
-
 var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
 
 //document.querySelector('.masterInformation').innerHTML = '';
@@ -32,10 +29,12 @@ var mainDateButton = document.querySelector('.mainDateButton');
 
 var mainDateLog = document.querySelector('.mainDateLog');
 
-defineDeviceProperties();
+setCardProperties();
 setMainTheme();
 setSessionID();
 getStoredCards();
 setStoredMainDate();
+onscroll = fallingMobileMenu;
+onresize = setCardProperties;
 
 bodyElement.style.backgroundColor = '#dfd';

@@ -3,7 +3,9 @@
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
+	min-height: 300px;
 }
 
 .cardsColumn {
+	width: 33%;
 }

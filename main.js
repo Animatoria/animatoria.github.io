@@ -14,7 +14,7 @@ var mainDate = currentDateToLocaleDateString;
 var currentDateParagraph = document.querySelector('.currentDate');
 currentDateParagraph.innerHTML = mainDate;
 
-var mainTheme = document.querySelector('#mainTheme');
+var mainTheme = document.querySelector('.mainTheme');
 mainTheme.onchange = mainThemeChange;
 
 var animatoriaButton = document.querySelector('.animatoriaButton');

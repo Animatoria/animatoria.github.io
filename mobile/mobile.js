@@ -1,5 +1,4 @@
 var header = document.querySelector('.header');
-var headerChildNodes = header.childNodes;
 
 var singleMenu = false;
 var longMenu = false;
@@ -11,8 +10,6 @@ var crossBurger = document.querySelectorAll('.crossBurger');
 
 var lastScrollTop;
 
-setMobileMenu();
-
 function fallingMobileMenu() {
 	if (lastScrollTop > document.documentElement.scrollTop) {
 		header.style.top = 0;
@@ -22,70 +19,56 @@ function fallingMobileMenu() {
 	lastScrollTop = document.documentElement.scrollTop;
 }
 
-function cross() {
-	for (var i = 0; i < 3; i++) {
-		burgerCross[i].beginElement();
-	}
-}
-
-function burger() {
-	for (var i = 0; i < 3; i++) {
-		crossBurger[i].beginElement();
+var burger = {
+	_on : true,
+	get on() {
+		for (var i = 0; i < 3; i++) {
+			crossBurger[i].beginElement();
+		}
+		this._on = true;
+	},
+	get off() {
+		if (this._on) {
+			for (var i = 0; i < 3; i++) {
+				burgerCross[i].beginElement();
+			}
+			this._on = false;
+		}
 	}
 }
 
 function singleLineMenu(label) {
 	singleMenu = true;
-	label.style.top = 0;
-	label.style.transition = 'top ' + 1 / 8 + 's linear';
-	cross();
+	header.className = ('header singleMenu');
+	burger.off;
 }
 
 function closeSingleMenu() {
 	singleMenu = false;
-	burger();
+	burger.on;
 	changeTable(cardsTable);
-	for (var i in arguments) {
-		arguments[i].style.top = '-50px';
-		arguments[i].style.transition = 'top ' + 1 / 8 + 's linear';
-	}
+	header.className = ('header closeSingleMenu');
 }
 
 function mobileMenu(label) {
-	for (var i = 0; i < 6; i++) {
-		headerChildNodes[i].style.transition = 'top ' + (i + 1) / 8 + 's linear';
-	}
 	if (longMenu) {
 		longMenu = false;
-		for (var i = 0; i < 6; i++) {
-			headerChildNodes[i].style.top = -50 + 'px';
-			headerChildNodes[i].style.transitionDelay = (6 - i) / 8 + 's';
-		}
 		plexiGlass.classList.add('displayNone');
 		if (label) {
-			label.style.top = 0;
 			singleMenu = true;
+			header.className = ('header singleMenu longMenuTr longMenuDelay');
 		} else {
-			burger();
+			burger.on;
+			header.className = ('header longMenuTr longMenuDelay');
 		}
 	} else {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog, mainThemeLabel)
 		} else {
-			for (var i = 0; i < 6; i++) {
-				headerChildNodes[i].style.top = i * 50 + 'px';
-				headerChildNodes[i].style.transitionDelay = '0s';
-			}
+			header.className = ('header longMenuTr longMenuPos');
 			plexiGlass.classList.remove('displayNone');
-			cross();
+			burger.off;
 			longMenu = true;
 		}
-	}
-}
-
-function setMobileMenu() {
-	for (var i = 0; i < 6; i++) {
-		headerChildNodes[i].style.transition = 'top ' + (i + 1) / 8 + 's linear';
-		headerChildNodes[i].style.zIndex = 10 - (i + 1);
 	}
 }

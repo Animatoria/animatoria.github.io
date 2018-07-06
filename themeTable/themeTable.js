@@ -45,7 +45,6 @@ function mainThemeMenu(mobileVersion) {
 		mainThemeChange();
 	} else {
 		mainTheme.readOnly = false;
-		mainTheme.select();
 		deleteAllThemeItems();
 		changeTable(themeTable);
 		for (var i in storedMainTheme) {
@@ -57,6 +56,7 @@ function mainThemeMenu(mobileVersion) {
 		if (longMenu) {
 			mobileMenu(mainThemeLabel);
 		}
+		setTimeout(function() {mainTheme.select()}, 1);
 	}
 }
 

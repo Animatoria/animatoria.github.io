@@ -16,20 +16,32 @@ body {
 
 .headerButton {
 	font-size: 30px;
+	font-family: monospace;
 	border: none;
 	background-color: #eee;
 	height: 50px;
 	width: 300px;
-	display: inline-block;
 	outline: none;
 	text-align: left;
 	cursor: pointer;
-	padding: 0;
 	color: #6f8a91;
+	padding: 0;
+	position: absolute;
+	top: -50px;
+	right: 0px;
+	line-height: 50px;
 }
 
-#mainTheme {
+.mainTheme {
+	font-size: 30px;
+	border: none;
+	background-color: #eee;
+	height: 50px;
 	width: 235px;
+	outline: none;
+	cursor: pointer;
+	color: #6f8a91;
+	padding: 0;
 }
 
 .buttonIcon {
@@ -64,9 +76,7 @@ body {
 	position: fixed;
 	background-color: #fdd;
 	width: 90%;
-	transition: top 0.125s linear;
-	display: flex;
-	justify-content: space-between;
+	transition: top 0.1s linear;
 }
 
 p {
@@ -105,5 +115,12 @@ p {
 
 	.cardsColumn {
 		width: 98%;
+	}
+}
+
+@media(max-width: 530px) {
+
+	.headerButton {
+		width: 100%;
 	}
 }

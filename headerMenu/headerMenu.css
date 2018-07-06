@@ -1,0 +1,119 @@
+.animatoriaButton {
+	z-index: 9;
+}
+
+.addNewCard {
+	z-index: 8;
+}
+
+.readOnlyMode {
+	z-index: 7;
+}
+
+.mainDateLog {
+	z-index: 6;
+}
+
+.mainDateButton {
+	z-index: 5;
+}
+
+.mainThemeLabel {
+	z-index: 4;
+}
+
+
+.longMenuPos .animatoriaButton {
+	top: 0px;
+}
+
+.longMenuPos .addNewCard {
+	top: 50px;
+}
+
+.longMenuPos .readOnlyMode {
+	top: 100px;
+}
+
+.longMenuPos .mainDateLog {
+	top: 150px;
+}
+
+.longMenuPos .mainDateButton {
+	top: 200px;
+}
+
+.longMenuPos .mainThemeLabel {
+	top: 250px;
+}
+
+.longMenuTr .animatoriaButton {
+	transition: top 0.1s linear;
+}
+
+.longMenuTr .addNewCard {
+	transition: top 0.2s linear;
+}
+
+.longMenuTr .readOnlyMode {
+	transition: top 0.3s linear;
+}
+
+.longMenuTr .mainDateLog {
+	transition: top 0.4s linear;
+}
+
+.longMenuTr .mainDateButton {
+	transition: top 0.5s linear;
+}
+
+.longMenuTr .mainThemeLabel {
+	transition: top 0.6s linear;
+}
+
+.longMenuDelay .animatoriaButton {
+	transition-delay: 0.5s;
+}
+
+.longMenuDelay .addNewCard {
+	transition-delay: 0.4s;
+}
+
+.longMenuDelay .readOnlyMode {
+	transition-delay: 0.3s;
+}
+
+.longMenuDelay .mainDateLog {
+	transition-delay: 0.2s !important;
+}
+
+.longMenuDelay .mainDateButton {
+	transition-delay: 0.1s;
+}
+
+.longMenuDelay .mainThemeLabel {
+	transition-delay: 0s;
+}
+
+.singleMenu #mainDateSMB:checked ~ .mainDateLog {
+	top: 0px;
+}
+
+.singleMenu #mainThemeSMB:checked ~ .mainThemeLabel {
+	top: 0px;
+}
+
+.singleMenu #mainDateSM:checked ~ .mainDateLog {
+	top: 0px;
+	transition: top 0.3s linear;
+}
+
+.singleMenu #mainThemeSM:checked ~ .mainThemeLabel {
+	top: 0px;
+	transition: top 0.5s linear;
+}
+
+.headerButton {
+	transition: top 0.1s linear;
+}
+

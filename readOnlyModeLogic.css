@@ -1,0 +1,27 @@
+.evenOdd:nth-child(odd) {
+	display: none;
+}
+
+#readOnlyModeChB:checked ~ #header .evenOddParent .evenOdd:nth-child(odd) {
+	display: inline-block;
+}
+
+#readOnlyModeChB:checked ~ #header .evenOddParent .evenOdd:nth-child(even) {
+	display: none;
+}
+
+#readOnlyModeChB:checked ~ .rubberBody .cardsColumn .card {
+	background-color: #dfd;
+}
+
+#readOnlyModeChB:checked ~ .rubberBody .cardsColumn .card .cardMenu {
+	display: none;
+}
+
+.newCard {
+	background-color: #ddf !important;
+}
+
+.newCard .cardMenu {
+	display: block !important;
+}

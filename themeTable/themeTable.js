@@ -12,7 +12,7 @@ function deleteAllThemeItems() {
 
 function mainThemeChange() {
 	if (singleMenu) {
-		closeSingleMenu(mainThemeLabel);
+		closeSingleMenu();
 	}
 	storedMainDate = [];
 	mainDate = currentDateToLocaleDateString;
@@ -36,7 +36,7 @@ function mainThemeMenu(mobileVersion) {
 	if (themeTable.checked) {
 		mainTheme.readOnly = true;
 		if (singleMenu) {
-			closeSingleMenu(mainThemeLabel);
+			closeSingleMenu();
 		} else {
 			themeTable.checked = true;
 		}
@@ -49,10 +49,10 @@ function mainThemeMenu(mobileVersion) {
 			getChoosableTheme(i);
 		}
 		if (mobileVersion) {
-			singleLineMenu(mainThemeLabel);
+			singleLineMenu();
 		}
 		if (longMenu) {
-			mobileMenu(mainThemeLabel);
+			mobileMenu(1);
 		}
 		setTimeout(function() {mainTheme.select()}, 1);
 	}
@@ -75,7 +75,7 @@ function getChoosableTheme(i) {
 		mainTheme.value = thisItemTheme;
 		mainThemeChange();
 		if (singleMenu) {
-			closeSingleMenu(mainThemeLabel);
+			closeSingleMenu();
 		}
 	}
 }

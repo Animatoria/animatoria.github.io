@@ -7,28 +7,31 @@
 	<link rel = 'stylesheet' href='cardsTable/cardsTable.css' type='text/css'>
 	<link rel = 'stylesheet' href='dateTable/dateTable.css' type='text/css'>
 	<link rel = 'stylesheet' href='mobile/styleMobile.css' type='text/css'>
-	<link rel = 'stylesheet' href='headerMenu/headerMenu.css' type='text/css'>
+	<link rel = 'stylesheet' href='headerMenuLogic.css' type='text/css'>
+	<link rel = 'stylesheet' href='tablesLogic.css' type='text/css'>
+	<link rel = 'stylesheet' href='readOnlyModeLogic.css' type='text/css'>
 	<link rel = 'stylesheet' href='style.css' type='text/css'>
 	<meta name = "viewport" content = "width=device-width, initial-scale=1">
 </head>
 <body>
 	<div class='empty'></div>
 	<div class='body'>
-		<input style='display: none;' id='cardsTableRB' name='tableRB' type='radio' checked>
-		<input style='display: none;' id='dateTableRB' name='tableRB' type='radio'>
-		<input style='display: none;' id='themeTableRB' name='tableRB' type='radio'>
+		<input id='readOnlyModeChB' type='checkbox' checked>
+		<input id='cardsTableRB' name='table' type='radio' checked>
+		<input id='dateTableRB' name='table' type='radio'>
+		<input id='themeTableRB' name='table' type='radio'>
 		<div id='header'>
-			<input style='display: none;' id='mainDateSM' name='singleMenu' type='radio'>
-			<input style='display: none;' id='mainThemeSM' name='singleMenu' type='radio'>
-			<input style='display: none;' id='mainDateSMB' name='singleMenu' type='radio'>
-			<input style='display: none;' id='mainThemeSMB' name='singleMenu' type='radio'>
+			<input id='mainDateSM' name='singleMenu' type='radio'>
+			<input id='mainThemeSM' name='singleMenu' type='radio'>
+			<input id='mainDateSMB' name='singleMenu' type='radio'>
+			<input id='mainThemeSMB' name='singleMenu' type='radio'>
 			<button class='animatoriaButton headerButton'>
 				<img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p>
 			</button>
 			<button class='addNewCard headerButton' onclick='addNewCard()' accesskey="a">
 				<img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p>
 			</button>
-			<button class='readOnlyMode headerButton' onclick='readOnlyModeSwitch()'><img class='buttonIcon' src='icons/readonlymode.svg'><p>Read mode</p></button>
+			<label class='readOnlyMode headerButton evenOddParent' for='readOnlyModeChB'><img class='buttonIcon evenOdd' src='icons/readonlymode.svg'><img class='buttonIcon evenOdd' src='icons/pencil.svg'><p class='evenOdd'>Read mode</p><p class='evenOdd'>Edit mode</p></label>
 			<label class='mainDateLog headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
 				<img class='buttonIcon' src='icons/date.svg'><p class='currentDate'></p>
 			</label>
@@ -41,7 +44,10 @@
 			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
 			</label>
 			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'>
-			<img class='readOnlyModeMobile buttonMobile' onclick='readOnlyModeSwitch()' src='icons/readonlymode.svg'>
+			<label for='readOnlyModeChB' class='evenOddParent'>
+				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'>
+				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'>
+			</label>
 			<label for='mainDateSMB'>
 				<img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'>
 			</label>

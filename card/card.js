@@ -44,27 +44,24 @@ var allCardsProperties = {
 		this.button.className = 'deleteButton';
 		this.button.type = 'button';
 		this.button.value = 'X';
+		this.div.appendChild(this.divCardMenu);
 		this.divCardMenu.appendChild(this.label);
 		this.divCardMenu.appendChild(this.button);
 		this.label.appendChild(this.input);
 		this.label.appendChild(this.node);
-		this.div.classList.add('cardBgCMenu');
 		this.input.onchange = () => {this.modeSwitch()};
 		this.button.onclick = () => {this.delete()};
 	},
 
 	addCard : function() {
-		if (this.isEditable || this.isNewCard) {
-			this.createMenuElements();
-			this.adjustMenuElements();
-			this.div.appendChild(this.divCardMenu);
-			this.wasCardMenu = true;
-		}
-		if (this.isEditable && !this.isNewCard) this.input.checked = true;
+		if (this.isNewCard) this.div.classList.add('newCard');
+		this.createMenuElements();
+		this.adjustMenuElements();
 		this.createFlipperElements();
 		this.adjustFlipperElements();
 		if (!this.isNewCard) {
 			if (isReverse) this.reverse();
+			this.input.checked = true;
 			this.findCardHeight();
 			this.faceArea.onclick = () => {this.rotate()};
 			this.backArea.onclick = () => {this.rotate()};
@@ -114,28 +111,6 @@ var allCardsProperties = {
 		this.faceArea.style.cursor = 'pointer';
 	},
 
-	removeMenu : function() {
-		if (!this.isNewCard) {
-			this.divCardMenu.classList.add('displayNone');
-			this.div.classList.remove('cardBgCMenu');
-		}
-	},
-
-	addMenu : function() {
-		if (!this.isNewCard) {
-			if (this.wasCardMenu) {
-				this.divCardMenu.classList.remove('displayNone');
-				this.div.classList.add('cardBgCMenu');
-			} else {
-				this.createMenuElements();
-				this.adjustMenuElements();
-				this.div.insertBefore(this.divCardMenu, this.zoomer);
-				this.input.checked = true;
-				this.wasCardMenu = true;
-			}
-		}
-	},
-
 	sideIsDone : function() {
 		if (this.cardSide) {
 			Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
@@ -146,6 +121,10 @@ var allCardsProperties = {
 			this.faceArea.readOnly = true;
 			this.faceArea.style.cursor = 'pointer';
 		} else {
+			if (this.isStillNewCard) {
+				this.isStillNewCard = false;
+				this.div.classList.remove('newCard');
+			}
 			Object.getPrototypeOf(this).backAreaText = this.backArea.value;
 			this.findCardHeight();
 			this.backArea.style.overflowY = 'hidden';
@@ -153,23 +132,20 @@ var allCardsProperties = {
 			this.backArea.onclick = () => {this.rotate()};
 			this.backArea.readOnly = true;
 			this.backArea.style.cursor = 'pointer';
-			if (readOnlyMode) {
-				this.removeMenu();
-			}
 		}
 	},
 
 	sideIsEdit : function() {
 		if (this.cardSide) {
 			this.faceArea.value = this.faceAreaText;
-			this.faceArea.onclick = function(){}
+			this.faceArea.onclick = function(){};
 			this.faceArea.readOnly = false;
 			this.faceArea.style.cursor = 'auto';
 			this.faceArea.style.overflowY = 'auto';
 			this.faceArea.select();
 		} else {
 			this.backArea.value = this.backAreaText;
-			this.backArea.onclick = function(){}
+			this.backArea.onclick = function(){};
 			this.backArea.readOnly = false;
 			this.backArea.style.cursor = 'auto';
 			this.backArea.style.overflowY = 'auto';
@@ -189,7 +165,6 @@ var allCardsProperties = {
 				this.sideIsEdit();
 			}
 		} else {
-			this.div.parentElement.removeChild(this.div);
 			sessionIssue();
 		}
 	},
@@ -227,7 +202,6 @@ var allCardsProperties = {
 			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 			getStoredCards();
 		} else {
-			if (this.isNewCard) this.div.parentElement.removeChild(this.div);
 			sessionIssue();
 		}
 	}
@@ -245,8 +219,7 @@ function Card(k, isNewCard) {
 	this.cardNum = k;
 	this.cardSide = 1;
 	this.isNewCard = isNewCard;
-	this.isEditable = !readOnlyMode;
-	this.wasCardMenu = false;
+	this.isStillNewCard = isNewCard;
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
 	this.div = document.createElement('div');

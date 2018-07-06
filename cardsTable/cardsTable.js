@@ -2,7 +2,9 @@ var k = 0;
 var storedCard = [];
 var card = [];
 
-var readOnlyMode = true;
+var readOnlyMode = document.querySelector('#readOnlyModeChB');
+var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
+var readOnlyModeButton = document.querySelector('.readOnlyMode');
 
 var isAnyCardShowed;
 
@@ -19,8 +21,8 @@ var columnExpression = [
 ];
 
 function sessionIssue() {
-	alert('Read only, because new Rotation cards application opened at the  same time.');
-	readOnlyModeOn();
+	alert('Sorry, another "Rotation cards" application open. This application need to reload.');
+	location.reload(true);
 }
 
 function addNewCard() {
@@ -84,40 +86,6 @@ function getStoredCards() {
 		if (storedMainDate.length == 0) {
 			clearTheme();
 		}
-	}
-}
-
-function readOnlyModeSwitch() {
-	if (readOnlyMode) {
-		readOnlyModeOff();
-	} else {
-		readOnlyModeOn();
-	}
-}
-
-function readOnlyModeOn() {
-	readOnlyModeMobile.src = 'icons/readonlymode.svg';
-	var childNodes = readOnlyModeButton.childNodes;
-	childNodes[1].innerHTML = 'Read mode';
-	childNodes[0].src = 'icons/readonlymode.svg';
-	readOnlyMode = true;
-	for (var i in card) {
-		card[i].removeMenu();
-	}
-}
-
-function readOnlyModeOff() {
-	if (localStorage.getItem('') == thisSessionID) {
-		readOnlyModeMobile.src = 'icons/pencil.svg';
-		var childNodes = readOnlyModeButton.childNodes;
-		childNodes[1].innerHTML = 'Edit mode';
-		childNodes[0].src = 'icons/pencil.svg';
-		readOnlyMode = false;
-		for (var i in card) {
-			card[i].addMenu();
-		}
-	} else {
-		location.reload(true);
 	}
 }
 

@@ -2,8 +2,6 @@ window.onunload = function() {location.reload(true);};
 
 var applicationVersion = 32;
 
-var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
-
 //document.querySelector('.masterInformation').innerHTML = '';
 
 var currentDate = new Date();
@@ -21,9 +19,6 @@ var animatoriaButton = document.querySelector('.animatoriaButton');
 animatoriaButton.onclick = function() {isReverse ^= 1};
 
 var newCardButton = document.querySelector('.addNewCard');
-
-var readOnlyModeButton = document.querySelector('.readOnlyMode');
-
 
 var mainDateButton = document.querySelector('.mainDateButton');
 

@@ -89,6 +89,10 @@ p {
 	display: none !important;
 }
 
+#cardsTableRB, #dateTableRB, #themeTableRB, #readOnlyModeChB, #mainDateSM, #mainThemeSM, #mainDateSMB, #mainThemeSMB {
+	display: none;
+}
+
 @media(max-width: 1230px) {
 
 	.cardsColumn:nth-of-type(3) {
@@ -124,16 +128,4 @@ p {
 	.headerButton {
 		width: 100%;
 	}
-}
-
-#cardsTableRB:checked ~ .rubberBody {
-	display: flex;
-}
-
-#dateTableRB:checked ~ .dateTable {
-	display: block;
-}
-
-#themeTableRB:checked ~ .themeTable {
-	display: block;
 }

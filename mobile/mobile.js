@@ -1,9 +1,8 @@
-var header = document.querySelector('#header');
-
 var singleMenu = false;
 var longMenu = false;
+
+var header = document.querySelector('#header');
 var plexiGlass = document.querySelector('.plexiGlass');
-var mainThemeLabel = document.querySelector('.mainThemeLabel');
 
 var burgerCross = document.querySelectorAll('.burgerCross');
 var crossBurger = document.querySelectorAll('.crossBurger');
@@ -11,10 +10,12 @@ var crossBurger = document.querySelectorAll('.crossBurger');
 var lastScrollTop;
 
 function fallingMobileMenu() {
-	if (lastScrollTop > document.documentElement.scrollTop) {
-		header.style.top = 0;
-	} else {
-		header.style.top = '-50px';
+	if (!longMenu) {
+		if (lastScrollTop > document.documentElement.scrollTop) {
+			header.style.top = 0;
+		} else {
+			header.style.top = '-45px';
+		}
 	}
 	lastScrollTop = document.documentElement.scrollTop;
 }
@@ -37,7 +38,7 @@ var burger = {
 	}
 }
 
-function singleLineMenu(label) {
+function singleLineMenu() {
 	singleMenu = true;
 	header.className = ('singleMenu');
 	burger.off;
@@ -50,11 +51,11 @@ function closeSingleMenu() {
 	header.className = ('closeSingleMenu');
 }
 
-function mobileMenu(label) {
+function mobileMenu(toSingleMenu) {
 	if (longMenu) {
 		longMenu = false;
 		plexiGlass.classList.add('displayNone');
-		if (label) {
+		if (toSingleMenu) {
 			singleMenu = true;
 			header.className = ('singleMenu longMenuTr longMenuDelay');
 		} else {
@@ -63,7 +64,7 @@ function mobileMenu(label) {
 		}
 	} else {
 		if (singleMenu) {
-			closeSingleMenu(mainDateLog, mainThemeLabel)
+			closeSingleMenu();
 		} else {
 			header.className = ('longMenuTr longMenuPos');
 			plexiGlass.classList.remove('displayNone');

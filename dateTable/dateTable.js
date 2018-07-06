@@ -79,7 +79,7 @@ function dayN(num) {
 function selectCalendarDate(i, thisDate) {
 	fiveWeekNodes[i].onclick = function() {
 		if (singleMenu) {
-			closeSingleMenu(mainDateLog);
+			closeSingleMenu();
 		}
 		mainDate = thisDate.toLocaleDateString();
 		currentDateParagraph.innerHTML = mainDate;
@@ -117,17 +117,17 @@ function changeMainDate(mobileVersion) {
 	refreshCardsAnimation();
 	if (dateTable.checked) {
 		if (singleMenu) {
-			closeSingleMenu(mainDateLog);
+			closeSingleMenu();
 		} else {
 			cardsTable.checked = true;
 		}
 	} else {
 		dateTable.checked = true;
 		if (mobileVersion) {
-			singleLineMenu(mainDateLog);
+			singleLineMenu();
 		}
 		if (longMenu) {
-			mobileMenu(mainDateLog);
+			mobileMenu(1);
 		}
 	}
 }

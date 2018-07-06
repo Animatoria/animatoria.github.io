@@ -1,6 +1,6 @@
 .rubberBody {
 	margin: 0;
-	display: flex;
+	display: none;
 	justify-content: space-around;
 	align-items: flex-start;
 	min-height: 300px;

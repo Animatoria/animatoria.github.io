@@ -2,9 +2,6 @@ var storedMainDate = [];
 var dateList = [];
 var dateIndex = [];
 
-var dateTable = {
-	on : false
-}
 var isActualMainDate = true;
 
 var actualDate;
@@ -15,7 +12,8 @@ var thisDate;
 
 var monthString = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-var dateTable = document.querySelector('.dateTable');
+var dateTable = document.querySelector('#dateTableRB');
+
 var year = document.querySelector('.currYear');
 var month = document.querySelector('.currMonth');
 var firstWeek = document.querySelector('.firstWeek');
@@ -91,7 +89,7 @@ function selectCalendarDate(i, thisDate) {
 		} else {
 			newDateFlag = false;
 		}
-		changeTable(cardsTable);
+		cardsTable.checked = true;
 		getStoredCards();
 	}
 }
@@ -117,14 +115,14 @@ function clearDate() {
 
 function changeMainDate(mobileVersion) {
 	refreshCardsAnimation();
-	if (dateTable.on) {
+	if (dateTable.checked) {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog);
 		} else {
-			changeTable(cardsTable);
+			cardsTable.checked = true;
 		}
 	} else {
-		changeTable(dateTable);
+		dateTable.checked = true;
 		if (mobileVersion) {
 			singleLineMenu(mainDateLog);
 		}

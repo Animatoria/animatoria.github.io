@@ -3,15 +3,13 @@ var storedCard = [];
 var card = [];
 
 var readOnlyMode = true;
-var cardsTable = {
-	on : true
-}
 
 var isAnyCardShowed;
 
 var cardsColumnNumber;
 
 var rubberBodyElement = document.querySelector('.rubberBody');
+var cardsTable = document.querySelector('#cardsTableRB');
 var cardsColumn = document.querySelectorAll('.cardsColumn');
 
 var columnExpression = [
@@ -27,7 +25,7 @@ function sessionIssue() {
 
 function addNewCard() {
 	if (longMenu) mobileMenu(0);
-	if (!themeTable.on && !dateTable.on) {
+	if (!themeTable.checked && !dateTable.checked) {
 		storedCard.push(new StoredCard());
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k], JSON.stringify(storedCard[k]));
 		card.push(new Card(k, true));
@@ -100,7 +98,7 @@ function readOnlyModeSwitch() {
 function readOnlyModeOn() {
 	readOnlyModeMobile.src = 'icons/readonlymode.svg';
 	var childNodes = readOnlyModeButton.childNodes;
-	childNodes[1].innerHTML = 'Read only mode';
+	childNodes[1].innerHTML = 'Read mode';
 	childNodes[0].src = 'icons/readonlymode.svg';
 	readOnlyMode = true;
 	for (var i in card) {
@@ -112,7 +110,7 @@ function readOnlyModeOff() {
 	if (localStorage.getItem('') == thisSessionID) {
 		readOnlyModeMobile.src = 'icons/pencil.svg';
 		var childNodes = readOnlyModeButton.childNodes;
-		childNodes[1].innerHTML = 'Card edit mode';
+		childNodes[1].innerHTML = 'Edit mode';
 		childNodes[0].src = 'icons/pencil.svg';
 		readOnlyMode = false;
 		for (var i in card) {

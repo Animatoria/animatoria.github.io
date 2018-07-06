@@ -1,4 +1,4 @@
-var header = document.querySelector('.header');
+var header = document.querySelector('#header');
 
 var singleMenu = false;
 var longMenu = false;
@@ -39,15 +39,15 @@ var burger = {
 
 function singleLineMenu(label) {
 	singleMenu = true;
-	header.className = ('header singleMenu');
+	header.className = ('singleMenu');
 	burger.off;
 }
 
 function closeSingleMenu() {
 	singleMenu = false;
 	burger.on;
-	changeTable(cardsTable);
-	header.className = ('header closeSingleMenu');
+	cardsTable.checked = true;
+	header.className = ('closeSingleMenu');
 }
 
 function mobileMenu(label) {
@@ -56,16 +56,16 @@ function mobileMenu(label) {
 		plexiGlass.classList.add('displayNone');
 		if (label) {
 			singleMenu = true;
-			header.className = ('header singleMenu longMenuTr longMenuDelay');
+			header.className = ('singleMenu longMenuTr longMenuDelay');
 		} else {
 			burger.on;
-			header.className = ('header longMenuTr longMenuDelay');
+			header.className = ('longMenuTr longMenuDelay');
 		}
 	} else {
 		if (singleMenu) {
 			closeSingleMenu(mainDateLog, mainThemeLabel)
 		} else {
-			header.className = ('header longMenuTr longMenuPos');
+			header.className = ('longMenuTr longMenuPos');
 			plexiGlass.classList.remove('displayNone');
 			burger.off;
 			longMenu = true;

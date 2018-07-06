@@ -22,6 +22,10 @@
 	z-index: 4;
 }
 
+#mainThemeGlass {
+	background-color: rgba(0,0,0,0);
+}
+
 
 .longMenuPos .animatoriaButton {
 	top: 0px;
@@ -103,6 +107,10 @@
 	top: 0px;
 }
 
+.singleMenu #mainThemeSMB:checked ~ #mainThemeGlass {
+	display: none;
+}
+
 .singleMenu #mainDateSM:checked ~ .mainDateLog {
 	top: 0px;
 	transition: top 0.3s linear;
@@ -111,6 +119,10 @@
 .singleMenu #mainThemeSM:checked ~ .mainThemeLabel {
 	top: 0px;
 	transition: top 0.5s linear;
+}
+
+.singleMenu #mainThemeSM:checked ~ #mainThemeGlass {
+	display: none;
 }
 
 .headerButton {

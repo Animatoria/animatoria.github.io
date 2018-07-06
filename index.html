@@ -14,7 +14,10 @@
 <body>
 	<div class='empty'></div>
 	<div class='body'>
-		<div class='header'>
+		<input style='display: none;' id='cardsTableRB' name='tableRB' type='radio' checked>
+		<input style='display: none;' id='dateTableRB' name='tableRB' type='radio'>
+		<input style='display: none;' id='themeTableRB' name='tableRB' type='radio'>
+		<div id='header'>
 			<input style='display: none;' id='mainDateSM' name='singleMenu' type='radio'>
 			<input style='display: none;' id='mainThemeSM' name='singleMenu' type='radio'>
 			<input style='display: none;' id='mainDateSMB' name='singleMenu' type='radio'>
@@ -25,19 +28,17 @@
 			<button class='addNewCard headerButton' onclick='addNewCard()' accesskey="a">
 				<img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p>
 			</button>
-			<button class='readOnlyMode headerButton' onclick='readOnlyModeSwitch()'>
-				<img class='buttonIcon' src='icons/readonlymode.svg'><p>Read only mode</p>
-			</button>
+			<button class='readOnlyMode headerButton' onclick='readOnlyModeSwitch()'><img class='buttonIcon' src='icons/readonlymode.svg'><p>Read mode</p></button>
 			<label class='mainDateLog headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
 				<img class='buttonIcon' src='icons/date.svg'><p class='currentDate'></p>
 			</label>
 			<label class='mainDateButton headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
 				<img class='buttonIcon' src='icons/calendar.svg'><p>Choose date</p>
 			</label>
-			<div class='mainThemeLabel headerButton'>
+			<label class='mainThemeLabel headerButton'>
 				<img class='buttonIcon' src='icons/theme.svg'><input class='mainTheme' type='text'>
-			</div>
-			<label style='background-color: rgba(0,0,0,0);' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
+			</label>
+			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
 			</label>
 			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'>
 			<img class='readOnlyModeMobile buttonMobile' onclick='readOnlyModeSwitch()' src='icons/readonlymode.svg'>
@@ -121,7 +122,7 @@
 			<div class='cardsColumn'></div>
 			<div class='cardsColumn'></div>
 		</div>
-		<div class='dateTable displayNone'>
+		<div class='dateTable'>
 			<div class='yearDiv'>
 				<div class='currYear''></div>
 				<div class='leftArrow' onclick='nextYear(-1)'></div>
@@ -151,7 +152,7 @@
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
 			</div>
 		</div>
-		<div class='themeTable displayNone'></div>
+		<div class='themeTable'></div>
 	</div>
 	<div class='plexiGlass displayNone'></div>
 	<script src='cardsTable/cardsTable.js'></script>

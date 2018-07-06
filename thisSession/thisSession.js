@@ -72,11 +72,3 @@ function isNewDateOrTheme() {
 		newDateFlag = false;
 	}
 }
-
-function changeTable(table) {
-	cardsTable.on = dateTable.on = themeTable.on = false;
-	table.on = true;
-	rubberBodyElement.classList.toggle('displayNone', !cardsTable.on);
-	dateTable.classList.toggle('displayNone', !dateTable.on);
-	themeTable.classList.toggle('displayNone', !themeTable.on);
-}

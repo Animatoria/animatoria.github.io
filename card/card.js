@@ -54,7 +54,7 @@ var allCardsProperties = {
 	},
 
 	addCard : function() {
-		if (this.isNewCard) this.div.classList.add('newCard');
+		if (this.isNewCard) this.div.classList.add('editableCard');
 		this.createMenuElements();
 		this.adjustMenuElements();
 		this.createFlipperElements();
@@ -112,6 +112,7 @@ var allCardsProperties = {
 	},
 
 	sideIsDone : function() {
+		this.div.classList.remove('editableCard');
 		if (this.cardSide) {
 			Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
 			this.findCardHeight();
@@ -121,10 +122,6 @@ var allCardsProperties = {
 			this.faceArea.readOnly = true;
 			this.faceArea.style.cursor = 'pointer';
 		} else {
-			if (this.isStillNewCard) {
-				this.isStillNewCard = false;
-				this.div.classList.remove('newCard');
-			}
 			Object.getPrototypeOf(this).backAreaText = this.backArea.value;
 			this.findCardHeight();
 			this.backArea.style.overflowY = 'hidden';
@@ -136,6 +133,7 @@ var allCardsProperties = {
 	},
 
 	sideIsEdit : function() {
+		this.div.classList.add('editableCard');
 		if (this.cardSide) {
 			this.faceArea.value = this.faceAreaText;
 			this.faceArea.onclick = function(){};
@@ -219,7 +217,6 @@ function Card(k, isNewCard) {
 	this.cardNum = k;
 	this.cardSide = 1;
 	this.isNewCard = isNewCard;
-	this.isStillNewCard = isNewCard;
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
 	this.div = document.createElement('div');

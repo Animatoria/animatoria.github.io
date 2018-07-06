@@ -18,10 +18,10 @@
 	display: none;
 }
 
-.newCard {
+.editableCard {
 	background-color: #ddf !important;
 }
 
-.newCard .cardMenu {
+.editableCard .cardMenu {
 	display: block !important;
 }

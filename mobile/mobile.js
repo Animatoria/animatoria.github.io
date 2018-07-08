@@ -1,12 +1,11 @@
 var singleMenu = false;
 var longMenu = false;
 
-var lastScrollTop = document.documentElement.scrollTop;
+var lastScrollTop;
 
 function fallingMobileMenu() {
-	console.log(document.documentElement.scrollTop);
 	if (!longMenu) {
-		if (lastScrollTop > document.documentElement.scrollTop) {
+		if (lastScrollTop >= document.documentElement.scrollTop) {
 			header.style.top = 0;
 		} else {
 			header.style.top = '-45px';

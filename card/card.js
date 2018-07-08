@@ -1,5 +1,6 @@
 var textareaEditableRows = 1;
 var zIndexCounter = 1;
+var card = [];
 
 var isReverse = false;
 
@@ -33,9 +34,12 @@ var allCardsProperties = {
 		this.backArea.value = this.backAreaText;
 		this.faceArea.oninput = this.autoGrow;
 		this.backArea.oninput = this.autoGrow;
-		this.input.onchange = () => {this.modeSwitch()};
-		this.deleteChb.onchange = () => {this.delete()};
-		this.cardSide.onchange = () => {this.rotate()};
+		this.input.aramAzrayan = this.cardNum;
+		this.deleteChb.aramAzrayan = this.cardNum;
+		this.cardSide.aramAzrayan = this.cardNum;
+		this.input.onchange = function() {card[this.aramAzrayan].modeSwitch()};
+		this.deleteChb.onchange = function() {card[this.aramAzrayan].delete()};
+		this.cardSide.onchange = function() {card[this.aramAzrayan].rotate()};
 	},
 
 	addCard : function() {

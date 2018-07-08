@@ -1,4 +1,5 @@
 var k = 0;
+var card = [];
 var storedCard = [];
 
 var isAnyCardShowed;

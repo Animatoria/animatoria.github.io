@@ -31,8 +31,8 @@ var allCardsProperties = {
 		this.backArea.rows = this.backAreaHeight;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
-		this.faceArea.oninput = () => {this.autoGrow(this.faceArea)};
-		this.backArea.oninput = () => {this.autoGrow(this.backArea)};
+		this.faceArea.oninput = this.autoGrow;
+		this.backArea.oninput = this.autoGrow;
 		this.input.onchange = () => {this.modeSwitch()};
 		this.deleteChb.onchange = () => {this.delete()};
 		this.cardSide.onchange = () => {this.rotate()};
@@ -123,8 +123,8 @@ var allCardsProperties = {
 		return Math.floor((area.scrollHeight - 60) / 38);
 	},
 
-	autoGrow : function(area) {
-		if (area.scrollHeight > area.clientHeight) area.rows++;
+	autoGrow : function() {
+		if (this.scrollHeight > this.clientHeight) this.rows++;
 	},
 
 	rotate : function() {

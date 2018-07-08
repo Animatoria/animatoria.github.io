@@ -72,6 +72,7 @@ textarea {
 }
 
 .backArea {
+	transform: rotateY(0deg);
 	position: absolute;
 	top: 0;
 	background: linear-gradient(rgba(0,0,0,0) 25px, rgba(255,255,255,0.7) 25px, rgba(255,255,255,0.7) calc(100% - 25px), rgba(0,0,0,0) 0), linear-gradient(60deg, #fff 50%, #f9d8a2 0);

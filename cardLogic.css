@@ -20,9 +20,9 @@
 }
 
 .sideChB:checked ~ .faceArea {
-	transform: rotateY(360deg);
+	transform: perspective(1000px) rotateY(360deg);
 }
 
 .sideChB:checked + .backArea {
-	transform: rotateY(180deg);
+	transform: perspective(1000px) rotateY(180deg);
 }

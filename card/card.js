@@ -14,8 +14,8 @@ var allCardsProperties = {
 				this.button = this.divCardMenu.children[1];
 			this.zoomer = this.card.children[1];
 				this.cardSide = this.zoomer.children[0];
-				this.faceArea = this.zoomer.children[1];
-				this.backArea = this.zoomer.children[2];
+				this.backArea = this.zoomer.children[1];
+				this.faceArea = this.zoomer.children[2];
 				this.areaGlass = this.zoomer.children[3]; 
 	},
 

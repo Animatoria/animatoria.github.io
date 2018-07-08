@@ -19,10 +19,10 @@
 	display: none;
 }
 
-.sideChB:checked + .faceArea {
+.sideChB:checked ~ .faceArea {
 	transform: rotateY(360deg);
 }
 
-.sideChB:checked ~ .backArea {
+.sideChB:checked + .backArea {
 	transform: rotateY(180deg);
 }

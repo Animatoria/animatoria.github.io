@@ -69,8 +69,6 @@ textarea {
 .faceArea {
 	border-radius: 5px 30px 30px 30px;
 	transform: rotateY(180deg);
-	background: linear-gradient(rgba(0,0,0,0) 25px, rgba(255,255,255,0.7) 25px, rgba(255,255,255,0.7) calc(100% - 25px), rgba(0,0,0,0) 0), linear-gradient(60deg, #fff 50%, #f9d8a2 0);
-	background-size: 100% 100%, 5px 5px;
 }
 
 .backArea {

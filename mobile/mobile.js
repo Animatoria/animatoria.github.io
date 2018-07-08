@@ -1,9 +1,6 @@
 var singleMenu = false;
 var longMenu = false;
 
-var header = document.querySelector('#header');
-var plexiGlass = document.querySelector('.plexiGlass');
-
 var burgerCross = document.querySelectorAll('.burgerCross');
 var crossBurger = document.querySelectorAll('.crossBurger');
 

@@ -1,4 +1,4 @@
-.month {
+.monthList {
 	width: 350px;
 }
 
@@ -42,7 +42,7 @@
 	cursor: pointer;
 }
 
-.currYear, .currMonth {
+#year, #month {
 	position: absolute;
 	width: 100px;
 	height: 50px;

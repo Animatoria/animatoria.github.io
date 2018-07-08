@@ -1,9 +1,5 @@
 var storedMainTheme = [];
 
-var themeTable = document.querySelector('#themeTableRB');
-
-var themeTableDeck = document.querySelector('.themeTable');
-
 function deleteAllThemeItems() {
 	while (themeTableDeck.firstChild) {
 		themeTableDeck.removeChild(themeTableDeck.firstChild);
@@ -32,7 +28,6 @@ function mainThemeChange() {
 }
 
 function mainThemeMenu(mobileVersion) {
-	refreshCardsAnimation();
 	if (themeTable.checked) {
 		mainTheme.readOnly = true;
 		if (singleMenu) {

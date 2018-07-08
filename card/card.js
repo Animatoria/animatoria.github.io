@@ -5,70 +5,46 @@ var isReverse = false;
 
 var allCardsProperties = {
 
-	createFlipperElements : function() {
-		this.zoomer = document.createElement('div');
-		this.flipper = document.createElement('div');
-		this.faceArea = document.createElement('textarea');
-		this.backArea = document.createElement('textarea');
+	createElements : function() {
+		this.input = this.div.children[0];
+		this.deleteChb = this.div.children[1];
+		this.card = this.div.children[2];
+			this.divCardMenu = this.card.children[0];
+				this.label = this.divCardMenu.children[0];
+				this.button = this.divCardMenu.children[1];
+			this.zoomer = this.card.children[1];
+				this.cardSide = this.zoomer.children[0];
+				this.flipper = this.zoomer.children[1];
+					this.faceArea = this.flipper.children[0];
+					this.backArea = this.flipper.children[1];
+				this.areaGlass = this.zoomer.children[2]; 
 	},
 
-	createMenuElements : function() {
-		this.divCardMenu = document.createElement('div');
-		this.label = document.createElement('label');
-		this.input = document.createElement('input');
-		this.node = document.createTextNode('Completed')
-		this.button = document.createElement('input');
-	},
-
-	adjustFlipperElements : function() {
-		this.zoomer.className = 'zoomer'
-		this.flipper.className = 'flipper';
-		this.faceArea.className = 'faceArea';
-		this.backArea.className = 'backArea';
-		this.div.appendChild(this.zoomer);
-		this.zoomer.appendChild(this.flipper);
-		this.flipper.appendChild(this.faceArea);
-		this.flipper.appendChild(this.backArea);
+	adjustElements : function() {
+		this.input.id = 'comletedChB' + this.cardNum;
+		this.deleteChb.id = 'deleteChB' + this.cardNum;
+		this.cardSide.id = 'sideChB' + this.cardNum;
+		this.label.htmlFor = 'comletedChB' + this.cardNum;
+		this.button.htmlFor = 'deleteChB' + this.cardNum;
+		this.areaGlass.htmlFor = 'sideChB' + this.cardNum;
 		this.faceArea.rows = this.faceAreaHeight;
 		this.backArea.rows = this.backAreaHeight;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
 		this.faceArea.oninput = () => {this.autoGrow(this.faceArea)};
 		this.backArea.oninput = () => {this.autoGrow(this.backArea)};
-	},
-
-	adjustMenuElements : function() {
-		this.divCardMenu.className = 'cardMenu';
-		this.input.className = 'completed';
-		this.input.type = 'checkbox';
-		this.button.className = 'deleteButton';
-		this.button.type = 'button';
-		this.button.value = 'X';
-		this.div.appendChild(this.divCardMenu);
-		this.divCardMenu.appendChild(this.label);
-		this.divCardMenu.appendChild(this.button);
-		this.label.appendChild(this.input);
-		this.label.appendChild(this.node);
 		this.input.onchange = () => {this.modeSwitch()};
-		this.button.onclick = () => {this.delete()};
+		this.deleteChb.onchange = () => {this.delete()};
+		this.cardSide.onchange = () => {this.rotate()};
 	},
 
 	addCard : function() {
-		if (this.isNewCard) this.div.classList.add('editableCard');
-		this.createMenuElements();
-		this.adjustMenuElements();
-		this.createFlipperElements();
-		this.adjustFlipperElements();
+		this.createElements();
+		this.adjustElements();
 		if (!this.isNewCard) {
 			if (isReverse) this.reverse();
-			this.input.checked = true;
+			this.input.checked = false;
 			this.findCardHeight();
-			this.faceArea.onclick = () => {this.rotate()};
-			this.backArea.onclick = () => {this.rotate()};
-			this.faceArea.readOnly = true;
-			this.backArea.readOnly = true;
-			this.faceArea.style.cursor = 'pointer';
-			this.backArea.style.cursor = 'pointer';
 		}
 	},
 
@@ -100,53 +76,29 @@ var allCardsProperties = {
 		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 		this.addEmptyLine();
-		this.input.checked = false;
-		this.faceArea.style.overflowY = 'hidden';
-		this.rotate();
+		this.input.checked = true;
+		this.cardSide.checked = false;
 		this.isNewCard = false;
 		Object.getPrototypeOf(this).deleted = false;
+		this.saveCard();
+	},
+
+	saveCard : function() {
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
-		this.faceArea.onclick = () => {this.rotate()};
-		this.faceArea.readOnly = true;
-		this.faceArea.style.cursor = 'pointer';
 	},
 
 	sideIsDone : function() {
-		this.div.classList.remove('editableCard');
-		if (this.cardSide) {
-			Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
-			this.findCardHeight();
-			this.faceArea.style.overflowY = 'hidden';
-			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
-			this.faceArea.onclick = () => {this.rotate()};
-			this.faceArea.readOnly = true;
-			this.faceArea.style.cursor = 'pointer';
-		} else {
-			Object.getPrototypeOf(this).backAreaText = this.backArea.value;
-			this.findCardHeight();
-			this.backArea.style.overflowY = 'hidden';
-			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
-			this.backArea.onclick = () => {this.rotate()};
-			this.backArea.readOnly = true;
-			this.backArea.style.cursor = 'pointer';
-		}
+		this.cardSide.checked ? Object.getPrototypeOf(this).faceAreaText = this.faceArea.value : Object.getPrototypeOf(this).backAreaText = this.backArea.value;
+		this.findCardHeight();
+		this.saveCard();
 	},
 
 	sideIsEdit : function() {
-		this.div.classList.add('editableCard');
-		if (this.cardSide) {
+		if (this.cardSide.checked) {
 			this.faceArea.value = this.faceAreaText;
-			this.faceArea.onclick = function(){};
-			this.faceArea.readOnly = false;
-			this.faceArea.style.cursor = 'auto';
-			this.faceArea.style.overflowY = 'auto';
 			this.faceArea.select();
 		} else {
 			this.backArea.value = this.backAreaText;
-			this.backArea.onclick = function(){};
-			this.backArea.readOnly = false;
-			this.backArea.style.cursor = 'auto';
-			this.backArea.style.overflowY = 'auto';
 			this.backArea.select();
 		}
 	},
@@ -158,17 +110,17 @@ var allCardsProperties = {
 				this.newCardFirstStep();
 			}
 			if (this.input.checked) {
-				this.sideIsDone();
-			} else {
 				this.sideIsEdit();
+			} else {
+				this.sideIsDone();
 			}
 		} else {
 			sessionIssue();
 		}
 	},
 
-	rowCount : function(value) {
-		return Math.floor((value.scrollHeight - 60) / 38);
+	rowCount : function(area) {
+		return Math.floor((area.scrollHeight - 60) / 38);
 	},
 
 	autoGrow : function(area) {
@@ -176,28 +128,22 @@ var allCardsProperties = {
 	},
 
 	rotate : function() {
-		this.div.style.zIndex = zIndexCounter;
-		zIndexCounter += 1;
-		if (this.cardSide) {
-			this.zoomer.style.animation = '2s forward';
-			this.flipper.style.transform = 'rotateY(180deg)';
-		} else {
+		this.card.style.zIndex = zIndexCounter++;
+		if (this.cardSide.checked) {
 			this.zoomer.style.animation = '2s backward';
-			this.flipper.style.transform = 'rotateY(0deg)';
+		} else {
+			this.zoomer.style.animation = '2s forward';
 		}
-		this.cardSide = this.cardSide ^ 1;
 	},
 
 	reverse : function() {
-		this.flipper.style.transform = 'rotateY(180deg)';
-		this.cardSide = this.cardSide ^ 1;
+		this.cardSide.checked = false;
 	},
 	
 	delete : function() {
 		if (localStorage.getItem('') == thisSessionID) {
-			this.div.parentElement.removeChild(this.div);
 			Object.getPrototypeOf(this).deleted = true;
-			localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
+			this.saveCard();
 			getStoredCards();
 		} else {
 			sessionIssue();
@@ -215,11 +161,9 @@ function StoredCard() {
 
 function Card(k, isNewCard) {
 	this.cardNum = k;
-	this.cardSide = 1;
 	this.isNewCard = isNewCard;
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
-	this.div = document.createElement('div');
-	this.div.className = 'card';
+	this.div = cardTemplate.children[0].cloneNode(true);
 }
 

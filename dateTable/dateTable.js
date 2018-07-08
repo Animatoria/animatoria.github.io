@@ -12,12 +12,6 @@ var thisDate;
 
 var monthString = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-var dateTable = document.querySelector('#dateTableRB');
-
-var year = document.querySelector('.currYear');
-var month = document.querySelector('.currMonth');
-var firstWeek = document.querySelector('.firstWeek');
-var lastWeek = document.querySelector('.lastWeek');
 var fiveWeekNodes = document.querySelectorAll('.day');
 
 function nextYear(direction) {
@@ -114,7 +108,6 @@ function clearDate() {
 }
 
 function changeMainDate(mobileVersion) {
-	refreshCardsAnimation();
 	if (dateTable.checked) {
 		if (singleMenu) {
 			closeSingleMenu();

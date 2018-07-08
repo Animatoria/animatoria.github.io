@@ -1,4 +1,4 @@
-.animatoriaButton {
+#animatoriaButton {
 	z-index: 9;
 }
 
@@ -10,11 +10,11 @@
 	z-index: 7;
 }
 
-.mainDateLog {
+#mainDateLog {
 	z-index: 6;
 }
 
-.mainDateButton {
+#mainDateButton {
 	z-index: 5;
 }
 
@@ -27,101 +27,101 @@
 }
 
 
-.longMenuPos .animatoriaButton {
+.longMenuPos > #animatoriaButton {
 	top: 0px;
 }
 
-.longMenuPos .addNewCard {
+.longMenuPos > .addNewCard {
 	top: 50px;
 }
 
-.longMenuPos .readOnlyMode {
+.longMenuPos > .readOnlyMode {
 	top: 100px;
 }
 
-.longMenuPos .mainDateLog {
+.longMenuPos > #mainDateLog {
 	top: 150px;
 }
 
-.longMenuPos .mainDateButton {
+.longMenuPos > #mainDateButton {
 	top: 200px;
 }
 
-.longMenuPos .mainThemeLabel {
+.longMenuPos > .mainThemeLabel {
 	top: 250px;
 }
 
-.longMenuTr .animatoriaButton {
+.longMenuTr > #animatoriaButton {
 	transition: top 0.1s linear;
 }
 
-.longMenuTr .addNewCard {
+.longMenuTr > .addNewCard {
 	transition: top 0.2s linear;
 }
 
-.longMenuTr .readOnlyMode {
+.longMenuTr > .readOnlyMode {
 	transition: top 0.3s linear;
 }
 
-.longMenuTr .mainDateLog {
+.longMenuTr > #mainDateLog {
 	transition: top 0.4s linear;
 }
 
-.longMenuTr .mainDateButton {
+.longMenuTr > #mainDateButton {
 	transition: top 0.5s linear;
 }
 
-.longMenuTr .mainThemeLabel {
+.longMenuTr > .mainThemeLabel {
 	transition: top 0.6s linear;
 }
 
-.longMenuDelay .animatoriaButton {
+.longMenuDelay > #animatoriaButton {
 	transition-delay: 0.5s;
 }
 
-.longMenuDelay .addNewCard {
+.longMenuDelay > .addNewCard {
 	transition-delay: 0.4s;
 }
 
-.longMenuDelay .readOnlyMode {
+.longMenuDelay > .readOnlyMode {
 	transition-delay: 0.3s;
 }
 
-.longMenuDelay .mainDateLog {
+.longMenuDelay > #mainDateLog {
 	transition-delay: 0.2s !important;
 }
 
-.longMenuDelay .mainDateButton {
+.longMenuDelay > #mainDateButton {
 	transition-delay: 0.1s;
 }
 
-.longMenuDelay .mainThemeLabel {
+.longMenuDelay > .mainThemeLabel {
 	transition-delay: 0s;
 }
 
-.singleMenu #mainDateSMB:checked ~ .mainDateLog {
+.singleMenu > #mainDateSMB:checked ~ #mainDateLog {
 	top: 0px;
 }
 
-.singleMenu #mainThemeSMB:checked ~ .mainThemeLabel {
+.singleMenu > #mainThemeSMB:checked ~ .mainThemeLabel {
 	top: 0px;
 }
 
-.singleMenu #mainThemeSMB:checked ~ #mainThemeGlass {
+.singleMenu > #mainThemeSMB:checked ~ #mainThemeGlass {
 	display: none;
 }
 
-.singleMenu #mainDateSM:checked ~ .mainDateLog {
+.singleMenu > #mainDateSM:checked ~ #mainDateLog {
 	top: 0px;
 	transition: top 0.3s linear;
 }
 
-.singleMenu #mainThemeSM:checked ~ .mainThemeLabel {
+.singleMenu > #mainThemeSM:checked ~ .mainThemeLabel {
 	top: 0px;
 	transition: top 0.5s linear;
 }
 
-.singleMenu #mainThemeSM:checked ~ #mainThemeGlass {
+.singleMenu > #mainThemeSM:checked ~ #mainThemeGlass {
 	display: none;
 }
 

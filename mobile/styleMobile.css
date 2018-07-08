@@ -2,10 +2,6 @@
 	height: 70px;
 }
 
-.animatoriaButton {
-
-}
-
 .buttonMobile {
 	height: 20px;
 	padding: 15px;
@@ -24,7 +20,7 @@
 	position: relative;
 }
 
-.plexiGlass {
+#plexiGlass {
 	width: 100%;
 	height: 100%;
 	z-index: 1048574;

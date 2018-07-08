@@ -1,0 +1,25 @@
+
+.completedChB:checked ~ .card > .zoomer > .areaGlass {
+	display: none;
+}
+
+.completedChB:checked ~ .card {
+	background-color: #ffd !important;
+}
+
+.completedChB:checked ~ .card > .zoomer > .flipper > textarea {
+	overflow-y: auto;
+	cursor: auto;
+}
+
+.completedChB:checked ~ .card > .cardMenu {
+	display: block;
+}
+
+.deleteButtonChB:checked ~ .card {
+	display: none;
+}
+
+.sideChB:checked + .flipper {
+	transform: rotateY(0deg);
+}

@@ -2,16 +2,10 @@ var k = 0;
 var storedCard = [];
 var card = [];
 
-var readOnlyMode = document.querySelector('#readOnlyModeChB');
-var readOnlyModeMobile = document.querySelector('.readOnlyModeMobile');
-var readOnlyModeButton = document.querySelector('.readOnlyMode');
-
 var isAnyCardShowed;
 
 var cardsColumnNumber;
 
-var rubberBodyElement = document.querySelector('.rubberBody');
-var cardsTable = document.querySelector('#cardsTableRB');
 var cardsColumn = document.querySelectorAll('.cardsColumn');
 
 var columnExpression = [
@@ -21,7 +15,7 @@ var columnExpression = [
 ];
 
 function sessionIssue() {
-	alert('Sorry, another "Rotation cards" application open. This application need to reload.');
+	alert('Sorry, another "Rotation cards" application open. This application should be reload.');
 	location.reload(true);
 }
 
@@ -94,12 +88,6 @@ function refreshCardsOnTable() {
 	for (var i in card) {
 		chooseCardsColumn(card[i]);
 		card[i].findCardHeight();
-		card[i].zoomer.style.animation = '';
-	}
-}
-
-function refreshCardsAnimation() {
-	for (var i in card) {
-		card[i].zoomer.style.animation = '';
+		card[i].zoomer.style.animation = 'none';
 	}
 }

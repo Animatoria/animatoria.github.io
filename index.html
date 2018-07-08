@@ -8,6 +8,7 @@
 	<link rel = 'stylesheet' href='dateTable/dateTable.css' type='text/css'>
 	<link rel = 'stylesheet' href='mobile/styleMobile.css' type='text/css'>
 	<link rel = 'stylesheet' href='headerMenuLogic.css' type='text/css'>
+	<link rel = 'stylesheet' href='cardLogic.css' type='text/css'>
 	<link rel = 'stylesheet' href='tablesLogic.css' type='text/css'>
 	<link rel = 'stylesheet' href='readOnlyModeLogic.css' type='text/css'>
 	<link rel = 'stylesheet' href='style.css' type='text/css'>
@@ -15,36 +16,36 @@
 </head>
 <body>
 	<div class='empty'></div>
-	<div class='body'>
-		<input id='readOnlyModeChB' type='checkbox' checked>
-		<input id='cardsTableRB' name='table' type='radio' checked>
-		<input id='dateTableRB' name='table' type='radio'>
-		<input id='themeTableRB' name='table' type='radio'>
+	<div id='body'>
+		<input id='editMode' type='checkbox'>
+		<input id='cardsTable' name='table' type='radio' checked>
+		<input id='dateTable' name='table' type='radio'>
+		<input id='themeTable' name='table' type='radio'>
 		<div id='header'>
 			<input id='mainDateSM' name='singleMenu' type='radio'>
 			<input id='mainThemeSM' name='singleMenu' type='radio'>
 			<input id='mainDateSMB' name='singleMenu' type='radio'>
 			<input id='mainThemeSMB' name='singleMenu' type='radio'>
-			<button class='animatoriaButton headerButton'>
+			<button id='animatoriaButton' class='headerButton'>
 				<img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p>
 			</button>
 			<button class='addNewCard headerButton' onclick='addNewCard()' accesskey="a">
 				<img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p>
 			</button>
-			<label class='readOnlyMode headerButton evenOddParent' for='readOnlyModeChB'><img class='buttonIcon evenOdd' src='icons/readonlymode.svg'><img class='buttonIcon evenOdd' src='icons/pencil.svg'><p class='evenOdd'>Read mode</p><p class='evenOdd'>Edit mode</p></label>
-			<label class='mainDateLog headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
-				<img class='buttonIcon' src='icons/date.svg'><p class='currentDate'></p>
+			<label class='readOnlyMode headerButton evenOddParent' for='editMode'><img class='buttonIcon evenOdd' src='icons/readonlymode.svg'><img class='buttonIcon evenOdd' src='icons/pencil.svg'><p class='evenOdd'>Read mode</p><p class='evenOdd'>Edit mode</p></label>
+			<label id='mainDateLog' class='headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
+				<img class='buttonIcon' src='icons/date.svg'><p id='currentDateParagraph'></p>
 			</label>
-			<label class='mainDateButton headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
+			<label id='mainDateButton' class='headerButton' for='mainDateSM' onclick='changeMainDate(0)'>
 				<img class='buttonIcon' src='icons/calendar.svg'><p>Choose date</p>
 			</label>
 			<label class='mainThemeLabel headerButton'>
-				<img class='buttonIcon' src='icons/theme.svg'><input class='mainTheme' type='text'>
+				<img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' type='text'>
 			</label>
 			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
 			</label>
 			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'>
-			<label for='readOnlyModeChB' class='evenOddParent'>
+			<label for='editMode' class='evenOddParent'>
 				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'>
 				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'>
 			</label>
@@ -123,26 +124,26 @@
 				</rect>
 			</svg>
 		</div>
-		<div class='rubberBody'>
+		<div id='cardsTableDeck'>
 			<div class='cardsColumn'></div>
 			<div class='cardsColumn'></div>
 			<div class='cardsColumn'></div>
 		</div>
-		<div class='dateTable'>
+		<div id='dateTableDeck'>
 			<div class='yearDiv'>
-				<div class='currYear''></div>
+				<div id='year''></div>
 				<div class='leftArrow' onclick='nextYear(-1)'></div>
 				<div class='rightArrow' onclick='nextYear(1)'></div>
 			</div>
 			<div class='monthDiv'>
-				<div class='currMonth''></div>
+				<div id='month''></div>
 				<div class='leftArrow' onclick='nextMonth(-1)'></div>
 				<div class='rightArrow' onclick='nextMonth(1)'></div>
 			</div>
-			<div class='month'>
+			<div class='monthList'>
 				<div class='namesWeek'>
 					<div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div></div>
-				<div class='firstWeek'>
+				<div id='firstWeek'>
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
 				<div class='week'>
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
@@ -154,13 +155,35 @@
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
 				<div class='week'>
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
-				<div class='lastWeek'>
+				<div id='lastWeek'>
 					<div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div><div class='day'></div></div>
 			</div>
 		</div>
-		<div class='themeTable'></div>
+		<div id='themeTableDeck'></div>
 	</div>
-	<div class='plexiGlass displayNone'></div>
+	<div id='plexiGlass' class='displayNone'></div>
+
+	<div id='cardTemplate'>
+		<div class='cardWrapper'>
+			<input class='completedChB' type='checkbox' checked>
+			<input class='deleteButtonChB' type='checkbox'>
+			<div class='card'>
+				<div class='cardMenu'>
+					<label class='completed'><div style='width: 100%'>Completed</div></label>
+					<label class='deleteButton'>X</label>
+				</div>
+				<div class='zoomer'>
+					<input class='sideChB' type='checkbox' checked>
+					<div class='flipper'>
+						<textarea class='faceArea'></textarea>
+						<textarea class='backArea'></textarea>
+					</div>
+					<label class='areaGlass'></label>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script src='cardsTable/cardsTable.js'></script>
 	<script src='card/card.js'></script>
 	<script src='thisSession/thisSession.js'></script>

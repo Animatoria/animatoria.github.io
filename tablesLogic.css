@@ -1,11 +1,11 @@
-#cardsTableRB:checked ~ .rubberBody {
+#cardsTable:checked ~ #cardsTableDeck {
 	display: flex;
 }
 
-#dateTableRB:checked ~ .dateTable {
+#dateTable:checked ~ #dateTableDeck {
 	display: block;
 }
 
-#themeTableRB:checked ~ .themeTable {
+#themeTable:checked ~ #themeTableDeck {
 	display: block;
 }

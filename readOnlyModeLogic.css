@@ -1,27 +1,19 @@
-.evenOdd:nth-child(odd) {
+.evenOdd:nth-child(even) {
 	display: none;
 }
 
-#readOnlyModeChB:checked ~ #header .evenOddParent .evenOdd:nth-child(odd) {
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(even) {
 	display: inline-block;
 }
 
-#readOnlyModeChB:checked ~ #header .evenOddParent .evenOdd:nth-child(even) {
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(odd) {
 	display: none;
 }
 
-#readOnlyModeChB:checked ~ .rubberBody .cardsColumn .card {
-	background-color: #dfd;
+#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card {
+	background-color: #ddf;
 }
 
-#readOnlyModeChB:checked ~ .rubberBody .cardsColumn .card .cardMenu {
-	display: none;
-}
-
-.editableCard {
-	background-color: #ddf !important;
-}
-
-.editableCard .cardMenu {
-	display: block !important;
+#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card > .cardMenu {
+	display: block;
 }

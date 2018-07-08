@@ -4,8 +4,6 @@ var newDateFlag = true;
 var thisSessionID;
 var screenWidth;
 
-var bodyElement = document.querySelector('.body');
-
 function setSessionID() {
 	var sessionID = +localStorage.getItem('');
 	if (sessionID) {

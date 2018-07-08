@@ -9,7 +9,6 @@
 
 .completedChB:checked ~ .card > .zoomer > .flipper > textarea {
 	overflow-y: auto;
-	cursor: auto;
 }
 
 .completedChB:checked ~ .card > .cardMenu {

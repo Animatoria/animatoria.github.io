@@ -17,6 +17,7 @@
 	color: #6f8a91;
 	width: 100%;
 	font-size: 25px;
+	cursor: pointer;
 }
 
 .deleteButton {
@@ -25,6 +26,7 @@
 	right: 0px;
 	top: 0px;
 	font-size: 25px;
+	cursor: pointer;
 }
 
 .zoomer {
@@ -44,6 +46,7 @@
 	height: 100%;
 	position: absolute;
 	top: 0px;
+	cursor: pointer;
 }
 
 textarea {
@@ -58,7 +61,6 @@ textarea {
 	backface-visibility: hidden;
 	text-align: center;
 	overflow: hidden;
-	cursor: pointer;
 	padding: 30px 5px 30px 5px;
 	color: #6f8a91;
 }

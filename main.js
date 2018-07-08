@@ -13,7 +13,7 @@ currentDateParagraph.innerHTML = mainDate;
 
 mainTheme.onchange = mainThemeChange;
 
-animatoriaButton.onclick = function() {isReverse ^= 1};
+animatoriaButton.onclick = function() {isReverse ^= 1;};
 
 setCardProperties();
 setMainTheme();
@@ -22,5 +22,7 @@ getStoredCards();
 setStoredMainDate();
 onscroll = fallingMobileMenu;
 onresize = setCardProperties;
+
+console.log(burgerCross.beginElement);
 
 body.style.backgroundColor = '#dfd';

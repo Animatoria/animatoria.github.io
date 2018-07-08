@@ -1,9 +1,6 @@
 var singleMenu = false;
 var longMenu = false;
 
-var burgerCross = document.querySelectorAll('.burgerCross');
-var crossBurger = document.querySelectorAll('.crossBurger');
-
 var lastScrollTop;
 
 function fallingMobileMenu() {
@@ -20,16 +17,14 @@ function fallingMobileMenu() {
 var burger = {
 	_on : true,
 	get on() {
-		for (var i = 0; i < 3; i++) {
-			crossBurger[i].beginElement();
+		if (crossBurger.beginElement) {
+			crossBurger.beginElement();
+			this._on = true;
 		}
-		this._on = true;
 	},
 	get off() {
-		if (this._on) {
-			for (var i = 0; i < 3; i++) {
-				burgerCross[i].beginElement();
-			}
+		if (this._on && burgerCross.beginElement) {
+			burgerCross.beginElement();
 			this._on = false;
 		}
 	}

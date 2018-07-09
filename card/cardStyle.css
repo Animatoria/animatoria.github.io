@@ -3,6 +3,7 @@
 	margin: 10px auto;
 	position: relative;
 	background-color: #dfd;
+	perspective: 1000px;
 	border-radius: 0 0 30px 30px;
 }
 
@@ -30,6 +31,7 @@
 
 .zoomer {
 	width: 100%;
+	perspective: 1000px;
 }
 
 .flipper {
@@ -56,21 +58,19 @@ textarea {
 	outline: none;
 	display: block;
 	resize: none;
+	backface-visibility: hidden;
 	text-align: center;
 	overflow: hidden;
 	padding: 30px 5px 30px 5px;
 	color: #6f8a91;
-	transition: 2s;
 }
 
 .faceArea {
 	border-radius: 5px 30px 30px 30px;
-	transform: perspective(1000px) rotateY(180deg);
-	backface-visibility: hidden;
 }
 
 .backArea {
-	transform: perspective(1000px) rotateY(0deg);
+	transform: rotateY(180deg);
 	position: absolute;
 	top: 0;
 	background: linear-gradient(rgba(0,0,0,0) 25px, rgba(255,255,255,0.7) 25px, rgba(255,255,255,0.7) calc(100% - 25px), rgba(0,0,0,0) 0), linear-gradient(60deg, #fff 50%, #f9d8a2 0);
@@ -80,18 +80,18 @@ textarea {
 
 @keyframes forward {
 	50% {
-		transform: perspective(1000px) translateZ(200px) translateX(10%) translateY(10%);
+		transform: translateZ(200px) translateX(10%) translateY(10%);
 	}
 	100% {
-		transform: perspective(1000px) translateZ(0px) translateX(0px);
+		transform: translateZ(0px) translateX(0px);
 	}
 }
 
 @keyframes backward {
 	50% {
-		transform: perspective(1000px) translateZ(200px) translateX(10%) translateY(10%);
+		transform: translateZ(200px) translateX(10%) translateY(10%);
 	}
 	100% {
-		transform: perspective(1000px) translateZ(0px) translateX(0px);
+		transform: translateZ(0px) translateX(0px);
 	}
 }

@@ -8,13 +8,14 @@
 	background-color: #eee;
 	cursor: pointer;
 	vertical-align: bottom;
+	transition-duration: 3s;
 }
 
 .addNewCard {
 	border-top: 1px solid #000;
 }
 
-#burgerMenu{
+.burgerMenu{
 	z-index: 10;
 	float: right;
 	position: relative;

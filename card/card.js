@@ -14,9 +14,10 @@ var allCardsProperties = {
 				this.button = this.divCardMenu.children[1];
 			this.zoomer = this.card.children[1];
 				this.cardSide = this.zoomer.children[0];
-				this.backArea = this.zoomer.children[1];
-				this.faceArea = this.zoomer.children[2];
-				this.areaGlass = this.zoomer.children[3]; 
+				this.flipper = this.zoomer.children[1];
+					this.faceArea = this.flipper.children[0];
+					this.backArea = this.flipper.children[1];
+				this.areaGlass = this.zoomer.children[2]; 
 	},
 
 	adjustElements : function() {
@@ -32,12 +33,12 @@ var allCardsProperties = {
 		this.backArea.value = this.backAreaText;
 		this.faceArea.oninput = this.autoGrow;
 		this.backArea.oninput = this.autoGrow;
-		this.input.aramAzrayan = this.cardNum;
-		this.deleteChb.aramAzrayan = this.cardNum;
-		this.cardSide.aramAzrayan = this.cardNum;
-		this.input.onchange = function() {card[this.aramAzrayan].modeSwitch()};
-		this.deleteChb.onchange = function() {card[this.aramAzrayan].delete()};
-		this.cardSide.onchange = function() {card[this.aramAzrayan].rotate()};
+		this.input.o = this;
+		this.deleteChb.o = this;
+		this.cardSide.o = this;
+		this.input.onchange = function() {this.o.modeSwitch()};
+		this.deleteChb.onchange = function() {this.o.delete()};
+		this.cardSide.onchange = function() {this.o.rotate()};
 	},
 
 	addCard : function() {

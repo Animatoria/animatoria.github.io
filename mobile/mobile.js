@@ -14,31 +14,15 @@ function fallingMobileMenu() {
 	lastScrollTop = document.documentElement.scrollTop;
 }
 
-var burger = {
-	_on : true,
-	get on() {
-		if (crossBurger.beginElement) {
-			crossBurger.beginElement();
-			this._on = true;
-		}
-	},
-	get off() {
-		if (this._on && burgerCross.beginElement) {
-			burgerCross.beginElement();
-			this._on = false;
-		}
-	}
-}
-
 function singleLineMenu() {
 	singleMenu = true;
 	header.className = ('singleMenu');
-	burger.off;
+	burgerMenu.checked = true;
 }
 
 function closeSingleMenu() {
 	singleMenu = false;
-	burger.on;
+	burgerMenu.checked = false;
 	cardsTable.checked = true;
 	header.className = ('closeSingleMenu');
 }
@@ -51,7 +35,7 @@ function mobileMenu(toSingleMenu) {
 			singleMenu = true;
 			header.className = ('singleMenu longMenuTr longMenuDelay');
 		} else {
-			burger.on;
+			burgerMenu.checked = false;
 			header.className = ('longMenuTr longMenuDelay');
 		}
 	} else {
@@ -60,7 +44,7 @@ function mobileMenu(toSingleMenu) {
 		} else {
 			header.className = ('longMenuTr longMenuPos');
 			plexiGlass.classList.remove('displayNone');
-			burger.off;
+			burgerMenu.checked = true;
 			longMenu = true;
 		}
 	}

@@ -89,7 +89,7 @@ p {
 	display: none !important;
 }
 
-#cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM, #mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB {
+#burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM, #mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB {
 	display: none;
 }
 
@@ -127,5 +127,66 @@ p {
 
 	.headerButton {
 		width: 100%;
+	}
+}
+#highRect {
+	transition: 0.1s;
+	transition-delay: 0.2s;
+}
+
+#middleRect {
+	transition: 0.1s;
+	transition-delay: 0s;
+}
+
+#lowRect {
+	transition: 0.1s;
+	transition-delay: 0.3s;
+}
+
+#burgerMenu:checked ~ .burgerMenu > #highRect {
+	transition-delay: 0.2s;
+	transform-origin: 18px 2px;
+	transform: rotate(-45deg);
+}
+
+#burgerMenu:checked ~ .burgerMenu > #middleRect {
+	transition-delay: 0s;
+	transform-origin: 10px 10px;
+	transform: rotate(30deg);
+}
+
+#burgerMenu:checked ~ .burgerMenu > #lowRect {
+	transition-delay: 0.3s;
+	transform-origin: 2px 18px;
+	transform: rotate(-45deg);
+}
+
+.buttonMobile:hover {
+	animation: 2s autumnLeaf;
+	animation-delay: 5s;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-fill-mode: forwards;
+	background: radial-gradient(#fdd, #eee 80%);
+	transition-duration: 0.6s;
+}
+
+.headerButton:hover:not(#mainThemeGlass) {
+	background: radial-gradient(#fdd, #eee 80%);
+}
+
+@keyframes autumnLeaf {
+	10% {
+		transform: translate(-10px, 10px) skew(-20deg, 20deg) rotateY(180deg);
+	}
+	30% {
+		transform: translate(30px, 30px) skew(20deg, -20deg);
+	}
+	60% {
+		transform: translate(-60px, 60px) skew(-20deg, 20deg) rotateY(180deg);
+	}
+	100% {
+		transform: translate(30px, 100px) skew(20deg, -20deg);
 	}
 }

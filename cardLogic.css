@@ -7,7 +7,7 @@
 	background-color: #ffd !important;
 }
 
-.completedChB:checked ~ .card > .zoomer > textarea {
+.completedChB:checked ~ .card > .zoomer > .flipper > textarea {
 	overflow-y: auto;
 }
 
@@ -19,10 +19,6 @@
 	display: none;
 }
 
-.sideChB:checked ~ .faceArea {
-	transform: perspective(1000px) rotateY(360deg);
-}
-
-.sideChB:checked + .backArea {
-	transform: perspective(1000px) rotateY(180deg);
+.sideChB:checked + .flipper {
+	transform: rotateY(0deg);
 }

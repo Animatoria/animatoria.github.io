@@ -22,12 +22,13 @@
 		<input id='dateTable' name='table' type='radio'>
 		<input id='themeTable' name='table' type='radio'>
 		<div id='header'>
+			<input id='burgerMenu' type='checkbox'>
 			<input id='mainDateSM' name='singleMenu' type='radio'>
 			<input id='mainThemeSM' name='singleMenu' type='radio'>
 			<input id='mainDateSMB' name='singleMenu' type='radio'>
 			<input id='mainThemeSMB' name='singleMenu' type='radio'>
 			<button id='animatoriaButton' class='headerButton'>
-				<img class='buttonIcon' src='icons/A.svg'><p>An3matoria</p>
+				<img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p>
 			</button>
 			<button class='addNewCard headerButton' onclick='addNewCard()' accesskey="a">
 				<img class='buttonIcon' src='icons/addnewcard.svg'><p>Add new card</p>
@@ -44,80 +45,11 @@
 			</label>
 			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
 			</label>
-			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'>
-			<label for='editMode' class='evenOddParent'>
-				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'>
-				<img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'>
-			</label>
-			<label for='mainDateSMB'>
-				<img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'>
-			</label>
-			<label for='mainThemeSMB'>
-				<img class='mainThemeMobile buttonMobile' onclick='mainThemeMenu(1)' src='icons/theme.svg'>
-			</label>
-			<svg id='burgerMenu' class="buttonMobile" onclick='mobileMenu(0)' width="20px" height="20px">
-				<rect x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91">
-					<animateTransform
-						id="burgerCross"
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="0 18 2"
-						to="-45 18 2"
-						begin="indefinite"
-						repeatCount="1"
-						fill="freeze"/>
-					<animateTransform
-						id="crossBurger"
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="-45 18 2"
-						to="0 18 2"
-						begin="indefinite"
-						repeatCount="1"
-						fill="freeze"/>
-				</rect>
-				<rect x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91">
-					<animateTransform
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="0 10 10"
-						to="30 10 10"
-						begin="burgerCross.begin"
-						repeatCount="1"
-						fill="freeze"/>
-					<animateTransform
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="30 10 10"
-						to="0 10 10"
-						begin="crossBurger.begin"
-						repeatCount="1"
-						fill="freeze"/>
-				</rect>
-				<rect x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91">
-					<animateTransform
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="0 2 18"
-						to="-45 2 18"
-						begin="burgerCross.begin"
-						repeatCount="1"
-						fill="freeze"/>
-					<animateTransform
-						attributeName="transform"
-						dur="0.1s"
-						type="rotate"
-						from="-45 2 18"
-						to="0 2 18"
-						begin="crossBurger.begin"
-						repeatCount="1"
-						fill="freeze"/>
-				</rect>
+			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'><label for='editMode' class='evenOddParent'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'></label><label for='mainDateSMB'><img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'></label><label for='mainThemeSMB'><img class='mainThemeMobile buttonMobile' onclick='mainThemeMenu(1)' src='icons/theme.svg'></label>
+			<svg class="burgerMenu buttonMobile" onclick='mobileMenu(0)' width="20px" height="20px">
+				<rect id="highRect" x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91"></rect>
+				<rect id="middleRect" x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91"></rect>
+				<rect id="lowRect" x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91"></rect>
 			</svg>
 		</div>
 		<div id='cardsTableDeck'>
@@ -170,8 +102,10 @@
 				</div>
 				<div class='zoomer'>
 					<input class='sideChB' type='checkbox' checked>
-					<textarea class='backArea'></textarea>
-					<textarea class='faceArea'></textarea>
+					<div class='flipper'>
+						<textarea class='faceArea'></textarea>
+						<textarea class='backArea'></textarea>
+					</div>
 					<label class='areaGlass'></label>
 				</div>
 			</div>

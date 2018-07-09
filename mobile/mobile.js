@@ -23,6 +23,7 @@ function singleLineMenu() {
 function closeSingleMenu() {
 	singleMenu = false;
 	burgerMenu.checked = false;
+	refreshCardsAnimation();
 	cardsTable.checked = true;
 	header.className = ('closeSingleMenu');
 }

@@ -83,7 +83,6 @@ function selectCalendarDate(i, thisDate) {
 		} else {
 			newDateFlag = false;
 		}
-		refreshCardsAnimation();
 		cardsTable.checked = true;
 		getStoredCards();
 	}

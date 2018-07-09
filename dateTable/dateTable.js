@@ -83,6 +83,7 @@ function selectCalendarDate(i, thisDate) {
 		} else {
 			newDateFlag = false;
 		}
+		refreshCardsAnimation();
 		cardsTable.checked = true;
 		getStoredCards();
 	}
@@ -112,6 +113,7 @@ function changeMainDate(mobileVersion) {
 		if (singleMenu) {
 			closeSingleMenu();
 		} else {
+			refreshCardsAnimation();
 			cardsTable.checked = true;
 		}
 	} else {

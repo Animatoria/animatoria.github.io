@@ -91,3 +91,9 @@ function refreshCardsOnTable() {
 		card[i].zoomer.style.animation = 'none';
 	}
 }
+
+function refreshCardsAnimation() {
+	for (var i in card) {
+		card[i].zoomer.style.animation = 'none';
+	}
+}

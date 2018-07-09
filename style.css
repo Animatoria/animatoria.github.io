@@ -203,3 +203,11 @@ p {
 	transition-duration: 0.1s;
 	transition-delay: 5s;
 }
+
+#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card:hover {
+	transform: none;
+}
+
+.completedChB:checked ~ .card:hover {
+	transform: none;
+}

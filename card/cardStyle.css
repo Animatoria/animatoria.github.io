@@ -4,6 +4,8 @@
 	position: relative;
 	perspective: 1000px;
 	border-radius: 5px 5px 30px 30px;
+	animation-timing-function: ease-out;
+	transition-duration: 0.1s;
 }
 
 .cardMenu {

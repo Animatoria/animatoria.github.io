@@ -9,15 +9,15 @@ var allCardsProperties = {
 		this.input = this.div.children[0];
 		this.deleteChb = this.div.children[1];
 		this.card = this.div.children[2];
-			this.divCardMenu = this.card.children[0];
-				this.label = this.divCardMenu.children[0];
-				this.button = this.divCardMenu.children[1];
-			this.zoomer = this.card.children[1];
+			this.zoomer = this.card.children[0];
 				this.cardSide = this.zoomer.children[0];
 				this.flipper = this.zoomer.children[1];
 					this.faceArea = this.flipper.children[0];
 					this.backArea = this.flipper.children[1];
 				this.areaGlass = this.zoomer.children[2]; 
+			this.divCardMenu = this.card.children[1];
+				this.label = this.divCardMenu.children[0];
+				this.button = this.divCardMenu.children[1];
 	},
 
 	adjustElements : function() {
@@ -134,8 +134,10 @@ var allCardsProperties = {
 		this.card.style.zIndex = zIndexCounter++;
 		if (this.cardSide.checked) {
 			this.zoomer.style.animation = '2s backward';
+			this.divCardMenu.style.animation = '2s cardMenuOpacityF';
 		} else {
 			this.zoomer.style.animation = '2s forward';
+			this.divCardMenu.style.animation = '2s cardMenuOpacityB';
 		}
 	},
 

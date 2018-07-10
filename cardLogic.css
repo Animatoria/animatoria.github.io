@@ -4,7 +4,15 @@
 }
 
 .completedChB:checked ~ .card {
-	background-color: #ffd !important;
+	background-color: #cca !important;
+}
+
+.completedChB:checked ~ .card > .cardMenu .cardMenuLabel {
+	fill: #ffd !important;
+}
+
+.completedChB:checked ~ .card > .cardMenu .cardMenuLabelDark {
+	fill: #cca !important;
 }
 
 .completedChB:checked ~ .card > .zoomer > .flipper > textarea {
@@ -12,7 +20,8 @@
 }
 
 .completedChB:checked ~ .card > .cardMenu {
-	display: block;
+	visibility: visible;
+	opacity: 1;
 }
 
 .deleteButtonChB:checked ~ .card {
@@ -21,4 +30,30 @@
 
 .sideChB:checked + .flipper {
 	transform: rotateY(0deg);
+}
+
+.card:hover {
+	z-index: 1048574;
+	transform: translate(-6px, 20px) skew(-4deg, 4deg);
+	transition: transform 0.1s 5s;
+}
+
+#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card:hover {
+	transform: none;
+}
+
+.completedChB:checked ~ .card:hover {
+	transform: none;
+}
+
+@keyframes cardMenuOpacityF {
+	5% {opacity: 0}
+	95% {opacity: 0}
+	100% {opacity: 1}
+}
+
+@keyframes cardMenuOpacityB {
+	5% {opacity: 0}
+	95% {opacity: 0}
+	100% {opacity: 1}
 }

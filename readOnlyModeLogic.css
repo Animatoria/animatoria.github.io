@@ -11,9 +11,10 @@
 }
 
 #editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card {
-	background-color: #ddf;
+	background-color: #aaf;
 }
 
 #editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card > .cardMenu {
-	display: block;
+	visibility: visible;
+	opacity: 1;
 }

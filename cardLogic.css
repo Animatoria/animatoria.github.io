@@ -7,6 +7,14 @@
 	background-color: #cca !important;
 }
 
+.cardMenuLabel {
+	transition: 0.3s;
+}
+
+.cardMenuLabelDark {
+	transition: 0.3s;
+}
+
 .completedChB:checked ~ .card > .cardMenu .cardMenuLabel {
 	fill: #ffd !important;
 }

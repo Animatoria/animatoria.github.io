@@ -47,13 +47,13 @@
 }
 
 @keyframes cardMenuOpacityF {
-	5% {opacity: 0}
-	95% {opacity: 0}
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
 	100% {opacity: 1}
 }
 
 @keyframes cardMenuOpacityB {
-	5% {opacity: 0}
-	95% {opacity: 0}
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
 	100% {opacity: 1}
 }

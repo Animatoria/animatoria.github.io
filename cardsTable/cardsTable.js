@@ -89,11 +89,13 @@ function refreshCardsOnTable() {
 		chooseCardsColumn(card[i]);
 		card[i].findCardHeight();
 		card[i].zoomer.style.animation = 'none';
+		card[i].divCardMenu.style.animation = 'none';
 	}
 }
 
 function refreshCardsAnimation() {
 	for (var i in card) {
 		card[i].zoomer.style.animation = 'none';
+		card[i].divCardMenu.style.animation = 'none';
 	}
 }

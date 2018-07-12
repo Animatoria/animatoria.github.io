@@ -89,7 +89,7 @@ p {
 	display: none;
 }
 
-@media(max-width: 1230px) {
+@media(max-width: 1330px) {
 
 	.cardsColumn:nth-of-type(3) {
 		display: none;

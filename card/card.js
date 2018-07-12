@@ -1,4 +1,4 @@
-var textareaEditableRows = 1;
+var textareaEditableRows = 2;
 var zIndexCounter = 1;
 
 var isReverse = false;

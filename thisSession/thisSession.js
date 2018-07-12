@@ -25,7 +25,7 @@ function setCardProperties() {
 		screenWidth = innerWidth;
 		if (innerWidth < 830) {
 			cardsColumnNumber = 0;
-		} else if (innerWidth < 1230) {
+		} else if (innerWidth < 1330) {
 			cardsColumnNumber = 1;
 		} else {
 			cardsColumnNumber = 2;

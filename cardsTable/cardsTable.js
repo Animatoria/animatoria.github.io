@@ -6,7 +6,7 @@ var isAnyCardShowed;
 
 var cardsColumnNumber;
 
-var cardsColumn = cardsTableDeck.querySelectorAll('.cardsColumn');
+var cardsColumn = Array.from(cardsTableDeck.querySelectorAll('.cardsColumn'));
 
 var columnExpression = [
 	function(e) {cardsColumn[0].appendChild(e.div)},

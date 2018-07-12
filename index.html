@@ -100,8 +100,8 @@
 				<div class='zoomer'>
 					<input class='sideChB' type='checkbox' checked>
 					<div class='flipper'>
-						<textarea class='faceArea' placeholder="Input face area text"></textarea>
-						<textarea class='backArea' placeholder="Input back area text"></textarea>
+						<textarea class='faceArea' placeholder="face text"></textarea>
+						<textarea class='backArea' placeholder="back text"></textarea>
 					</div>
 					<label class='areaGlass'></label>
 				</div>
@@ -117,6 +117,12 @@
 									<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
 								</filter>
 							</defs>
+							<path class='cardMenuLabelDark'
+								d=' M 1 6
+									a 4 4 180 0 1 8 0
+									z'
+								width="185" height="32" fill="#aaf">
+							</path>
 							<path class='cardMenuLabel'
 								d=' M 0 0
 									M 9 33
@@ -132,22 +138,23 @@
 								d=' M 9 0
 									l -3 0
 									a 6 6 200 0 0 -6 6
-									l 9 0
+									l 1 0
+									a 4 4 180 0 1 8 0
 									l 0 -6
 									z'
 								width="185" height="32" fill="#ddf">
-							</path>
-							<path class='cardMenuLabelDark'
-								d=' M 1 6
-									a 4 4 180 0 1 8 0
-									z'
-								width="185" height="32" fill="#aaf">
 							</path>
 						</svg>
 						<span>Completed</span>
 					</label>
 					<label class='deleteButton'>
 						<svg width="46px" height="50px">
+							<path class='cardMenuLabelDark'
+								d=' M 1 6
+									a 4 4 180 0 1 8 0
+									z'
+								width="41" height="32" fill="#aaf">
+							</path>
 							<path class='cardMenuLabel'
 								d=' M 0 0
 									M 9 33
@@ -163,16 +170,11 @@
 								d=' M 9 0
 									l -3 0
 									a 6 6 200 0 0 -6 6
-									l 9 0
+									l 1 0
+									a 4 4 180 0 1 8 0
 									l 0 -6
 									z'
 								width="185" height="32" fill="#ddf">
-							</path>
-							<path class='cardMenuLabelDark'
-								d=' M 1 6
-									a 4 4 180 0 1 8 0
-									z'
-								width="41" height="32" fill="#aaf">
 							</path>
 						</svg><span>X</span></label>
 				</div>

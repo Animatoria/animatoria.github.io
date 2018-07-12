@@ -6,7 +6,7 @@ var isAnyCardShowed;
 
 var cardsColumnNumber;
 
-var cardsColumn = document.querySelectorAll('.cardsColumn');
+var cardsColumn = cardsTableDeck.querySelectorAll('.cardsColumn');
 
 var columnExpression = [
 	function(e) {cardsColumn[0].appendChild(e.div)},
@@ -42,19 +42,11 @@ function getStoredCard(i) {
 	card[i].addCard();
 }
 
-function deleteAllCards() {
-	for (var i = 0; i < 3; i++) {
-		while (cardsColumn[i].firstChild) {
-			cardsColumn[i].removeChild(cardsColumn[i].firstChild);
-		}
-	}
-}
-
 function getStoredCards() {
 	k = 0;
 	storedCard = [];
 	card = [];
-	deleteAllCards();
+	cardsColumn.forEach(fullClear);
 	isAnyCardShowed = false;
 	var localStorageItem = localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k]);
 	while (localStorageItem) {
@@ -83,19 +75,14 @@ function getStoredCards() {
 	}
 }
 
-function refreshCardsOnTable() {
-	deleteAllCards();
-	for (var i in card) {
-		chooseCardsColumn(card[i]);
-		card[i].findCardHeight();
-		card[i].zoomer.style.animation = 'none';
-		card[i].divCardMenu.style.animation = 'none';
-	}
+function refreshCards(card) {
+	chooseCardsColumn(card);
+	card.findCardHeight();
+	card.zoomer.style.animation = 'none';
+	card.divCardMenu.style.animation = 'none';
 }
 
-function refreshCardsAnimation() {
-	for (var i in card) {
-		card[i].zoomer.style.animation = 'none';
-		card[i].divCardMenu.style.animation = 'none';
-	}
+function refreshCardsAnimation(card) {
+	card.zoomer.style.animation = 'none';
+	card.divCardMenu.style.animation = 'none';
 }

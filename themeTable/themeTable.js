@@ -1,20 +1,14 @@
 var storedMainTheme = [];
 
-function deleteAllThemeItems() {
-	while (themeTableDeck.firstChild) {
-		themeTableDeck.removeChild(themeTableDeck.firstChild);
-	}
-}
-
 function mainThemeChange() {
-	if (singleMenu) {
+	if (themeTable.checked) {
+		mainTheme.readOnly = true;
 		closeSingleMenu();
 	}
 	storedMainDate = [];
 	mainDate = currentDateToLocaleDateString;
 	actualDate = currentDate;
 	currentDateParagraph.innerHTML = mainDate;
-	cardsTable.checked = true;
 	if (localStorage.getItem('storedMainDate_' + mainTheme.value)) {
 		storedMainDate = JSON.parse(localStorage.getItem('storedMainDate_' + mainTheme.value), function(key, value) {if (key == '') {return value} else {return new Date(value)}});
 		newThemeFlag = false;
@@ -22,7 +16,7 @@ function mainThemeChange() {
 		newThemeFlag = true;
 	}
 	nextMonth(0);
-	if (dateList.some(function(value) {return value == actualDate.getDate()})) newDateFlag = false;
+	if (dateList.some(function(dateUnit) {return dateUnit.date == actualDate.getDate()})) newDateFlag = false;
 	else newDateFlag = true;
 	getStoredCards();
 }
@@ -30,19 +24,12 @@ function mainThemeChange() {
 function mainThemeMenu(mobileVersion) {
 	if (themeTable.checked) {
 		mainTheme.readOnly = true;
-		if (singleMenu) {
-			closeSingleMenu();
-		} else {
-			themeTable.checked = true;
-		}
-		mainThemeChange();
+		closeSingleMenu();
 	} else {
 		mainTheme.readOnly = false;
-		deleteAllThemeItems();
+		fullClear(themeTableDeck);
 		themeTable.checked = true;
-		for (var i in storedMainTheme) {
-			getChoosableTheme(i);
-		}
+		storedMainTheme.forEach(getChoosableTheme);
 		if (mobileVersion) {
 			singleLineMenu();
 		}
@@ -60,14 +47,13 @@ function clearTheme() {
 	newThemeFlag = true;
 }
 
-function getChoosableTheme(i) {
+function getChoosableTheme(mainThemeUnit) {
 	var div = document.createElement('div');
-	var thisItemTheme = storedMainTheme[i];
-	div.innerHTML = thisItemTheme;
+	div.innerHTML = mainThemeUnit;
 	div.className = 'storedTheme';
 	themeTableDeck.appendChild(div);
 	div.onclick = function() {
-		mainTheme.value = thisItemTheme;
+		mainTheme.value = mainThemeUnit;
 		mainThemeChange();
 		if (singleMenu) {
 			closeSingleMenu();

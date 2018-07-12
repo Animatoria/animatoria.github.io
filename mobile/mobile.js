@@ -23,7 +23,7 @@ function singleLineMenu() {
 function closeSingleMenu() {
 	singleMenu = false;
 	burgerMenu.checked = false;
-	refreshCardsAnimation();
+	card.forEach(refreshCardsAnimation);
 	cardsTable.checked = true;
 	header.className = ('closeSingleMenu');
 }
@@ -31,7 +31,7 @@ function closeSingleMenu() {
 function mobileMenu(toSingleMenu) {
 	if (longMenu) {
 		longMenu = false;
-		plexiGlass.classList.add('displayNone');
+		plexiGlass.hidden = true;
 		if (toSingleMenu) {
 			singleMenu = true;
 			header.className = ('singleMenu longMenuTr longMenuDelay');
@@ -44,7 +44,7 @@ function mobileMenu(toSingleMenu) {
 			closeSingleMenu();
 		} else {
 			header.className = ('longMenuTr longMenuPos');
-			plexiGlass.classList.remove('displayNone');
+			plexiGlass.hidden = false;
 			burgerMenu.checked = true;
 			longMenu = true;
 		}

@@ -41,12 +41,13 @@
 				<img class='buttonIcon' src='icons/calendar.svg'><p>Choose date</p>
 			</label>
 			<label class='mainThemeLabel headerButton'>
-				<img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' type='text'>
+				<img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' 
+			onchange="mainThemeChange()" type='text'>
 			</label>
 			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>
 			</label>
-			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'><label for='editMode' class='evenOddParent'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'></label><label for='mainDateSMB'><img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'></label><label for='mainThemeSMB'><img class='mainThemeMobile buttonMobile' onclick='mainThemeMenu(1)' src='icons/theme.svg'></label>
-			<svg class="burgerMenu buttonMobile" onclick='mobileMenu(0)' width="20px" height="20px">
+			<img class='addNewCardMobile buttonMobile' onclick='addNewCard()' src='icons/addnewcard.svg'><label for='editMode' class='evenOddParent'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/readonlymode.svg'><img class='readOnlyModeMobile buttonMobile evenOdd' src='icons/pencil.svg'></label><label for='mainDateSMB'><img class='mainDateButtonMobile buttonMobile' onclick='changeMainDate(1)' src='icons/calendar.svg'></label><label for='mainThemeSMB'><img id='mainThemeMobile' class='buttonMobile' onmousedown="mainThemeMenu(1)" src='icons/theme.svg'></label>
+			<svg class="burgerMenu buttonMobile" onmousedown='mobileMenu(0)' width="20px" height="20px">
 				<rect id="highRect" x="0" y="0" rx="2" ry="2" width="20" height="4" fill="#6f8a91"></rect>
 				<rect id="middleRect" x="0" y="8" width="20" rx="2" ry="2" height="4" fill="#6f8a91"></rect>
 				<rect id="lowRect" x="0" y="16" rx="2" ry="2" width="20" height="4" fill="#6f8a91"></rect>
@@ -68,7 +69,7 @@
 				<div class='leftArrow' onclick='nextMonth(-1)'></div>
 				<div class='rightArrow' onclick='nextMonth(1)'></div>
 			</div>
-			<div class='monthList'>
+			<div id='monthList'>
 				<div class='namesWeek'>
 					<div class='day'>Mon</div><div class='day'>Tue</div><div class='day'>Wed</div><div class='day'>Thu</div><div class='day'>Fri</div><div class='day'>Sat</div><div class='day'>Sun</div></div>
 				<div id='firstWeek'>
@@ -89,7 +90,7 @@
 		</div>
 		<div id='themeTableDeck'></div>
 	</div>
-	<div id='plexiGlass' class='displayNone'></div>
+	<div id='plexiGlass' hidden></div>
 
 	<div id='cardTemplate'>
 		<div class='cardWrapper'>
@@ -106,16 +107,33 @@
 				</div>
 				<div class='cardMenu'>
 					<label class='completed'>
-						<svg width="186px" height="43px">
+						<svg width="190px" height="50px">
+							<defs>
+								<filter id="f4">
+									<feOffset result="offOut" in="SourceGraphic" dx="-2" dy="2" />
+									<feColorMatrix result="matrixOut" in="offOut" type="matrix"
+										values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0" />
+									<feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="2" />
+									<feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+								</filter>
+							</defs>
 							<path class='cardMenuLabel'
-								d=' M 9 33
+								d=' M 0 0
+									M 9 33
 									l 88 10
 									l 88 -10
 									l 0 -25
 									a 8 8 90 0 0 -8 -8
-									l -171 0
+									l -168 0
+									z'
+								width="185" height="32" fill="#ddf" filter='url(#f4)'>
+							</path>
+							<path class='cardMenuLabel'
+								d=' M 9 0
+									l -3 0
 									a 6 6 200 0 0 -6 6
 									l 9 0
+									l 0 -6
 									z'
 								width="185" height="32" fill="#ddf">
 							</path>
@@ -129,18 +147,26 @@
 						<span>Completed</span>
 					</label>
 					<label class='deleteButton'>
-						<svg width="41px" height="43px">
+						<svg width="46px" height="50px">
 							<path class='cardMenuLabel'
-								d=' M 9 33
+								d=' M 0 0
+									M 9 33
 									l 16 10
 									l 16 -10
 									l 0 -25
 									a 8 8 90 0 0 -8 -8
-									l -27 0
+									l -24 0
+									z'
+								width="41" height="32" fill="#ddf" filter='url(#f4)'>
+							</path>
+							<path class='cardMenuLabel'
+								d=' M 9 0
+									l -3 0
 									a 6 6 200 0 0 -6 6
 									l 9 0
+									l 0 -6
 									z'
-								width="41" height="32" fill="#ddf">
+								width="185" height="32" fill="#ddf">
 							</path>
 							<path class='cardMenuLabelDark'
 								d=' M 1 6

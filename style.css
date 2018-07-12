@@ -85,10 +85,6 @@ p {
 	margin: 0;  
 }
 
-.displayNone {
-	display: none !important;
-}
-
 #burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM, #mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB {
 	display: none;
 }

@@ -1,8 +1,5 @@
 var storedMainDate = [];
 var dateList = [];
-var dateIndex = [];
-
-var isActualMainDate = true;
 
 var actualDate;
 var smallExtender;
@@ -12,7 +9,7 @@ var thisDate;
 
 var monthString = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-var fiveWeekNodes = document.querySelectorAll('.day');
+var fiveWeekNodes = monthList.querySelectorAll('.day');
 
 function nextYear(direction) {
 	actualDate = new Date(actualDate.getFullYear() + direction, actualDate.getMonth(), actualDate.getDate());
@@ -32,17 +29,17 @@ function setCalendar() {
 	bigExtender = 0;
 	firstDay = new Date(actualDate.getFullYear(), actualDate.getMonth()).getDay();
 	switch(firstDay) {
-		case 0 : firstWeek.classList.remove('displayNone'); smallExtender = 0; break;
-		default : firstWeek.classList.add('displayNone');
+		case 0 : firstWeek.hidden = false; smallExtender = 0; break;
+		default : firstWeek.hidden = true;
 		case 6 : bigExtender = 7;
 	}
-	lastWeek.classList.add('displayNone');
+	lastWeek.hidden = true;
 	findStoredYearAndMonth();
-	fillDates();
-	if (bigExtender == 7 && thisDate.getDate() == 6) lastWeek.classList.remove('displayNone');
+	colorizeDates();
+	if (bigExtender == 7 && thisDate.getDate() == 6) lastWeek.hidden = false;
 }
 
-function fillDates() {
+function colorizeDates() {
 	for (var i = 7 + smallExtender; i < 49 + bigExtender; i++) {
 		thisDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), i - 12 - firstDay);
 		fiveWeekNodes[i].innerHTML = thisDate.getDate();
@@ -54,19 +51,7 @@ function fillDates() {
 		}
 	}
 	for (var i in dateList) {
-		dayN(dateList[i] + 12 + firstDay).become('redDay');
-	}
-}
-
-function dayN(num) {
-	fiveWeekNodes[num].className = 'day';
-	return {
-		become : function(color) {
-			fiveWeekNodes[num].classList.add(color);
-		},
-		get becomePassive() {
-			fiveWeekNodes[num].onclick = function() {};
-		}
+		dayN(dateList[i].date + 12 + firstDay).become('redDay');
 	}
 }
 
@@ -88,33 +73,51 @@ function selectCalendarDate(i, thisDate) {
 	}
 }
 
-function findStoredYearAndMonth() {
-	dateIndex = [];
-	dateList = [];
-	for (var i in storedMainDate) {
-		if ((storedMainDate[i].getFullYear() == actualDate.getFullYear()) && (storedMainDate[i].getMonth() == actualDate.getMonth())) {
-			dateIndex.push(i);
-			dateList.push(storedMainDate[i].getDate());
+function dayN(num) {
+	fiveWeekNodes[num].className = 'day';
+	return {
+		become : function(color) {
+			fiveWeekNodes[num].classList.add(color);
+		},
+		get becomePassive() {
+			fiveWeekNodes[num].onclick = function() {};
 		}
 	}
 }
 
+function findStoredYearAndMonth() {
+	dateList = [];
+	storedMainDate.forEach(findActualMonth);
+}
+
+function DateUnit(date, index) {
+	this.date = date,
+	this.index = index
+}
+
+function findActualMonth(storedUnit, storedIndex) {
+	if ((storedUnit.getFullYear() == actualDate.getFullYear())
+		&& (storedUnit.getMonth() == actualDate.getMonth()))
+		dateList.push(new DateUnit(storedUnit.getDate(), storedIndex))
+}
+
 function clearDate() {
-	storedMainDate.splice(dateIndex[dateList.indexOf(actualDate.getDate())], 1);
-	dateIndex.splice(dateList.indexOf(actualDate.getDate()), 1);
-	dateList.splice(dateList.indexOf(actualDate.getDate()), 1);
+	for (var i in dateList) {
+		if (dateList[i].date == actualDate.getDate()) {
+			storedMainDate.splice(dateList[i].index, 1);
+			dateList.splice(i, 1);
+			break;
+		}
+	}
 	localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
-	fillDates();
+	colorizeDates();
 }
 
 function changeMainDate(mobileVersion) {
 	if (dateTable.checked) {
-		if (singleMenu) {
-			closeSingleMenu();
-		} else {
-			refreshCardsAnimation();
-			cardsTable.checked = true;
-		}
+		closeSingleMenu();
+		card.forEach(refreshCardsAnimation);
+		cardsTable.checked = true;
 	} else {
 		dateTable.checked = true;
 		if (mobileVersion) {

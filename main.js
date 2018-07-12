@@ -7,8 +7,6 @@ var mainDate = currentDateToLocaleDateString;
 
 currentDateParagraph.innerHTML = mainDate;
 
-mainTheme.onchange = mainThemeChange;
-
 animatoriaButton.onclick = function() {isReverse ^= 1;};
 
 setCardProperties();

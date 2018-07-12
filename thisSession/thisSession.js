@@ -31,7 +31,8 @@ function setCardProperties() {
 			cardsColumnNumber = 2;
 		}
 		chooseCardsColumn = columnExpression[cardsColumnNumber];
-		refreshCardsOnTable();
+		cardsColumn.forEach(fullClear);
+		card.forEach(refreshCards);
 	}
 }
 
@@ -50,8 +51,13 @@ function setStoredMainDate() {
 		storedMainDate = JSON.parse(localStorage.getItem('storedMainDate_' + mainTheme.value), function(key, value) {if (key == '') {return value} else {return new Date(value)}});
 	}
 	nextMonth(0);
-	if (dateList.some(function(value) {return value == actualDate.getDate()})) newDateFlag = false;
-	else newDateFlag = true;
+	newDateFlag = dateList.some(function(dateUnit) {return dateUnit.date == actualDate.getDate()}) ? false : true;
+}
+
+function fullClear(element) {
+	while (element.firstChild) {
+		element.removeChild(element.firstChild);
+	}
 }
 
 function isNewDateOrTheme() {
@@ -62,11 +68,10 @@ function isNewDateOrTheme() {
 		newDateFlag = true;
 	}
 	if (newDateFlag) {
-		dateIndex.push(storedMainDate.length);
-		dateList.push(actualDate.getDate());
+		dateList.push(new DateUnit(actualDate.getDate(), storedMainDate.length));
 		storedMainDate.push(actualDate);
 		localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
-		fillDates();
+		colorizeDates();
 		newDateFlag = false;
 	}
 }

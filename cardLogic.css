@@ -5,6 +5,7 @@
 
 .completedChB:checked ~ .card {
 	background-color: #cca !important;
+	padding-top: 20px;
 }
 
 .cardMenuLabel {
@@ -43,7 +44,6 @@
 .card:hover {
 	z-index: 1048574;
 	transform: translate(-6px, 20px) skew(-4deg, 4deg);
-	transition: transform 0.1s 5s;
 }
 
 #editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card:hover {

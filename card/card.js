@@ -81,7 +81,6 @@ var allCardsProperties = {
 		this.addEmptyLine();
 		this.input.checked = true;
 		this.cardSide.checked = false;
-		this.rotate();
 		this.isNewCard = false;
 		Object.getPrototypeOf(this).deleted = false;
 		this.saveCard();

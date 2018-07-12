@@ -6,7 +6,7 @@ var isAnyCardShowed;
 
 var cardsColumnNumber;
 
-var cardsColumn = Array.prototype.slice.call(cardsTableDeck.querySelectorAll('.cardsColumn'));
+var cardsColumn = cardsTableDeck.querySelectorAll('.cardsColumn');
 
 var columnExpression = [
 	function(e) {cardsColumn[0].appendChild(e.div)},
@@ -46,7 +46,9 @@ function getStoredCards() {
 	k = 0;
 	storedCard = [];
 	card = [];
-	cardsColumn.forEach(fullClear);
+	fullClear(cardsColumn[0]);
+	fullClear(cardsColumn[1]);
+	fullClear(cardsColumn[2]);
 	isAnyCardShowed = false;
 	var localStorageItem = localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k]);
 	while (localStorageItem) {

@@ -12,6 +12,7 @@
 
 #editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card {
 	background-color: #aaf;
+	padding-top: 20px;
 }
 
 #editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card > .cardMenu {

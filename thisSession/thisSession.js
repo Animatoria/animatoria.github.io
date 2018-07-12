@@ -31,7 +31,9 @@ function setCardProperties() {
 			cardsColumnNumber = 2;
 		}
 		chooseCardsColumn = columnExpression[cardsColumnNumber];
-		cardsColumn.forEach(fullClear);
+		fullClear(cardsColumn[0]);
+		fullClear(cardsColumn[1]);
+		fullClear(cardsColumn[2]);
 		card.forEach(refreshCards);
 	}
 }

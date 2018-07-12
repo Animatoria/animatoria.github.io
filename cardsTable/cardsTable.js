@@ -28,7 +28,7 @@ function addNewCard() {
 		Object.setPrototypeOf(card[k], storedCard[k]);
 		chooseCardsColumn(card[k]);
 		card[k].addCard();
-		card[k].faceArea.select();
+		card[k].faceArea.focus();
 		k++;
 	}
 }

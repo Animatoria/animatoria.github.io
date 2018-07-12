@@ -18,6 +18,7 @@ function setSessionID() {
 		thisSessionID = 1;
 		localStorage.setItem('', 1);
 	}
+	return this;
 }
 
 function setCardProperties() {
@@ -36,16 +37,18 @@ function setCardProperties() {
 		fullClear(cardsColumn[2]);
 		card.forEach(refreshCards);
 	}
+	return this;
 }
 
 function setMainTheme() {
 	if (localStorage.getItem('storedMainTheme') && (storedMainTheme = JSON.parse(localStorage.getItem('storedMainTheme'))).length) {
 		mainTheme.value = storedMainTheme[storedMainTheme.length - 1];
 	} else {
-		mainTheme.value = 'Input main theme';
+		mainTheme.value = 'Theme';
 		storedMainTheme.push(mainTheme.value);
 		localStorage.setItem('storedMainTheme', JSON.stringify(storedMainTheme));
 	}
+	return this;
 }
 
 function setStoredMainDate() {
@@ -54,6 +57,7 @@ function setStoredMainDate() {
 	}
 	nextMonth(0);
 	newDateFlag = dateList.some(function(dateUnit) {return dateUnit.date == actualDate.getDate()}) ? false : true;
+	return this;
 }
 
 function fullClear(element) {

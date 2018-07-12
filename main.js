@@ -9,11 +9,8 @@ currentDateParagraph.innerHTML = mainDate;
 
 animatoriaButton.onclick = function() {isReverse ^= 1;};
 
-setCardProperties();
-setMainTheme();
-setSessionID();
-getStoredCards();
-setStoredMainDate();
+setCardProperties().setMainTheme().setSessionID().setStoredMainDate().getStoredCards();
+
 onscroll = fallingMobileMenu;
 onresize = setCardProperties;
 

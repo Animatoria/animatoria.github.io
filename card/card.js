@@ -99,10 +99,10 @@ var allCardsProperties = {
 	sideIsEdit : function() {
 		if (this.cardSide.checked) {
 			this.faceArea.value = this.faceAreaText;
-			this.faceArea.select();
+			this.faceArea.focus();
 		} else {
 			this.backArea.value = this.backAreaText;
-			this.backArea.select();
+			this.backArea.focus();
 		}
 	},
 

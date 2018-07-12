@@ -36,7 +36,7 @@ function mainThemeMenu(mobileVersion) {
 		if (longMenu) {
 			mobileMenu(1);
 		}
-		setTimeout(function() {mainTheme.select()}, 1);
+		setTimeout(function() {mainTheme.focus()}, 1);
 	}
 }
 

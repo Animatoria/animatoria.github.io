@@ -4,7 +4,7 @@
 	position: relative;
 	perspective: 1000px;
 	border-radius: 30px;
-	transition: transform 0.1s 5s, background 0.3s, padding-top 0.3s;
+	transition: 0.3s;
 }
 
 .cardMenu {

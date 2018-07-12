@@ -160,8 +160,8 @@ StoredCard.prototype = allCardsProperties;
 
 function StoredCard() {
 	this.deleted = true;
-	this.faceAreaText = 'Input your face card text';
-	this.backAreaText = 'Input your bottom card text';
+	this.faceAreaText = '';
+	this.backAreaText = '';
 }
 
 function Card(k, isNewCard) {

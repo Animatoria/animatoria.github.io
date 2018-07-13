@@ -53,13 +53,12 @@ var allCardsProperties = {
 	},
 
 	paddingTop : function(e) {
-		console.log(e);
 		if (e.y - this.yPos >= 0) {
 			if (e.y - this.yPos <= 20) {
 				this.card.style.paddingTop = e.y - this.yPos + 'px';
 			} else {
-				console.log('tict');
 				this.input.checked = true;
+				this.modeSwitch();
 				this.card.style.paddingTop = '';
 				this.card.style.backgroundColor = '';
 				this.card.onmousemove = null;

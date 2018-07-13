@@ -1,4 +1,4 @@
-var textareaEditableRows = 2;
+var textareaEditableRows = 1;
 var zIndexCounter = 1;
 
 var isReverse = false;
@@ -36,9 +36,43 @@ var allCardsProperties = {
 		this.input.o = this;
 		this.deleteChb.o = this;
 		this.cardSide.o = this;
+		this.card.o = this;
 		this.input.onchange = function() {this.o.modeSwitch()};
 		this.deleteChb.onchange = function() {this.o.delete()};
 		this.cardSide.onchange = function() {this.o.rotate()};
+		this.card.onmousedown = function(e) {this.o.mouseMove(e)};
+		this.card.onmouseout = this.card.onmouseup = function() {this.o.mouseFree()};
+	},
+
+	mouseMove : function(e) {
+		if (!this.input.checked && !editMode.checked) {
+			this.yPos = e.y;
+			this.card.style.backgroundColor = '#cca';
+			this.card.onmousemove = function(e) {this.o.paddingTop(e)}
+		}
+	},
+
+	paddingTop : function(e) {
+		console.log(e);
+		if (e.y - this.yPos >= 0) {
+			if (e.y - this.yPos <= 20) {
+				this.card.style.paddingTop = e.y - this.yPos + 'px';
+			} else {
+				console.log('tict');
+				this.input.checked = true;
+				this.card.style.paddingTop = '';
+				this.card.style.backgroundColor = '';
+				this.card.onmousemove = null;
+			}
+		}
+	},
+
+	mouseFree : function() {
+		if (this.card.onmousemove) {
+			this.card.style.paddingTop = '';
+			this.card.style.backgroundColor = '';
+		}
+		this.card.onmousemove = null;
 	},
 
 	addCard : function() {

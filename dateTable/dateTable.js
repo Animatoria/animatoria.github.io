@@ -80,7 +80,7 @@ function dayN(num) {
 			fiveWeekNodes[num].classList.add(color);
 		},
 		get becomePassive() {
-			fiveWeekNodes[num].onclick = function() {};
+			fiveWeekNodes[num].onclick = null;
 		}
 	}
 }

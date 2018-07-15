@@ -57,17 +57,11 @@ function colorizeDates() {
 
 function selectCalendarDate(i, thisDate) {
 	fiveWeekNodes[i].onclick = function() {
-		if (singleMenu) {
-			closeSingleMenu();
-		}
+		closeSingleMenu();
 		mainDate = thisDate.toLocaleDateString();
 		currentDateParagraph.innerHTML = mainDate;
 		actualDate = thisDate;
-		if (fiveWeekNodes[i].classList.contains('greenDay')) {
-			newDateFlag = true;
-		} else {
-			newDateFlag = false;
-		}
+		newDateFlag = fiveWeekNodes[i].classList.contains('greenDay') ? true : false;
 		cardsTable.checked = true;
 		getStoredCards();
 	}
@@ -120,11 +114,6 @@ function changeMainDate(mobileVersion) {
 		cardsTable.checked = true;
 	} else {
 		dateTable.checked = true;
-		if (mobileVersion) {
-			singleLineMenu();
-		}
-		if (longMenu) {
-			mobileMenu(1);
-		}
+		mobileVersion ? singleLineMenu() : mobileMenu(1);
 	}
 }

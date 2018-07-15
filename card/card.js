@@ -1,23 +1,23 @@
 var textareaEditableRows = 1;
 var zIndexCounter = 1;
 
-var isReverse = false;
+var isFaceSide = true;
 
 var allCardsProperties = {
 
 	createElements : function() {
-		this.input = this.div.children[0];
-		this.deleteChb = this.div.children[1];
-		this.card = this.div.children[2];
+		this.input = this.wrapper.children[0];
+		this.deleteChb = this.wrapper.children[1];
+		this.card = this.wrapper.children[2];
 			this.zoomer = this.card.children[0];
 				this.cardSide = this.zoomer.children[0];
 				this.flipper = this.zoomer.children[1];
 					this.faceArea = this.flipper.children[0];
 					this.backArea = this.flipper.children[1];
 				this.areaGlass = this.zoomer.children[2]; 
-			this.divCardMenu = this.card.children[1];
-				this.label = this.divCardMenu.children[0];
-				this.button = this.divCardMenu.children[1];
+			this.cardMenu = this.card.children[1];
+				this.label = this.cardMenu.children[0];
+				this.button = this.cardMenu.children[1];
 	},
 
 	adjustElements : function() {
@@ -40,68 +40,54 @@ var allCardsProperties = {
 		this.input.onchange = function() {this.o.modeSwitch()};
 		this.deleteChb.onchange = function() {this.o.delete()};
 		this.cardSide.onchange = function() {this.o.rotate()};
-		this.card.onmousedown = function(e) {this.o.mouseMove(e)};
-		this.card.onmouseout = this.card.onmouseup = function() {this.o.mouseFree()};
+		this.card.onmousedown = function() {this.o.mouseMove()};
+		this.card.onmouseout = this.card.onmouseup = this.mouseFree;
 	},
 
-	mouseMove : function(e) {
+	mouseMove : function() {
 		if (!this.input.checked && !editMode.checked) {
-			this.yPos = e.y;
-			this.card.style.backgroundColor = '#cca';
-			this.card.onmousemove = function(e) {this.o.paddingTop(e)}
+			this.yPos = event.y;
+			this.card.onmousemove = function() {this.o.paddingTop()};
 		}
 	},
 
-	paddingTop : function(e) {
-		if (e.y - this.yPos >= 0) {
-			if (e.y - this.yPos <= 20) {
-				this.card.style.paddingTop = e.y - this.yPos + 'px';
-			} else {
-				this.input.checked = true;
-				this.modeSwitch();
-				this.card.style.paddingTop = '';
-				this.card.style.backgroundColor = '';
-				this.card.onmousemove = null;
-			}
+	paddingTop : function() {
+		if (event.y - this.yPos >= 5) {
+			this.input.checked = true;
+			this.modeSwitch();
 		}
 	},
 
 	mouseFree : function() {
-		if (this.card.onmousemove) {
-			this.card.style.paddingTop = '';
-			this.card.style.backgroundColor = '';
-		}
-		this.card.onmousemove = null;
+		this.onmousemove = null;
 	},
 
 	addCard : function() {
 		this.createElements();
 		this.adjustElements();
 		if (!this.isNewCard) {
-			if (isReverse) this.reverse();
+			this.reverse();
 			this.input.checked = false;
 			this.findCardHeight();
 		}
 	},
 
 	findCardHeight : function() {
-		this.faceArea.rows = 1;
-		this.backArea.rows = 1;
+		this.faceArea.rows = this.backArea.rows = 1;
 		this.faceArea.value = this.faceAreaText;
 		this.backArea.value = this.backAreaText;
 		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.backAreaHeight = this.rowCount(this.backArea);
-		this.addEmptyLine();
+		this.addEmptyLine(this.faceAreaHeight - this.backAreaHeight);
 		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 	},
 
-	addEmptyLine : function() {
-		if (this.faceAreaHeight > this.backAreaHeight) {
-			for (var i = 0; i < Math.floor((this.faceAreaHeight - this.backAreaHeight) / 2); i++) {
+	addEmptyLine : function(iterator) {
+		if (this.faceArea.value && this.backArea.value) {
+			for (var i = 1; i < iterator; i += 2) {
 				this.backArea.value = '\n' + this.backArea.value;
 			}
-		} else {
-			for (var i = 0; i < Math.floor((this.backAreaHeight - this.faceAreaHeight) / 2); i++) {
+			for (var i = iterator; i < -1; i += 2) {
 				this.faceArea.value = '\n' + this.faceArea.value;
 			}
 		}
@@ -111,7 +97,7 @@ var allCardsProperties = {
 		Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
 		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
-		this.addEmptyLine();
+		this.addEmptyLine(this.faceAreaHeight - this.backAreaHeight);
 		this.input.checked = true;
 		this.cardSide.checked = false;
 		this.isNewCard = false;
@@ -165,17 +151,12 @@ var allCardsProperties = {
 
 	rotate : function() {
 		this.card.style.zIndex = zIndexCounter++;
-		if (this.cardSide.checked) {
-			this.zoomer.style.animation = '2s backward';
-			this.divCardMenu.style.animation = '2s cardMenuOpacityF';
-		} else {
-			this.zoomer.style.animation = '2s forward';
-			this.divCardMenu.style.animation = '2s cardMenuOpacityB';
-		}
+		this.zoomer.style.animation = '2s cardZoom' + this.cardSide.checked;
+		this.cardMenu.style.animation = '2s cardMenuOpacity' + this.cardSide.checked;
 	},
 
 	reverse : function() {
-		this.cardSide.checked = false;
+		this.cardSide.checked = isFaceSide;
 	},
 	
 	delete : function() {
@@ -202,6 +183,6 @@ function Card(k, isNewCard) {
 	this.isNewCard = isNewCard;
 	this.backAreaHeight = textareaEditableRows;
 	this.faceAreaHeight = textareaEditableRows;
-	this.div = cardTemplate.children[0].cloneNode(true);
+	this.wrapper = cardTemplate.children[0].cloneNode(true);
 }
 

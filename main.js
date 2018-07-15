@@ -7,7 +7,7 @@ var mainDate = currentDateToLocaleDateString;
 
 currentDateParagraph.innerHTML = mainDate;
 
-animatoriaButton.onclick = function() {isReverse ^= 1;};
+animatoriaButton.onclick = function() {isFaceSide ^= 1;};
 
 setCardProperties().setMainTheme().setSessionID().setStoredMainDate().getStoredCards();
 

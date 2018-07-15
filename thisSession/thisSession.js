@@ -2,18 +2,13 @@ var newThemeFlag = false;
 var newDateFlag = true;
 
 var thisSessionID;
-var screenWidth;
+var storedWidth;
 
 function setSessionID() {
 	var sessionID = +localStorage.getItem('');
-	if (sessionID) {
-		if (sessionID == 255) {
-			thisSessionID = 1;
-			localStorage.setItem('', 1);
-		} else {
-			thisSessionID = sessionID + 1;
-			localStorage.setItem('', thisSessionID);
-		}
+	if (sessionID && sessionID != 255) {
+		thisSessionID = ++sessionID;
+		localStorage.setItem('', thisSessionID);
 	} else {
 		thisSessionID = 1;
 		localStorage.setItem('', 1);
@@ -22,16 +17,9 @@ function setSessionID() {
 }
 
 function setCardProperties() {
-	if (screenWidth != innerWidth) {
-		screenWidth = innerWidth;
-		if (innerWidth < 830) {
-			cardsColumnNumber = 0;
-		} else if (innerWidth < 1330) {
-			cardsColumnNumber = 1;
-		} else {
-			cardsColumnNumber = 2;
-		}
-		chooseCardsColumn = columnExpression[cardsColumnNumber];
+	if (storedWidth != innerWidth) {
+		storedWidth = innerWidth;
+		columnFuncSelector(Math.min(Math.floor(innerWidth / 700), 2));
 		fullClear(cardsColumn[0]);
 		fullClear(cardsColumn[1]);
 		fullClear(cardsColumn[2]);

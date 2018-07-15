@@ -10,12 +10,12 @@
 	display: none;
 }
 
-#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card {
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card {
 	background-color: #aaf;
 	padding-top: 20px;
 }
 
-#editMode:checked ~ #cardsTableDeck > .cardsColumn > .cardWrapper > .card > .cardMenu {
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card > .cardMenu {
 	visibility: visible;
 	opacity: 1;
 }

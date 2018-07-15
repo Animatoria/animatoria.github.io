@@ -4,15 +4,18 @@ var storedCard = [];
 
 var isAnyCardShowed;
 
-var cardsColumnNumber;
-
 var cardsColumn = cardsTableDeck.querySelectorAll('.cardsColumn');
 
 var columnExpression = [
-	function(e) {cardsColumn[0].appendChild(e.div)},
-	function(e) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 1, (cardsColumn[1].clientHeight << 1) + 1)) & 1].appendChild(e.div)},
-	function(e) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3].appendChild(e.div)}
+	function(card) {cardsColumn[0].appendChild(card.wrapper)},
+	function(card) {cardsColumn[cardsColumn[0].clientHeight <= cardsColumn[1].clientHeight ? 0 : 1].appendChild(card.wrapper)},
+	function(card) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3].appendChild(card.wrapper)}
 ];
+
+function columnFuncSelector(variant) {
+	chooseCardsColumn = columnExpression[variant];
+	eval('cardBlank' + variant).checked = true;
+}
 
 function sessionIssue() {
 	alert('Sorry, another "Rotation cards" application open. This application should be reload.');
@@ -33,13 +36,13 @@ function addNewCard() {
 	}
 }
 
-function getStoredCard(i) {
-	storedCard.push(JSON.parse(localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + i])));
-	card.push(new Card(i, false));
-	Object.setPrototypeOf(storedCard[i], allCardsProperties);
-	Object.setPrototypeOf(card[i], storedCard[i]);
-	chooseCardsColumn(card[i]);
-	card[i].addCard();
+function getStoredCard() {
+	storedCard.push(JSON.parse(localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k])));
+	card.push(new Card(k, false));
+	Object.setPrototypeOf(storedCard[k], allCardsProperties);
+	Object.setPrototypeOf(card[k], storedCard[k]);
+	chooseCardsColumn(card[k]);
+	card[k].addCard();
 }
 
 function getStoredCards() {
@@ -54,7 +57,7 @@ function getStoredCards() {
 	while (localStorageItem) {
 		if (!(JSON.parse(localStorageItem).deleted)) {
 			isAnyCardShowed = true;
-			getStoredCard(k);
+			getStoredCard();
 			k++;
 		} else {
 			var s = k;
@@ -78,13 +81,15 @@ function getStoredCards() {
 }
 
 function refreshCards(card) {
+	cardsTableDeck.style.display = 'flex';
 	chooseCardsColumn(card);
+	cardsTableDeck.style.display = '';
 	card.findCardHeight();
-	card.zoomer.style.animation = 'none';
-	card.divCardMenu.style.animation = 'none';
+	card.zoomer.style.animation = '';
+	card.cardMenu.style.animation = '';
 }
 
 function refreshCardsAnimation(card) {
-	card.zoomer.style.animation = 'none';
-	card.divCardMenu.style.animation = 'none';
+	card.zoomer.style.animation = '';
+	card.cardMenu.style.animation = '';
 }

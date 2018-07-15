@@ -54,9 +54,19 @@
 			</svg>
 		</div>
 		<div id='cardsTableDeck'>
-			<div class='cardsColumn'></div>
-			<div class='cardsColumn'></div>
-			<div class='cardsColumn'></div>
+			<input id='cardBlank0' name='cardBlank' type='radio' checked>
+			<input id='cardBlank1' name='cardBlank' type='radio'>
+			<input id='cardBlank2' name='cardBlank' type='radio'>
+			<div class='cardBlank0 columnWrapper'>
+				<div class='cardsColumn'></div>
+				<textarea rows="1" class='cardBlank' onclick='addNewCard()' readonly>+++</textarea>
+			</div><div class='cardBlank1 columnWrapper'>
+				<div class='cardsColumn'></div>
+				<textarea rows="1" class='cardBlank' onclick='addNewCard()' readonly>+++</textarea>
+			</div><div class='cardBlank2 columnWrapper'>
+				<div class='cardsColumn'></div>
+				<textarea rows="1" class='cardBlank' onclick='addNewCard()' readonly>+++</textarea>
+			</div>
 		</div>
 		<div id='dateTableDeck'>
 			<div class='yearDiv'>

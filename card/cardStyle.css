@@ -97,7 +97,7 @@ textarea {
 	border-radius: 30px 5px 30px 30px;
 }
 
-@keyframes forward {
+@keyframes cardZoomtrue {
 	50% {
 		transform: translateZ(200px) translateX(10%) translateY(10%);
 	}
@@ -106,11 +106,23 @@ textarea {
 	}
 }
 
-@keyframes backward {
+@keyframes cardZoomfalse {
 	50% {
 		transform: translateZ(200px) translateX(10%) translateY(10%);
 	}
 	100% {
 		transform: translateZ(0px) translateX(0px);
 	}
+}
+
+@keyframes cardMenuOpacitytrue {
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
+	100% {opacity: 1}
+}
+
+@keyframes cardMenuOpacityfalse {
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
+	100% {opacity: 1}
 }

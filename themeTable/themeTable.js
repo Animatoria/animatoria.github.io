@@ -30,12 +30,7 @@ function mainThemeMenu(mobileVersion) {
 		fullClear(themeTableDeck);
 		themeTable.checked = true;
 		storedMainTheme.forEach(getChoosableTheme);
-		if (mobileVersion) {
-			singleLineMenu();
-		}
-		if (longMenu) {
-			mobileMenu(1);
-		}
+		mobileVersion ? singleLineMenu() : mobileMenu(1);
 		setTimeout(function() {mainTheme.focus()}, 1);
 	}
 }

@@ -6,6 +6,13 @@
 	min-height: 300px;
 }
 
-.cardsColumn {
+.columnWrapper {
 	width: 33%;
+}
+
+.cardBlank {
+	border-radius: 5px 30px 30px 30px;
+	display: none;
+	cursor: pointer;
+	background-color: #eee;
 }

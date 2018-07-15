@@ -86,22 +86,35 @@ p {
 	margin: 0;  
 }
 
-#burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM, #mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB {
+#burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM,
+#mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB,
+#cardBlank0, #cardBlank1, #cardBlank2 {
 	display: none;
 }
 
-@media(max-width: 1330px) {
+@media(max-width: 1400px) {
 
-	.cardsColumn:nth-of-type(3) {
+	.columnWrapper:nth-of-type(3) {
 		display: none;
 	}
 
-	.cardsColumn {
+	.columnWrapper {
 		width: 49%;
 	}
 }
 
-@media(max-width: 830px) {
+@media(max-width: 700px) {
+
+	.columnWrapper:nth-of-type(2) {
+		display: none;
+	}
+
+	.columnWrapper {
+		width: 98%;
+	}
+}
+
+@media(max-width: 1260px) {
 
 	#body {
 		width: 100%;
@@ -109,14 +122,6 @@ p {
 
 	#header {
 		width: 100%;
-	}
-
-	.cardsColumn:nth-of-type(2) {
-		display: none;
-	}
-
-	.cardsColumn {
-		width: 98%;
 	}
 }
 

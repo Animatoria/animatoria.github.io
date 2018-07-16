@@ -12,9 +12,16 @@ var columnExpression = [
 	function(card) {cardsColumn[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3].appendChild(card.wrapper)}
 ];
 
+var columnBlankExp = [
+	function() {},
+	function() {eval('cardBlank' + (cardsColumn[0].clientHeight <= cardsColumn[1].clientHeight ? 0 : 1)).checked = true},
+	function() {eval('cardBlank' + ((Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3)).checked = true}
+];
+
 function columnFuncSelector(variant) {
+	cardBlank0.checked = true;
 	chooseCardsColumn = columnExpression[variant];
-	eval('cardBlank' + variant).checked = true;
+	chooseBlankColumn = columnBlankExp[variant];
 }
 
 function sessionIssue() {
@@ -31,6 +38,7 @@ function addNewCard() {
 		Object.setPrototypeOf(card[k], storedCard[k]);
 		chooseCardsColumn(card[k]);
 		card[k].addCard();
+		chooseBlankColumn();
 		card[k].faceArea.focus();
 		k++;
 	}
@@ -72,6 +80,7 @@ function getStoredCards() {
 		}
 		localStorageItem = localStorage.getItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + k]);
 	}
+	chooseBlankColumn();
 	if (!isAnyCardShowed && !newDateFlag && !newThemeFlag) {
 		clearDate();
 		if (storedMainDate.length == 0) {

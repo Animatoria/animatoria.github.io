@@ -24,6 +24,7 @@ function setCardProperties() {
 		fullClear(cardsColumn[1]);
 		fullClear(cardsColumn[2]);
 		card.forEach(refreshCards);
+		chooseBlankColumn();
 	}
 	return this;
 }

@@ -52,7 +52,7 @@ var allCardsProperties = {
 	},
 
 	paddingTop : function() {
-		if (event.y - this.yPos >= 5) {
+		if (event.y - this.yPos >= 7) {
 			this.input.checked = true;
 			this.modeSwitch();
 		}

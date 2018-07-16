@@ -39,7 +39,8 @@ body {
 	border: none;
 	background-color: #eee;
 	height: 50px;
-	width: 335px;
+	max-width: 335px;
+	width: calc(100% - 110px);
 	outline: none;
 	color: #6f8a91;
 	padding: 0;

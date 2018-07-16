@@ -33,6 +33,7 @@ var allCardsProperties = {
 		this.backArea.value = this.backAreaText;
 		this.faceArea.oninput = this.autoGrow;
 		this.backArea.oninput = this.autoGrow;
+		this.backArea.o = this;
 		this.input.o = this;
 		this.deleteChb.o = this;
 		this.cardSide.o = this;
@@ -100,6 +101,7 @@ var allCardsProperties = {
 		this.addEmptyLine(this.faceAreaHeight - this.backAreaHeight);
 		this.input.checked = true;
 		this.cardSide.checked = false;
+		this.rotate();
 		this.isNewCard = false;
 		Object.getPrototypeOf(this).deleted = false;
 		this.saveCard();
@@ -131,11 +133,7 @@ var allCardsProperties = {
 				isNewDateOrTheme();
 				this.newCardFirstStep();
 			}
-			if (this.input.checked) {
-				this.sideIsEdit();
-			} else {
-				this.sideIsDone();
-			}
+			this.input.checked ? this.sideIsEdit() : this.sideIsDone();
 		} else {
 			sessionIssue();
 		}
@@ -146,7 +144,10 @@ var allCardsProperties = {
 	},
 
 	autoGrow : function() {
-		if (this.scrollHeight > this.clientHeight) this.rows++;
+		if (this.scrollHeight > this.clientHeight) {
+			this.rows++;
+			if (this.o) this.o.faceArea.rows++;
+		}
 	},
 
 	rotate : function() {

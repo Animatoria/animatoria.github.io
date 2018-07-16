@@ -92,7 +92,7 @@ p {
 	display: none;
 }
 
-@media(max-width: 1400px) {
+@media(max-width: 1399px) {
 
 	.columnWrapper:nth-of-type(3) {
 		display: none;
@@ -103,7 +103,7 @@ p {
 	}
 }
 
-@media(max-width: 700px) {
+@media(max-width: 699px) {
 
 	.columnWrapper:nth-of-type(2) {
 		display: none;

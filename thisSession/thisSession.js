@@ -36,6 +36,7 @@ function setMainTheme() {
 		mainTheme.value = 'Theme';
 		storedMainTheme.push(mainTheme.value);
 		localStorage.setItem('storedMainTheme', JSON.stringify(storedMainTheme));
+		localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));
 	}
 	return this;
 }

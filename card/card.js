@@ -94,16 +94,17 @@ var allCardsProperties = {
 		}
 	},
 
-	newCardFirstStep : function() {
-		Object.getPrototypeOf(this).faceAreaText = this.faceArea.value;
+	newCardFirstStep : function(proto) {
+		proto.faceAreaText = this.faceArea.value;
 		this.faceAreaHeight = this.rowCount(this.faceArea);
 		this.faceArea.rows = this.backArea.rows = this.faceAreaHeight > this.backAreaHeight ? this.faceAreaHeight : this.backAreaHeight;
 		this.addEmptyLine(this.faceAreaHeight - this.backAreaHeight);
 		this.input.checked = true;
+		this.faceArea.readOnly = true;
 		this.cardSide.checked = false;
 		this.rotate();
 		this.isNewCard = false;
-		Object.getPrototypeOf(this).deleted = false;
+		proto.deleted = false;
 		this.saveCard();
 	},
 
@@ -111,29 +112,28 @@ var allCardsProperties = {
 		localStorage.setItem(['cardNum_' + mainDate + '_' + mainTheme.value + '_' + this.cardNum], JSON.stringify(storedCard[this.cardNum]));
 	},
 
-	sideIsDone : function() {
-		this.cardSide.checked ? Object.getPrototypeOf(this).faceAreaText = this.faceArea.value : Object.getPrototypeOf(this).backAreaText = this.backArea.value;
+	sideIsDone : function(area) {
+		Object.getPrototypeOf(this)[area + 'Text'] = this[area].value;//this.faceAreaText this.backAreaText this.faceArea this.backArea
+		this[area].readOnly = true;//this.faceArea this.backArea
 		this.findCardHeight();
 		this.saveCard();
 	},
 
-	sideIsEdit : function() {
-		if (this.cardSide.checked) {
-			this.faceArea.value = this.faceAreaText;
-			this.faceArea.focus();
-		} else {
-			this.backArea.value = this.backAreaText;
-			this.backArea.focus();
-		}
+	sideIsEdit : function(area) {
+		this[area].value = this[area + 'Text'];//this.faceAreaText this.backAreaText this.faceArea this.backArea
+		this[area].readOnly = false;//this.faceArea this.backArea
+		this[area].focus();//this.faceArea this.backArea
 	},
 
 	modeSwitch : function() {
 		if (localStorage.getItem('') == thisSessionID) {
 			if (this.isNewCard) {
 				isNewDateOrTheme();
-				this.newCardFirstStep();
+				this.newCardFirstStep(Object.getPrototypeOf(this));
 			}
-			this.input.checked ? this.sideIsEdit() : this.sideIsDone();
+			this.input.checked ?
+			this.sideIsEdit(this.cardSide.checked ? 'faceArea' : 'backArea') :
+			this.sideIsDone(this.cardSide.checked ? 'faceArea' : 'backArea');
 		} else {
 			sessionIssue();
 		}
@@ -152,8 +152,8 @@ var allCardsProperties = {
 
 	rotate : function() {
 		this.card.style.zIndex = zIndexCounter++;
-		this.zoomer.style.animation = '2s cardZoom' + this.cardSide.checked;
-		this.cardMenu.style.animation = '2s cardMenuOpacity' + this.cardSide.checked;
+		this.zoomer.style.animation = '0.5s cardZoom' + this.cardSide.checked;
+		this.cardMenu.style.animation = '0.5s cardMenuOpacity' + this.cardSide.checked;
 	},
 
 	reverse : function() {

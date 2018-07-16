@@ -55,7 +55,7 @@
 
 .flipper {
 	width: 100%;
-	transition: 2s;
+	transition: 0.5s;
 	transform-style: preserve-3d;
 	transform: rotateY(180deg);
 }

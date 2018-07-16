@@ -168,7 +168,7 @@
 	background: radial-gradient(#fdd, #eee 80%);
 }
 
-.headerButton:hover:not(#mainThemeGlass) {
+.headerButton:hover:not(.mainThemeLabel) {
 	background: radial-gradient(#fdd, #eee 80%);
 }
 

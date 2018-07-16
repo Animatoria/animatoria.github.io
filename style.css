@@ -21,7 +21,7 @@ body {
 	border: none;
 	background-color: #eee;
 	height: 50px;
-	width: 300px;
+	width: 445px;
 	outline: none;
 	text-align: left;
 	cursor: pointer;
@@ -35,10 +35,11 @@ body {
 
 #mainTheme {
 	font-size: 30px;
+	font-family: monospace;
 	border: none;
 	background-color: #eee;
 	height: 50px;
-	width: 235px;
+	width: 335px;
 	outline: none;
 	color: #6f8a91;
 	padding: 0;
@@ -70,6 +71,7 @@ body {
 	text-align: center;
 	line-height: 50px;
 	border: 1px solid black;
+	cursor: pointer;
 }
 
 #header {
@@ -125,7 +127,7 @@ p {
 	}
 }
 
-@media(max-width: 530px) {
+@media(max-width: 680px) {
 
 	.headerButton {
 		width: 100%;

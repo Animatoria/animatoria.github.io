@@ -14,4 +14,5 @@ setCardProperties().setMainTheme().setSessionID().setStoredMainDate().getStoredC
 onscroll = fallingMobileMenu;
 onresize = setCardProperties;
 
+cardsTableDeck.style.paddingBottom = innerHeight - 200 + 'px';
 body.style.backgroundColor = '#dfd';

@@ -44,7 +44,7 @@
 .card:hover {
 	z-index: 1048574;
 	transform: translate(-6px, 20px) skew(-4deg, 4deg);
-	transition: transform 0.1s 15s, background 0.3s, padding-top 0.3s;
+	transition: transform 0.1s 30s, background 0.3s, padding-top 0.3s;
 }
 
 #editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card:hover {

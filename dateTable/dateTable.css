@@ -16,9 +16,16 @@
 	cursor: pointer;
 }
 
+.yellowDay {
+	background-color: yellow;
+}
+
 .redDay {
 	background-color: red;
-	cursor: pointer;
+}
+
+.yellowDay.redDay {
+	background-color: orange;
 }
 
 .yearDiv, .monthDiv{

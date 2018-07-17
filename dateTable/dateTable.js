@@ -41,6 +41,7 @@ function setCalendar() {
 
 function colorizeDates() {
 	for (var i = 7 + smallExtender; i < 49 + bigExtender; i++) {
+		fiveWeekNodes[i].className = 'day';
 		thisDate = new Date(actualDate.getFullYear(), actualDate.getMonth(), i - 12 - firstDay);
 		fiveWeekNodes[i].innerHTML = thisDate.getDate();
 		if (thisDate.getMonth() == actualDate.getMonth()) {
@@ -49,6 +50,10 @@ function colorizeDates() {
 		} else {
 			dayN(i).becomePassive;
 		}
+		if (thisDate.getFullYear() == currentDate.getFullYear() &&
+			thisDate.getMonth() == currentDate.getMonth() &&
+			thisDate.getDate() == currentDate.getDate())
+			dayN(i).become('yellowDay');
 	}
 	for (var i in dateList) {
 		dayN(dateList[i].date + 12 + firstDay).become('redDay');
@@ -61,14 +66,13 @@ function selectCalendarDate(i, thisDate) {
 		mainDate = thisDate.toLocaleDateString();
 		currentDateParagraph.innerHTML = mainDate;
 		actualDate = thisDate;
-		newDateFlag = fiveWeekNodes[i].classList.contains('greenDay') ? true : false;
+		newDateFlag = fiveWeekNodes[i].classList.contains('redDay') ? false : true;
 		cardsTable.checked = true;
 		getStoredCards();
 	}
 }
 
 function dayN(num) {
-	fiveWeekNodes[num].className = 'day';
 	return {
 		become : function(color) {
 			fiveWeekNodes[num].classList.add(color);

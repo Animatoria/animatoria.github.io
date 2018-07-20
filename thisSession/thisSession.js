@@ -71,3 +71,32 @@ function isNewDateOrTheme() {
 		newDateFlag = false;
 	}
 }
+
+function getRequest(file) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', file);
+	xhr.send();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState != 4) return;
+		if (xhr.status != 200) {
+			console.log('Error ' + xhr.status + ': ' + xhr.statusText);
+		} else {
+			console.log(xhr.responseText);
+		}
+	}
+}
+
+function postRequest(type, data) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', type);
+	xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+	xhr.send(data);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState != 4) return;
+		if (xhr.status != 200) {
+			console.log('Error ' + xhr.status + ': ' + xhr.statusText);
+		} else {
+			console.log(xhr.responseText);
+		}
+	}
+}

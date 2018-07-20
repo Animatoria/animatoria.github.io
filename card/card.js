@@ -1,4 +1,4 @@
-var textareaEditableRows = 1;
+const textareaEditableRows = 1;
 var zIndexCounter = 1;
 
 var isFaceSide = true;

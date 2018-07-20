@@ -3,16 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<title>Rotating Cards</title>
-	<link rel = 'stylesheet' href='card/cardStyle.css' type='text/css'>
-	<link rel = 'stylesheet' href='cardsTable/cardsTable.css' type='text/css'>
-	<link rel = 'stylesheet' href='dateTable/dateTable.css' type='text/css'>
-	<link rel = 'stylesheet' href='mobile/styleMobile.css' type='text/css'>
-	<link rel = 'stylesheet' href='headerMenuLogic.css' type='text/css'>
-	<link rel = 'stylesheet' href='tablesLogic.css' type='text/css'>
-	<link rel = 'stylesheet' href='readOnlyModeLogic.css' type='text/css'>
-	<link rel = 'stylesheet' href='cardLogic.css' type='text/css'>
-	<link rel = 'stylesheet' href='style.css' type='text/css'>
-	<meta name = "viewport" content = "width=device-width, initial-scale=1">
+	<link rel='shortcut icon' href='icons/favicon.ico'>
+	<link rel='stylesheet' href='card/cardStyle.css' type='text/css'>
+	<link rel='stylesheet' href='cardsTable/cardsTable.css' type='text/css'>
+	<link rel='stylesheet' href='dateTable/dateTable.css' type='text/css'>
+	<link rel='stylesheet' href='mobile/styleMobile.css' type='text/css'>
+	<link rel='stylesheet' href='headerMenuLogic.css' type='text/css'>
+	<link rel='stylesheet' href='tablesLogic.css' type='text/css'>
+	<link rel='stylesheet' href='readOnlyModeLogic.css' type='text/css'>
+	<link rel='stylesheet' href='cardLogic.css' type='text/css'>
+	<link rel='stylesheet' href='style.css' type='text/css'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div class='empty'></div>
@@ -54,9 +55,9 @@
 			</svg>
 		</div>
 		<div id='cardsTableDeck'>
-			<input id='cardBlank0' name='cardBlank' type='radio' checked>
-			<input id='cardBlank1' name='cardBlank' type='radio'>
-			<input id='cardBlank2' name='cardBlank' type='radio'>
+			<input id='cardBlank0' class='cardBlankRB' name='cardBlank' type='radio' checked>
+			<input id='cardBlank1' class='cardBlankRB' name='cardBlank' type='radio'>
+			<input id='cardBlank2' class='cardBlankRB' name='cardBlank' type='radio'>
 			<div class='cardBlank0 columnWrapper'>
 				<div class='cardsColumn'></div>
 				<textarea rows="1" class='cardBlank' onclick='addNewCard()' readonly>+ + +</textarea>

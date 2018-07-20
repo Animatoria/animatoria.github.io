@@ -5,6 +5,7 @@ var storedCard = [];
 var isAnyCardShowed;
 
 var cardsColumn = cardsTableDeck.querySelectorAll('.cardsColumn');
+var cardBlank = cardsTableDeck.querySelectorAll('.cardBlankRB');
 
 var columnExpression = [
 	function(card) {cardsColumn[0].appendChild(card.wrapper)},
@@ -14,12 +15,12 @@ var columnExpression = [
 
 var columnBlankExp = [
 	function() {},
-	function() {eval('cardBlank' + (cardsColumn[0].clientHeight <= cardsColumn[1].clientHeight ? 0 : 1)).checked = true},
-	function() {eval('cardBlank' + ((Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3)).checked = true}
+	function() {(cardBlank[cardsColumn[0].clientHeight <= cardsColumn[1].clientHeight ? 0 : 1]).checked = true},
+	function() {(cardBlank[(Math.min(cardsColumn[0].clientHeight << 2, (cardsColumn[1].clientHeight << 2) + 1 , (cardsColumn[2].clientHeight << 2) + 2)) & 3]).checked = true}
 ];
 
 function columnFuncSelector(variant) {
-	cardBlank0.checked = true;
+	cardBlank[0].checked = true;
 	chooseCardsColumn = columnExpression[variant];
 	chooseBlankColumn = columnBlankExp[variant];
 }

@@ -1,0 +1,22 @@
+{
+  "name": "animatoria",
+  "version": "0.3.0",
+  "description": "A sample Node.js app",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Animatoria/animatoria.github.io"
+  },
+  "keywords": [
+    "node"
+  ],
+  "license": "MIT"
+}

@@ -293,7 +293,7 @@ function Card(k, isNewCard) {
 
 var newThemeFlag = false;
 var newDateFlag = true;
-var regUser = falseж
+var regUser = false;
 
 var thisSessionID;
 var storedWidth;

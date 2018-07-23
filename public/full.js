@@ -293,31 +293,35 @@ function Card(k, isNewCard) {
 
 var newThemeFlag = false;
 var newDateFlag = true;
+var regUser = falseж
 
 var thisSessionID;
 var storedWidth;
 
 function setSessionID() {
-	var sessionID = +localStorage.getItem('');
-	/**var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'sessionID');
-	xhr.send();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState != 4) return;
-		if (xhr.status != 200) {
-			console.log('Error ' + xhr.status + ': ' + xhr.statusText);
-		} else {
-			sessionID = xhr.responseText;
+	if (regUser) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'sessionID');
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4) return;
+			if (xhr.status != 200) {
+				console.log('Error ' + xhr.status + ': ' + xhr.statusText);
+			} else {
+				sessionID = xhr.responseText;
+			}
 		}
-	}**/
-	if (sessionID && sessionID != 255) {
-		thisSessionID = ++sessionID;
-		localStorage.setItem('', thisSessionID);
 	} else {
-		thisSessionID = 1;
-		localStorage.setItem('', 1);
+		var sessionID = +localStorage.getItem('');
+		if (sessionID && sessionID != 255) {
+			thisSessionID = ++sessionID;
+			localStorage.setItem('', thisSessionID);
+		} else {
+			thisSessionID = 1;
+			localStorage.setItem('', 1);
+		}
+		return this;
 	}
-	return this;
 }
 
 function setCardProperties() {

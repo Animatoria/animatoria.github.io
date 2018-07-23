@@ -1,0 +1,656 @@
+.card {
+	width: 100%;
+	margin: 10px auto;
+	position: relative;
+	perspective: 1000px;
+	border-radius: 30px;
+	transition: 0.3s;
+}
+
+.cardMenu {
+	width: 100%;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.3s, opacity 0.3s;
+}
+
+.completed {
+	cursor: pointer;
+	position: absolute;
+	top: -6px;
+	left: 10%;
+}
+
+.completed span {
+	color: #6f8a91;
+	font-size: 25px;
+	text-align: center;
+	position: absolute;
+	width: calc(100% - 14px);
+	top: 5px;
+	right: 5px;
+}
+
+.deleteButton {
+	cursor: pointer;
+	position: absolute;
+	top: -6px;
+	right: -5px;
+}
+
+.deleteButton span {
+	color: #6f8a91;
+	font-size: 25px;
+	text-align: center;
+	position: absolute;
+	width: calc(100% - 14px);
+	top: 5px;
+	right: 5px;
+}
+
+.zoomer {
+	width: 100%;
+	perspective: 1000px;
+}
+
+.flipper {
+	width: 100%;
+	transition: 0.5s;
+	transform-style: preserve-3d;
+	transform: rotateY(180deg);
+}
+
+.areaGlass {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	cursor: pointer;
+}
+
+textarea {
+	box-sizing: border-box;
+	width: 100%;
+	font-family: monospace;
+	font-size: 33px;
+	font-weight: 700;
+	outline: none;
+	display: block;
+	resize: none;
+	backface-visibility: hidden;
+	text-align: center;
+	overflow: hidden;
+	padding: 30px 5px 30px 5px;
+	color: #6f8a91;
+}
+
+.faceArea {
+	border-radius: 5px 30px 30px 30px;
+}
+
+.backArea {
+	transform: rotateY(180deg);
+	position: absolute;
+	top: 0;
+	background: linear-gradient(rgba(0,0,0,0) 25px, rgba(255,255,255,0.7) 25px, rgba(255,255,255,0.7) calc(100% - 25px), rgba(0,0,0,0) 0), linear-gradient(60deg, #fff 50%, #f9d8a2 0);
+	background-size: 100% 100%, 5px 5px;
+	border-radius: 30px 5px 30px 30px;
+}
+
+@keyframes cardZoomtrue {
+	50% {
+		transform: translateZ(200px) translateX(10%) translateY(10%);
+	}
+	100% {
+		transform: translateZ(0px) translateX(0px);
+	}
+}
+
+@keyframes cardZoomfalse {
+	50% {
+		transform: translateZ(200px) translateX(10%) translateY(10%);
+	}
+	100% {
+		transform: translateZ(0px) translateX(0px);
+	}
+}
+
+@keyframes cardMenuOpacitytrue {
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
+	100% {opacity: 1}
+}
+
+@keyframes cardMenuOpacityfalse {
+	5% {opacity: 0.3}
+	95% {opacity: 0.3}
+	100% {opacity: 1}
+}
+
+#cardsTableDeck {
+	margin: 0;
+	display: none;
+	justify-content: space-around;
+	align-items: flex-start;
+	min-height: 300px;
+}
+
+.columnWrapper {
+	width: 33%;
+}
+
+.cardBlank {
+	border-radius: 5px 30px 30px 30px;
+	display: none;
+	cursor: pointer;
+	background-color: #dfd;
+	margin: 10px auto;
+}
+
+#monthList {
+	width: 350px;
+}
+
+.day {
+	margin: 5px;
+	height: 40px;
+	width: 40px;
+	display: inline-block;
+	text-align: center;
+	line-height: 40px;
+}
+
+.greenDay {
+	background-color: green;
+	cursor: pointer;
+}
+
+.yellowDay {
+	background-color: yellow;
+}
+
+.redDay {
+	background-color: red;
+}
+
+.yellowDay.redDay {
+	background-color: orange;
+}
+
+.yearDiv, .monthDiv{
+	position: relative;
+	width: 350px;
+	height: 50px;
+	background-color: #ddf;
+}
+
+.leftArrow {
+	width: 50%;
+	height: 50px;
+	float: left;
+	cursor: pointer;
+}
+
+.rightArrow {
+	width: 50%;
+	height: 50px;
+	float: right;
+	cursor: pointer;
+}
+
+#year, #month {
+	position: absolute;
+	width: 100px;
+	height: 50px;
+	right: calc(50% - 50px);
+	text-align: center;
+	line-height: 50px;
+	background-color: #fdd;
+}
+
+.empty {
+	height: 70px;
+}
+
+.buttonMobile {
+	height: 20px;
+	padding: 15px;
+	background-color: #eee;
+	cursor: pointer;
+	vertical-align: bottom;
+	transition-duration: 3s;
+}
+
+.addNewCard {
+	border-top: 1px solid #000;
+}
+
+.burgerMenu{
+	z-index: 10;
+	float: right;
+	position: relative;
+	transition-duration: 3s;
+}
+
+#plexiGlass {
+	width: 100%;
+	height: 100%;
+	z-index: 1048574;
+	position: fixed;
+	top: 0;
+	background-color: rgba(0,0,0,0.7);
+}
+
+#animatoriaButton {
+	z-index: 9;
+}
+
+.addNewCard {
+	z-index: 8;
+}
+
+.readOnlyMode {
+	z-index: 7;
+}
+
+#mainDateLog {
+	z-index: 6;
+}
+
+#mainDateButton {
+	z-index: 5;
+}
+
+.mainThemeLabel {
+	z-index: 4;
+}
+
+#mainThemeGlass {
+	background-color: rgba(0,0,0,0);
+}
+
+
+.longMenuPos > #animatoriaButton {
+	top: 0px;
+}
+
+.longMenuPos > .addNewCard {
+	top: 50px;
+}
+
+.longMenuPos > .readOnlyMode {
+	top: 100px;
+}
+
+.longMenuPos > #mainDateLog {
+	top: 150px;
+}
+
+.longMenuPos > #mainDateButton {
+	top: 200px;
+}
+
+.longMenuPos > .mainThemeLabel {
+	top: 250px;
+}
+
+.longMenuTr > #animatoriaButton {
+	transition: top 0.1s linear;
+}
+
+.longMenuTr > .addNewCard {
+	transition: top 0.2s linear;
+}
+
+.longMenuTr > .readOnlyMode {
+	transition: top 0.3s linear;
+}
+
+.longMenuTr > #mainDateLog {
+	transition: top 0.4s linear;
+}
+
+.longMenuTr > #mainDateButton {
+	transition: top 0.5s linear;
+}
+
+.longMenuTr > .mainThemeLabel {
+	transition: top 0.6s linear;
+}
+
+.longMenuDelay > #animatoriaButton {
+	transition-delay: 0.5s;
+}
+
+.longMenuDelay > .addNewCard {
+	transition-delay: 0.4s;
+}
+
+.longMenuDelay > .readOnlyMode {
+	transition-delay: 0.3s;
+}
+
+.longMenuDelay > #mainDateLog {
+	transition-delay: 0.2s !important;
+}
+
+.longMenuDelay > #mainDateButton {
+	transition-delay: 0.1s;
+}
+
+.longMenuDelay > .mainThemeLabel {
+	transition-delay: 0s;
+}
+
+.singleMenu > #mainDateSMB:checked ~ #mainDateLog {
+	top: 0px;
+}
+
+.singleMenu > #mainThemeSMB:checked ~ .mainThemeLabel {
+	top: 0px;
+}
+
+.singleMenu > #mainThemeSMB:checked ~ #mainThemeGlass {
+	display: none;
+}
+
+.singleMenu > #mainDateSM:checked ~ #mainDateLog {
+	top: 0px;
+	transition: top 0.3s linear;
+}
+
+.singleMenu > #mainThemeSM:checked ~ .mainThemeLabel {
+	top: 0px;
+	transition: top 0.5s linear;
+}
+
+.singleMenu > #mainThemeSM:checked ~ #mainThemeGlass {
+	display: none;
+}
+
+.headerButton {
+	transition: top 0.1s linear;
+}
+
+#highRect {
+	transition: 0.1s;
+	transition-delay: 0.2s;
+}
+
+#middleRect {
+	transition: 0.1s;
+	transition-delay: 0s;
+}
+
+#lowRect {
+	transition: 0.1s;
+	transition-delay: 0.3s;
+}
+
+#burgerMenu:checked ~ .burgerMenu > #highRect {
+	transition-delay: 0.2s;
+	transform-origin: 18px 2px;
+	transform: rotate(-45deg);
+}
+
+#burgerMenu:checked ~ .burgerMenu > #middleRect {
+	transition-delay: 0s;
+	transform-origin: 10px 10px;
+	transform: rotate(30deg);
+}
+
+#burgerMenu:checked ~ .burgerMenu > #lowRect {
+	transition-delay: 0.3s;
+	transform-origin: 2px 18px;
+	transform: rotate(-45deg);
+}
+
+.buttonMobile:hover:not(.burgerMenu) {
+	transition: background-color 0.5s;
+	animation: autumnLeaf 2s ease-in-out 5s forwards;
+	background: radial-gradient(#fdd, #eee 80%);
+}
+
+.headerButton:hover:not(.mainThemeLabel) {
+	background: radial-gradient(#fdd, #eee 80%);
+}
+
+.burgerMenu:hover {
+	background: radial-gradient(#fdd, #eee 80%);
+	transition-duration: 0.6s;
+}
+
+@keyframes autumnLeaf {
+	10% {
+		transform: translate(-10px, 10px) skew(-20deg, 20deg) rotateY(180deg);
+	}
+	30% {
+		transform: translate(30px, 30px) skew(20deg, -20deg);
+	}
+	60% {
+		transform: translate(-60px, 60px) skew(-20deg, 20deg) rotateY(180deg);
+	}
+	100% {
+		transform: translate(0px, 100px) skew(20deg, -20deg);
+	}
+}
+
+#cardsTable:checked ~ #cardsTableDeck {
+	display: flex;
+}
+
+#dateTable:checked ~ #dateTableDeck,
+#themeTable:checked ~ #themeTableDeck {
+	display: block;
+}
+
+#cardBlank0:checked ~ .cardBlank0 > .cardBlank,
+#cardBlank1:checked ~ .cardBlank1 > .cardBlank,
+#cardBlank2:checked ~ .cardBlank2 > .cardBlank {
+	display: block;
+}
+
+.evenOdd:nth-child(even) {
+	display: none;
+}
+
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(even) {
+	display: inline-block;
+}
+
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(odd) {
+	display: none;
+}
+
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card {
+	background-color: #aaf;
+	padding-top: 20px;
+}
+
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card > .cardMenu {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+.completedChB:checked ~ .card > .zoomer > .areaGlass {
+	display: none;
+}
+
+.completedChB:checked ~ .card {
+	background-color: #cca !important;
+	padding-top: 20px;
+}
+
+.cardMenuLabel {
+	transition: 0.3s;
+}
+
+.cardMenuLabelDark {
+	transition: 0.3s;
+}
+
+.completedChB:checked ~ .card > .cardMenu .cardMenuLabel {
+	fill: #ffd !important;
+}
+
+.completedChB:checked ~ .card > .cardMenu .cardMenuLabelDark {
+	fill: #cca !important;
+}
+
+.completedChB:checked ~ .card > .zoomer > .flipper > textarea {
+	overflow-y: auto;
+}
+
+.completedChB:checked ~ .card > .cardMenu {
+	visibility: visible;
+	opacity: 1;
+}
+
+.deleteButtonChB:checked ~ .card {
+	display: none;
+}
+
+.sideChB:checked + .flipper {
+	transform: rotateY(0deg);
+}
+
+.card:hover {
+	z-index: 1048574;
+	transform: translate(-6px, 20px) skew(-4deg, 4deg);
+	transition: transform 0.1s 30s, background 0.3s, padding-top 0.3s;
+}
+
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card:hover {
+	transform: none;
+}
+
+.completedChB:checked ~ .card:hover {
+	transform: none;
+}
+
+#body {
+	width: 90%;
+	margin: auto;
+	background-color: #dfd;
+}
+
+.headerButton {
+	font-size: 30px;
+	font-family: monospace;
+	border: none;
+	background-color: #eee;
+	height: 50px;
+	width: 445px;
+	outline: none;
+	text-align: left;
+	cursor: pointer;
+	color: #6f8a91;
+	padding: 0;
+	position: absolute;
+	top: -50px;
+	right: 0px;
+	line-height: 50px;
+}
+
+#mainTheme {
+	font-size: 30px;
+	font-family: monospace;
+	border: none;
+	background-color: #eee;
+	height: 50px;
+	max-width: 335px;
+	width: calc(100% - 110px);
+	outline: none;
+	color: #6f8a91;
+	padding: 0;
+}
+
+.buttonIcon {
+	padding: 7px 18px 0 18px;
+	height: 20px;
+}
+
+#dateTableDeck {
+	display: none;
+	margin: 0 auto;
+	width: 350px;
+	background-color: #dfd;
+}
+
+#themeTableDeck {
+	display: none;
+	background-color: #dfd;
+}
+
+.storedTheme {
+	font-size: 33px;
+	height: 50px;
+	background-color: #ddf;
+	width: 350px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 50px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+#header {
+	z-index: 1048575;
+	top : 0px;
+	position: fixed;
+	background-color: #fdd;
+	width: 90%;
+	transition: top 0.1s linear;
+}
+
+p {
+	display: inline-block;
+	margin: 0;  
+}
+
+#burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM,
+#mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB,
+#cardBlank0, #cardBlank1, #cardBlank2, #loader {
+	display: none;
+}
+
+@media(max-width: 1399px) {
+
+	.columnWrapper:nth-of-type(3) {
+		display: none;
+	}
+
+	.columnWrapper {
+		width: 49%;
+	}
+}
+
+@media(max-width: 699px) {
+
+	.columnWrapper:nth-of-type(2) {
+		display: none;
+	}
+
+	.columnWrapper {
+		width: 98%;
+	}
+}
+
+@media(max-width: 1260px) {
+
+	#body {
+		width: 100%;
+	}
+
+	#header {
+		width: 100%;
+	}
+}
+
+@media(max-width: 680px) {
+
+	.headerButton {
+		width: 100%;
+	}
+}

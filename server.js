@@ -1,26 +1,18 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
-var isWrite = false;
 
 http.createServer(function (req, res) {
 	var q = url.parse(req.url, true);
-	var way, cont;
-
-	if (isWrite) {
-		fs.mkdir('textfiles/new', function (err) {
-			if (err) throw err;
-			console.log('Saved!');
-		});
-		isWrite = false;
-	}
+	var way = './public', cont;
 
 	switch (q.pathname[q.pathname.length - 1]) {
-		case '/' : way = './index.html'; cont = 'text/html'; break;
-		case 's' : way = '.' + q.pathname; cont = 'text/css'; break;
-		case 'g' : way = '.' + q.pathname; cont = 'image/svg+xml'; break;
-		case 'o' : way = '.' + q.pathname; cont = 'image/ico'; break;
-		case 'n' : way = '.' + q.pathname; cont = 'application/json'; break;
+		case '/' : way += '/index.html'; cont = 'text/html'; break;
+		case 's' : way += q.pathname; cont = 'text/css'; break;
+		case 'g' : way += q.pathname; cont = 'image/svg+xml'; break;
+		case 'o' : way += q.pathname; cont = 'image/ico'; break;
+		case 'n' : way += q.pathname; cont = 'application/json'; break;
+		default : return;
 	}
 
 	if (req.method == 'POST') {

@@ -58,7 +58,7 @@ body {
 }
 
 #loader:checked ~ #body{
-	display: none;
+	visibility: hidden;
 }
 
 @keyframes loader {

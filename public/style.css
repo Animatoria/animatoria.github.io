@@ -1,0 +1,125 @@
+#body {
+	width: 90%;
+	margin: auto;
+	background-color: #dfd;
+}
+
+.headerButton {
+	font-size: 30px;
+	font-family: monospace;
+	border: none;
+	background-color: #eee;
+	height: 50px;
+	width: 445px;
+	outline: none;
+	text-align: left;
+	cursor: pointer;
+	color: #6f8a91;
+	padding: 0;
+	position: absolute;
+	top: -50px;
+	right: 0px;
+	line-height: 50px;
+}
+
+#mainTheme {
+	font-size: 30px;
+	font-family: monospace;
+	border: none;
+	background-color: #eee;
+	height: 50px;
+	max-width: 335px;
+	width: calc(100% - 110px);
+	outline: none;
+	color: #6f8a91;
+	padding: 0;
+}
+
+.buttonIcon {
+	padding: 7px 18px 0 18px;
+	height: 20px;
+}
+
+#dateTableDeck {
+	display: none;
+	margin: 0 auto;
+	width: 350px;
+	background-color: #dfd;
+}
+
+#themeTableDeck {
+	display: none;
+	background-color: #dfd;
+}
+
+.storedTheme {
+	font-size: 33px;
+	height: 50px;
+	background-color: #ddf;
+	width: 350px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 50px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+#header {
+	z-index: 1048575;
+	top : 0px;
+	position: fixed;
+	background-color: #fdd;
+	width: 90%;
+	transition: top 0.1s linear;
+}
+
+p {
+	display: inline-block;
+	margin: 0;  
+}
+
+#burgerMenu, #cardsTable, #dateTable, #themeTable, #editMode, #mainDateSM, #mainThemeSM,
+#mainDateSMB, #mainThemeSMB, #cardTemplate, .completedChB, .deleteButtonChB, .sideChB,
+#cardBlank0, #cardBlank1, #cardBlank2, #loader {
+	display: none;
+}
+
+@media(max-width: 1399px) {
+
+	.columnWrapper:nth-of-type(3) {
+		display: none;
+	}
+
+	.columnWrapper {
+		width: 49%;
+	}
+}
+
+@media(max-width: 699px) {
+
+	.columnWrapper:nth-of-type(2) {
+		display: none;
+	}
+
+	.columnWrapper {
+		width: 98%;
+	}
+}
+
+@media(max-width: 1260px) {
+
+	#body {
+		width: 100%;
+	}
+
+	#header {
+		width: 100%;
+	}
+}
+
+@media(max-width: 680px) {
+
+	.headerButton {
+		width: 100%;
+	}
+}

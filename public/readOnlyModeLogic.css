@@ -1,0 +1,21 @@
+.evenOdd:nth-child(even) {
+	display: none;
+}
+
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(even) {
+	display: inline-block;
+}
+
+#editMode:checked ~ #header > .evenOddParent > .evenOdd:nth-child(odd) {
+	display: none;
+}
+
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card {
+	background-color: #aaf;
+	padding-top: 20px;
+}
+
+#editMode:checked ~ #cardsTableDeck > .columnWrapper > .cardsColumn > .cardWrapper > .card > .cardMenu {
+	visibility: visible;
+	opacity: 1;
+}

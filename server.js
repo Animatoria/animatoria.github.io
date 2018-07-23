@@ -1,8 +1,8 @@
-var http = require('http');
+var https = require('https');
 var url = require('url');
 var fs = require('fs');
 
-http.createServer(function (req, res) {
+https.createServer(function (req, res) {
 	var q = url.parse(req.url, true);
 	var way = './public', cont;
 
@@ -35,7 +35,7 @@ http.createServer(function (req, res) {
 				res.writeHead(404, {'Content-Type' : 'text/html'});
 				res.end('404 Not Found');
 			} else {
-				res.writeHead(200, {'Content-Type' : cont, 'Cache-Control' : 'public, max-age=60'});
+				res.writeHead(200, {'Content-Type' : cont, 'Cache-Control' : 'immutable, max-age=0'});
 				res.write(data);
 				res.end();
 			}

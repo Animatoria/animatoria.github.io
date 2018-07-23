@@ -1,0 +1,14 @@
+#cardsTable:checked ~ #cardsTableDeck {
+	display: flex;
+}
+
+#dateTable:checked ~ #dateTableDeck,
+#themeTable:checked ~ #themeTableDeck {
+	display: block;
+}
+
+#cardBlank0:checked ~ .cardBlank0 > .cardBlank,
+#cardBlank1:checked ~ .cardBlank1 > .cardBlank,
+#cardBlank2:checked ~ .cardBlank2 > .cardBlank {
+	display: block;
+}

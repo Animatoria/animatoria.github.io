@@ -1,5 +1,3 @@
-window.onunload = function() {location.reload(true);};
-
 var currentDate = new Date();
 actualDate = currentDate;
 var currentDateToLocaleDateString = currentDate.toLocaleDateString();

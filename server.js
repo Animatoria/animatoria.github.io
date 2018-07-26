@@ -1,14 +1,15 @@
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
-const sqlite3 = require('sqlite3');
-//const configDB = require('./databaseSetting');
+const sqlite3 = require('sqlite3').verbose();
+const configDB = require('./databaseSetting');
 
-const db = new sqlite3.Database(`/gitHubRepo/RotationCards/db.sqlite`, sqlite3.OPEN_READWRITE, err => {
+const db = new sqlite3.Database(`:memory:`, err => {
 	if (err) throw err;
+	console.log(`Connected to the in-memory database`);
 	db.run('PRAGMA foreign_keys = ON;');
 });
-//configDB(db);
+configDB(db);
 
 http.createServer(function (req, res) {
 	var q = url.parse(req.url, true);
@@ -54,6 +55,7 @@ process.on('SIGINT', function() {
 	console.log('Closing database connection...');
 	db.close(err => {
 		if (err) return console.warn(err.message);
+		console.log('Bye bye...');
 		process.exit();
 	});
 });

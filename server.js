@@ -4,9 +4,9 @@ const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
 const configDB = require('./databaseSetting');
 
-const db = new sqlite3.Database(`:memory:`, err => {
+const db = new sqlite3.Database(':memory:', err => {
 	if (err) throw err;
-	console.log(`Connected to the in-memory database`);
+	console.log('Connected to the in-memory database');
 	db.run('PRAGMA foreign_keys = ON;');
 });
 configDB(db);
@@ -55,7 +55,15 @@ process.on('SIGINT', function() {
 	console.log('Closing database connection...');
 	db.close(err => {
 		if (err) return console.warn(err.message);
-		console.log('Bye bye...');
+		console.log('Bye bye');
+		process.exit();
+	});
+});
+process.on('SIGTERM', function() {
+	console.log('Closing database connection...');
+	db.close(err => {
+		if (err) return console.warn(err.message);
+		console.log('Bye bye');
 		process.exit();
 	});
 });

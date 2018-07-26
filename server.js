@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const sqlite3 = require('sqlite3');
-const configDB = require('./databaseSetting');
+//const configDB = require('./databaseSetting');
 
 const db = new sqlite3.Database(`/gitHubRepo/RotationCards/db.sqlite`, sqlite3.OPEN_READWRITE, err => {
 	if (err) throw err;

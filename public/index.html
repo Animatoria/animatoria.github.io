@@ -33,6 +33,8 @@
 		<input id='cardsTable' name='table' type='radio' checked>
 		<input id='dateTable' name='table' type='radio'>
 		<input id='themeTable' name='table' type='radio'>
+		<div id='registration' style='display: none;'><input id='userName' value='Animatoria' 
+			onchange="mainThemeChange()" placeholder="Name" maxlength="20" type='text'></div>
 		<div id='header'>
 			<input id='burgerMenu' type='checkbox'>
 			<input id='mainDateSM' name='singleMenu' type='radio'>
@@ -40,7 +42,7 @@
 			<input id='mainDateSMB' name='singleMenu' type='radio'>
 			<input id='mainThemeSMB' name='singleMenu' type='radio'>
 			<button id='animatoriaButton' class='headerButton'>
-				<img class='buttonIcon' src='icons/A.svg'><p>An2matoria</p>
+				<img class='buttonIcon' src='icons/A.svg'><p>Animatoria</p>
 			</button>
 			<button class='addNewCard headerButton' onclick='addNewCard()' accesskey="a">
 				<img class='buttonIcon' src='icons/addnewcard.svg'><p>Add card</p>
@@ -53,7 +55,7 @@
 				<img class='buttonIcon' src='icons/calendar.svg'><p>Choose date</p>
 			</label>
 			<label class='mainThemeLabel headerButton'>
-				<img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' 
+				<img class='buttonIcon' src='icons/theme.svg'><input id='mainTheme' value='Theme' 
 			onchange="mainThemeChange()" placeholder="Theme" maxlength="20" type='text'>
 			</label>
 			<label id='mainThemeGlass' class='mainThemeLabel headerButton' for='mainThemeSM' onclick='mainThemeMenu(0)'>

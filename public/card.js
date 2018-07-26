@@ -126,6 +126,7 @@ var allCardsProperties = {
 	},
 
 	modeSwitch : function() {
+		setSessionID();
 		if (localStorage.getItem('') == thisSessionID) {
 			if (this.isNewCard) {
 				isNewDateOrTheme();
@@ -161,6 +162,7 @@ var allCardsProperties = {
 	},
 	
 	delete : function() {
+		setSessionID();
 		if (localStorage.getItem('') == thisSessionID) {
 			Object.getPrototypeOf(this).deleted = true;
 			this.saveCard();

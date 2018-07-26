@@ -9,7 +9,9 @@
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "sqlite3": "^4.0.2"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",

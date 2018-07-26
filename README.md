@@ -1,1 +1,1 @@
-This App is helpful for students.<br>Visit <a href='http://animatoria.herokuapp.com'>animatoria.herokuapp.com</a> to meet with app.
+This App is helpful for students.

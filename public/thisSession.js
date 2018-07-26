@@ -1,36 +1,33 @@
 var newThemeFlag = false;
 var newDateFlag = true;
 var regUser = false;
-var regSession = false;
 
 var thisSessionID;
 var storedWidth;
 
 function setSessionID() {
-	if (!regSession) {
-		if (regUser) {
-			var xhr = new XMLHttpRequest();
-			xhr.open('GET', 'sessionID');
-			xhr.send();
-			xhr.onreadystatechange = function() {
-				if (xhr.readyState != 4) return;
-				if (xhr.status != 200) {
-					console.log('Error ' + xhr.status + ': ' + xhr.statusText);
-				} else {
-					thisSessionID = xhr.responseText;
-				}
-			}
-		} else {
-			var sessionID = +localStorage.getItem('');
-			if (sessionID && sessionID != 255) {
-				thisSessionID = ++sessionID;
-				localStorage.setItem('', thisSessionID);
+	if (regUser) {
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET', 'sessionID');
+		xhr.send();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState != 4) return;
+			if (xhr.status != 200) {
+				console.log('Error ' + xhr.status + ': ' + xhr.statusText);
 			} else {
-				thisSessionID = 1;
-				localStorage.setItem('', 1);
+				sessionID = xhr.responseText;
 			}
 		}
-		regSession = true;
+	} else {
+		var sessionID = +localStorage.getItem('');
+		if (sessionID && sessionID != 255) {
+			thisSessionID = ++sessionID;
+			localStorage.setItem('', thisSessionID);
+		} else {
+			thisSessionID = 1;
+			localStorage.setItem('', 1);
+		}
+		return this;
 	}
 }
 
@@ -49,6 +46,7 @@ function setMainTheme() {
 	if (localStorage.getItem('storedMainTheme') && (storedMainTheme = JSON.parse(localStorage.getItem('storedMainTheme'))).length) {
 		mainTheme.value = storedMainTheme[storedMainTheme.length - 1];
 	} else {
+		mainTheme.value = 'Theme';
 		storedMainTheme.push(mainTheme.value);
 		localStorage.setItem('storedMainTheme', JSON.stringify(storedMainTheme));
 		localStorage.setItem('storedMainDate_' + mainTheme.value, JSON.stringify(storedMainDate));

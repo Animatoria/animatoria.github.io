@@ -7,7 +7,7 @@ currentDateParagraph.innerHTML = mainDate;
 
 animatoriaButton.onclick = function() {isFaceSide ^= 1;};
 
-setCardProperties().setMainTheme().setStoredMainDate().getStoredCards();
+setCardProperties().setMainTheme().setSessionID().setStoredMainDate().getStoredCards();
 
 onscroll = fallingMobileMenu;
 onresize = setCardProperties;
